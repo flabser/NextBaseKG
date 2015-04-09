@@ -1,0 +1,219 @@
+html {overflow-y:hidden; min-width: 1024px;}
+BODY {font-family: Verdana, Arial, Helvetica, sans-serif !important;}
+#wrapper {
+	position: absolute;
+	left:0px;
+	top:0px;
+	bottom:0px;
+	width: 100%;
+	min-width: 1024px;
+}
+
+#header-view{
+	width:100%;
+	background:url(../img/yellow_background.jpg);
+	height:70px;
+	border-bottom:1px solid #fcdd76;
+}
+
+.notviewtr:hover{
+	background:none !important;
+}
+#blockWindow{
+	display:block; 
+	position:absolute;
+	z-index:2;	
+	top:0px;
+	left:0px;
+	background: url("/SharedResources/jquery/css/base/images/ui-bg_flat_0_aaaaaa_40x100.png") repeat-x scroll 50% 50% #AAAAAA;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30, Style=0);
+	-moz-opacity: 0.3; 
+	-khtml-opacity: 0.3; 
+	opacity: 0.3; 
+	width:100%;
+	height:100%
+}
+
+/* меню навигации по видам*/
+#outline {width: 295px;	float: left;}
+#outline-header {margin-right: 8px;	display: block; width:275px; height:97px;text-align:center; padding-top:15px}
+#outline-container {
+	display: block;
+	padding: 0 3px 0 0;
+	position: absolute;
+	top: 80px;
+	bottom:1px;
+	left: 0px;
+	width: 280px;
+	overflow: auto;
+	overflow-x: hidden !important;
+	 background: #f9f9f9;
+	 border-right:1px solid #adadad;
+	 border-top:1px solid #adadad;
+	 border-botom:1px solid #adadad;
+}
+.ui-widget {font-family: Verdana,Arial,Helvetica,sans-serif !important; font-size:14px !important}
+#outline .entry{min-height:18px;}
+#outline a{text-decoration:none;}
+#outline a :hover{text-decoration:none;}
+.viewlinktitle{font-size:13px;vertical-align:top;margin-left:3px}
+.viewlink_current {width:100%}
+#outline-footer {
+	position: absolute;
+	bottom: 10px;
+	min-height: 35px;
+	width: 250px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #FFF;
+}
+
+/* для содержимого viewframe*/
+.viewframe{
+	display: block;
+	padding: 0 3px 0 3px;;
+	position: absolute;
+	top: 80px;
+	bottom:1px;
+	left: 320px;
+	right:0px;
+} 
+.viewtitle{	width:100%;	font-family: Verdana, Arial, Helvetica, sans-serif;	font-size: 1.3em;}
+.viewlink{min-height: 18px; vertical-align: top; width: 100%;  color:#000000;}
+.viewlink a{ color:#444444;}
+.viewlink a :hover{text-decoration:none !important;}
+.viewlink .countSpan{ font-size:0.8em; color:#A3A7B7}
+.viewlink_current a, .viewlink_current span {color:#000000; font-weight:bold; }
+.viewlink_current .countSpan{ color:#000000; font-size:0.8em; font-weight:bold;}
+.time{	
+	 font-family: Verdana, Arial, Helvetica, sans-serif;
+	 font-size:10px;
+	 color: #444444;	
+	 text-align:left; 
+}
+
+#resizer:hover {
+	background: #dadada !important;
+	border:1px solid #999999 !important;
+	
+}
+div .treeentry:hover{
+	border: 1px solid #999 !important;
+	background: #dadada;
+}
+div .treeentrycurrent{
+	border: 1px solid #B6D8F8 !important;
+	background: #E5EEF7;
+	font-weight:bold !important;
+	color:#000000 !important;
+}
+#viewtablediv {
+	display: block;
+	margin: 0px auto 0px auto;
+}
+.pagenavigator a{ color:#444444; text-decoration:none;}
+
+/* таблица с документами */
+#tableheader { height: 34px; margin-left:2px;}
+#tablecontent {
+	position: absolute;
+	top: 102px;
+    margin-left:0px;
+	bottom: 1px;
+	overflow: scroll;
+	overflow-x: hidden !important;
+	right:3px;
+	left:17px;
+	display:block;
+	min-height:100px;
+}
+
+#tablecontent-for-structurelist {
+	position: absolute;
+	top:40px;
+    margin-left:0px;
+	bottom: 1px;
+	overflow: scroll;
+	overflow-x: hidden !important;
+	right:3px;
+	left:17px;
+	display:block;
+	min-height:100px;
+}
+.th .thcell{	
+	text-align:center; 
+	border:none;
+	font-color:#444444
+}
+.th{ background: url("/SharedResources/jquery/css/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png") #e6e6e6; height: 30px; border:1px solid #d3d3d3; height:35px}
+.viewtable{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-collapse: collapse;
+	table-layout:fixed;
+	min-width:500px;
+	width:100%;
+}
+.viewtable tr td{ height:25px}
+.viewtable tr:hover { background:#eeeeee}
+#tablecontent-structure {
+	position: absolute;
+	top:25px;
+	left:0px;
+    margin-left:10px;
+	bottom: 1px;
+	overflow: scroll;
+	overflow-x: hidden !important;
+	right:1px;
+	left:320px;
+	display:block;
+}
+
+.listbutton font{
+	color:#444444;
+	cursor:pointer;
+	 line-height:23px;
+	 border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    font-size:11px;
+    margin-left:5px;
+    -moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none; 
+}
+.listbutton font:hover{
+	border-bottom-style: dotted;
+    border-bottom-width: 1px;
+	color:#ff0000;
+	line-height:23px;
+}
+
+.categorylist_td font {
+	color:#444444;
+	margin-left:5px
+}
+.categorylist_td:hover {
+	background:#79B7E7;
+}
+/* уведомления событий */
+#notifydiv{
+	background:#37A0DE; 
+	width:40%; 
+	position:absolute;
+	top:-40px;
+	padding-top:5px;
+	height:30px;
+	text-align:center;
+	z-index:9999; 
+	display:block; 
+	border-radius:0px 0px 8px 8px; 
+	opacity:0.9; 
+	margin:0px 30%
+}
+
+#notifydiv font{
+	color:#eeeeee; 
+	font-size:14px; 
+	font-family:Segoe UI;	
+}
+/* --- */

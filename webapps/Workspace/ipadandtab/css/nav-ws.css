@@ -1,0 +1,81 @@
+/* nav-ws */
+.nav-ws {
+}
+
+.ws-apps {
+	margin: 0 auto;
+	padding: 30px 20px;
+	position: relative;
+	width: 100%;
+}
+
+.unavailable .ws-app {
+	background: rgba(220, 220, 220, .6);
+	border: none;
+}
+
+.unavailable .ws-app:hover {
+	background: rgba(220, 220, 220, .6);
+	border: none;
+}
+
+.ws-app {
+	background: #d0e5f5 url(../img/ui-bg_glass_75_d0e5f5_1x400.png) 50% 50% repeat-x;
+	border: 1px solid #d0e5f5;
+	border-radius: 3px;
+	color: #1d5987;
+	display: inline-block;
+	font-weight: bold;
+	height: 120px;
+	line-height: normal;
+	font-size: 15px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	padding: 6px;
+	text-align: left;
+	text-decoration: none !important;
+	vertical-align: top;
+	width: 240px;
+}
+
+.ws-app:hover {
+	border-color: #6495ED;
+}
+
+.ws-app:active {
+	border-color: #4169E1;
+}
+
+.ws-app .ws-app-logo {
+	float: left;
+	height: 64px;
+	padding-top: 6px;
+	width: 64px;
+}
+
+.ws-app img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.ws-app .ws-app-name {
+	font-size: 1em;
+	min-height: 32px;
+	margin: 0px;
+	padding: 6px;
+	overflow: hidden;
+}
+
+.ws-app .ws-app-name2 {
+	color: #000;
+	font-size: .8em;
+	margin-top: .2em;
+	padding: .5em;
+	text-align: center;
+}
+
+@media ( max-width : 1024px) {
+	.ws-apps {
+		text-align: center;
+	}
+}

@@ -1,0 +1,159 @@
+.picklist{    
+    width:500px;
+    position: absolute;    
+    border: 1px solid #D3D3D3;
+    background: white;    
+    text-align: center;
+    display:block;
+    z-index:4; 
+}
+
+.header{
+	width:100%;
+	height:21px;
+	cursor: move;
+	background: url("/SharedResources/jquery/css/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
+    border-bottom: 1px solid #D3D3D3;
+    color: #555555;
+    font-weight: normal;
+}
+
+.headertext{
+	font-size:13px;
+	line-height:19px;
+	color:#555555;
+}
+
+.contentpane{
+	overflow-y:auto;
+	overflow-x:hidden;
+  	border:1px solid  #E6E6E6;
+   	margin-top:20px;
+   	height:390px;
+   	width:94%;
+   	display:inline-block;
+}
+
+.divSearch{
+	font-size:12px;
+	float:left;
+	height:25px;
+	width:100%;
+	margin-top:25px;
+}
+
+.blockWindow{
+	display:block; 
+	position:absolute;
+	z-index:2;	
+	top:0px;
+	left:0px;
+	background: url("/SharedResources/jquery/css/base/images/ui-bg_flat_0_aaaaaa_40x100.png") repeat-x scroll 50% 50% #AAAAAA;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30, Style=0);
+	-moz-opacity: 0.3; 
+	-khtml-opacity: 0.3; 
+	opacity: 0.3; 
+	width:100%;
+	height:100%
+}
+/* стиль диалога параметры согласования*/
+.picklistCoord{ 
+	width:575px;
+    height:525px;
+    position: absolute;    
+    border: 1px solid #D3D3D3;
+    background: white;    
+    padding: 10px 0px 0px 0px;    
+    text-align: center;
+    display:block;
+    z-index:3;   
+}
+
+.headerBoxCoord{
+	border-bottom:1px solid #c5dbec;
+	height:21px;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor: move;
+	background: url("/SharedResources/jquery/css/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
+    border-bottom: 1px solid #D3D3D3;
+    color: #555555;
+	font-size:0.8em;
+}
+
+.contentCoord{
+	width:100%;
+	padding:5px;
+	font-size:13px;
+}
+
+.selectedItem{ background:#FFF1AF;}
+
+/* стиль диалога "комментарий" */
+.comment{ 
+	font-size:0.75em;   
+    width:470px;
+    height:250px;
+    position: absolute;    
+    border:1px solid #c5dbec;
+    background: white;    
+    padding: 10px 0px 10px 0px;    
+    text-align: center;
+    display:block;
+    z-index:3;   
+}
+
+.headerComment{
+	border-bottom:1px solid #c5dbec;
+	width:100%;
+	height:21px;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor: move;
+	background: url("/SharedResources/jquery/css/base/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 50% #d0e5f5;
+	font-size:0.8em; 
+}
+
+.contentComment{
+	height:85%;
+}
+
+/* Стиль диалога вывода сообщений */ 
+.messageBox{ 
+    width:400px;
+    height:150px;
+    position: absolute;    
+    border: 1px solid #a6c9e2;
+    background: white;    
+    padding: 10px 10px 10px 10px;    
+    text-align: center;
+    display:block;
+    z-index:3;   
+}
+
+.headerMessageBox{
+	border-bottom:1px solid #56c3fe;
+	width:398px;
+	height:21px;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor: move;
+	background-color:#dde0ec; 
+	font-size:0.8em;
+}
+
+.messageBoxContent{ height:30%; margin-top:15%;}
+
+.closeButton{    
+    position: absolute;    
+    top: 0px;    
+    right: 0px; 
+    cursor: pointer;    
+    padding: 2px 4px 2px 4px;    
+}
+
+.inputboxfield{ border: 1px solid #ccc;}

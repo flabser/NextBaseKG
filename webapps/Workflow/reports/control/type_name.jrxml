@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="type_name" pageWidth="535" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="Normal" isDefault="true" pdfFontName="c:\windows\fonts\tahoma.ttf" pdfEncoding="Cp1251"/>
+	<field name="typeName" class="java.lang.String"/>
+	<field name="execDate" class="java.util.Date"/>
+	<field name="allControl" class="java.lang.Integer"/>
+	<variable name="ctrldate" class="java.lang.String">
+		<variableExpression><![CDATA[(new SimpleDateFormat("dd.MM.yyyy")).format($F{execDate})]]></variableExpression>
+	</variable>
+	<variable name="onControl" class="java.lang.String">
+		<variableExpression><![CDATA["Исполнено"]]></variableExpression>
+	</variable>
+	<variable name="left" class="java.lang.Long">
+		<variableExpression><![CDATA[($F{execDate}.getTime() - new Date().getTime())/(1000*60*60*24)]]></variableExpression>
+	</variable>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="1" width="85" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{typeName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="85" y="1" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ctrldate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="165" y="1" width="97" height="15">
+					<printWhenExpression><![CDATA[$F{allControl} == 0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{onControl}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="165" y="1" width="97" height="15">
+					<printWhenExpression><![CDATA[$F{allControl} == 1]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{left}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

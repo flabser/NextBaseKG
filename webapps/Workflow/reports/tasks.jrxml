@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tasks" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="kz.flabs.runtimeobj.document.task.Control"/>
+	<import value="java.text.SimpleDateFormat"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="kz.flabs.runtimeobj.document.structure.Employer"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="Normal" isDefault="true" pdfFontName="c:\windows\fonts\tahoma.ttf" pdfEncoding="Cp1251"/>
+	<parameter name="current_date" class="java.lang.String"/>
+	<parameter name="period" class="java.lang.String"/>
+	<parameter name="EXECUTORS_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["\\webapps\\Workflow\\reports\\executors\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TASKAUTHOR_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["\\webapps\\Workflow\\reports\\taskauthor\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CONTROL_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["\\webapps\\Workflow\\reports\\control\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="authorRes" class="kz.flabs.runtimeobj.document.structure.Employer">
+		<fieldDescription><![CDATA[authorRes]]></fieldDescription>
+	</field>
+	<field name="executors" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[executors]]></fieldDescription>
+	</field>
+	<field name="control" class="kz.flabs.runtimeobj.document.task.Control">
+		<fieldDescription><![CDATA[control]]></fieldDescription>
+	</field>
+	<field name="taskDate" class="java.util.Date">
+		<fieldDescription><![CDATA[taskDate]]></fieldDescription>
+	</field>
+	<field name="briefContent" class="java.lang.String">
+		<fieldDescription><![CDATA[briefContent]]></fieldDescription>
+	</field>
+	<field name="fullURL" class="java.lang.String">
+		<fieldDescription><![CDATA[fullURL]]></fieldDescription>
+	</field>
+	<variable name="taskauthor" class="java.util.ArrayList">
+		<variableExpression><![CDATA[new ArrayList(Arrays.asList($F{authorRes}))]]></variableExpression>
+	</variable>
+	<variable name="taskdate" class="java.lang.String">
+		<variableExpression><![CDATA[(new SimpleDateFormat("dd.MM.yyyy")).format($F{taskDate})]]></variableExpression>
+	</variable>
+	<variable name="control" class="java.util.ArrayList">
+		<variableExpression><![CDATA[new ArrayList(Arrays.asList($F{control}))]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-1" x="0" y="1" width="782" height="32"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Отчет об исполнении заданий]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="34" width="782" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{current_date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="54" width="782" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="5" width="782" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Solid" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="168" y="6" width="97" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Исполнители]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="46" width="782" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Solid" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="265" y="6" width="97" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Отв. исполнитель]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="362" y="6" width="159" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Краткое содержание]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="521" y="6" width="85" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Тип контроля]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="606" y="6" width="80" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Срок исполнения]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="686" y="6" width="97" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Исполнено/
+Осталось дней]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="1" y="6" width="97" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Автор задания]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" mode="Opaque" x="98" y="6" width="70" height="40" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isStrikeThrough="false" pdfEncoding="Cp1251"/>
+					<paragraph lineSpacing="1_1_2" firstLineIndent="1"/>
+				</textElement>
+				<text><![CDATA[Дата задания]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement key="taskauthor" x="1" y="2" width="97" height="15"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($V{taskauthor})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{TASKAUTHOR_DIR} + "taskauthor.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="0" y="1" width="782" height="1"/>
+				<graphicElement>
+					<pen lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="98" y="2" width="70" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{taskdate}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="168" y="2" width="97" height="15"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{executors})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{EXECUTORS_DIR} + "executors.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="265" y="2" width="97" height="15"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{executors})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{EXECUTORS_DIR} + "responsible_executor.jasper"]]></subreportExpression>
+			</subreport>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="Reference">
+				<reportElement key="textField" stretchType="RelativeToBandHeight" x="362" y="2" width="159" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{briefContent}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA[$F{fullURL}]]></hyperlinkReferenceExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" width="261" y="2" x="521" height="15"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($V{control})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{CONTROL_DIR} + "type_name.jasper"]]></subreportExpression>				
+			</subreport>
+<!-- 			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="521" y="2" width="261" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1251"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{controlTypeName}]]></textFieldExpression>
+			</textField> -->
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="1" splitType="Stretch"/>
+	</lastPageFooter>
+	<summary>
+		<band height="1" splitType="Stretch"/>
+	</summary>
+</jasperReport>

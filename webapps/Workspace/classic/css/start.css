@@ -1,0 +1,33 @@
+*{margin: 0px; padding: 0;}
+img {border:none;}
+body { font: 13px  Verdana;	height: 100%;}
+a{ text-decoration:none;}
+a:hover, a :hover{ text-decoration:underline;}
+#wrapper {
+	position: absolute;
+	left:0px;
+	top:0px;
+	height: 100%;
+	width: 100%;
+	min-width: 900px;
+	background: url(../img/fon.jpg) no-repeat scroll center top transparent;
+}
+#header, #authfields{ width:100%;}
+#footer {
+ 	position:absolute; 
+	bottom:0px;
+	width:100%; 
+	left:0px; 
+	height:30px;
+	min-width: 900px;
+}
+#footer a ,#footer font{ text-decoration:none; color: #444444 ; font: 85%/2 Arial;}
+#footer a :hover{ text-decoration:underline;}
+#rightdiv{
+	background: url("../img/rfon.jpg") no-repeat scroll right top transparent;
+	position: relative;
+	height: 100%;
+	display: block;
+	overflow: hidden;
+}
+#leftdiv{ width:48%; float: left; min-height:100%;}
