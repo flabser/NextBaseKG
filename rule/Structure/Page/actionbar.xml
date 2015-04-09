@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="actionbar" mode="on">
+	<description></description>
+    <caching>NO_CACHING</caching>
+    <element mode="ON" type="SCRIPT">
+        <name>actionbar</name>
+        <events>
+            <doscript source="file">structure.page.actionbar.DoScript</doscript>
+        </events>
+    </element>
+</rule>

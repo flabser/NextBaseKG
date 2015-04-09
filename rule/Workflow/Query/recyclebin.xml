@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="recyclebin">
+	<description>Корзина</description>
+	<rununderuser source="macro">current_user</rununderuser>
+	<granted source="static" mode="off">{registrator}</granted>
+	<query source="macro">RECYCLE_BIN</query>
+	<doctype>document</doctype>
+</rule>

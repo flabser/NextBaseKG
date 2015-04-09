@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="corresp">
+	<description>Список корреспондентов</description>
+	<rununderuser source="static">observer</rununderuser>	
+	<doctype>glossary</doctype>
+	<query source="static">form = 'corr' and corrcat#glossary = $keyword </query>
+	<field mode="on">	
+		<name>corrcat</name>
+		<value source="resultset">corrcat</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>fullname</name>
+		<value source="resultset">fullname</value>	
+		<attrvalue></attrvalue>	
+	</field>	
+</rule>

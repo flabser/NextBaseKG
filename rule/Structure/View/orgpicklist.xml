@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="orgpicklist">
+	<description>Организации</description>
+	<query>bossandemppicklist</query>		
+	<xsltfile>views\orgpicklist.xsl</xsltfile>	
+</rule>

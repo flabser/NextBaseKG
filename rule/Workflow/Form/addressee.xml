@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="addressee" mode="on">
+	<description>Тип документа</description>
+	<xsltfile>forms/addressee.xsl</xsltfile>
+	<doctype>glossary</doctype>
+	<events> 
+		<queryopen source="file">form.addressee.QueryOpen</queryopen>
+		<querysave source="file">form.addressee.QuerySave</querysave>   
+	</events>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="fullname" source="KEYWORD">Полное имя</caption>
+	<caption name="shortname" source="KEYWORD">Сокращенное имя</caption>
+	<caption name="extid" source="KEYWORD">ID во внешней системе</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="addressee" source="KEYWORD">Адресат</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="onlynumber" source="KEYWORD">Поле может содержать только числовые значения</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+</rule>

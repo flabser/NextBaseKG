@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="out" mode="on">
+	<description>Исходящий документ</description>
+	<xsltfile>forms/out.xsl</xsltfile>
+	<doctype>main</doctype>
+	<events>
+		<queryopen source="file">form.out.QueryOpen</queryopen> 
+		<querysave source="file">form.out.QuerySave</querysave>
+		 <postsave source="file">form.out.PostSave</postsave> 
+	</events> 
+	<title source="KEYWORD">Исходящий документ</title>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="regdoc" source="KEYWORD">Зарегистрировать документ</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="doctypemultilang" source="KEYWORD">Исходящий документ</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="changeview" source="KEYWORD">Изменить вид</caption>
+	<caption name="files" source="KEYWORD">Файлы</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="searchcaption" source="KEYWORD">поиск</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name="new" source="KEYWORD">Новый</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="conectedproject" source="KEYWORD">Связан с проектом</caption>
+	<caption name="projectdoc" source="KEYWORD">Проект документа</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="lang" source="KEYWORD">Язык документа</caption>
+	<caption name="corr" source="KEYWORD">Получатель</caption>
+	<caption name="np" source="KEYWORD">Кол-во листов</caption>
+	<caption name="deliverytype" source="KEYWORD">Вид отправки</caption>
+	<caption name="np2" source="KEYWORD">экз.</caption>
+	<caption name="ndelo" source="KEYWORD">Код</caption>
+	<caption name="nomentype" source="KEYWORD">Номенклатура дел</caption>
+	<caption name="vnin" source="KEYWORD">Является ответным на входящий документ</caption>
+	<caption name="backvnish" source="KEYWORD">Ответный входящий документ</caption>
+	<caption name="blanknumber" source="KEYWORD">№ бланка</caption>
+	<caption name="signedby" source="KEYWORD">Подписал</caption>
+	<caption name="project" source="KEYWORD">Проект</caption>
+	<caption name="intexec" source="KEYWORD">Внутренние исполнители</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="vid" source="KEYWORD">Тип документа</caption>
+	<caption name="vn" source="KEYWORD">Исходящий</caption>
+	<caption name="contentsource" source="KEYWORD">Основной текст</caption>
+	<caption name="dvn" source="KEYWORD">от</caption>
+	<caption name="din" source="KEYWORD">от</caption>
+	<caption name="har" source="KEYWORD">Характер вопроса</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="showfilename" source="KEYWORD">Укажите имя файла для вложения</caption>
+	<caption name ="addcommentforattachment" source ="KEYWORD">Добавить комментарий к вложению?</caption>
+	<caption name="summary" source="KEYWORD">Краткое содержание</caption>
+	<caption name="timeofreading" source="KEYWORD">Время прочтения</caption>
+	<caption name="whomread" source="KEYWORD">Кем прочтен</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name="DS" source="KEYWORD">ЭЦП</caption>
+	<caption name="attention" source="KEYWORD">Внимание</caption>
+	<caption name="add_comment" source="KEYWORD">Добавить комментарий</caption>
+	<caption name="delete_file" source="KEYWORD">Удалить файл</caption>
+	<caption name="comments" source="KEYWORD">комментарий</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<glossary mode="on" id="deliverytype" source="query">
+		<description>Вид отправки</description>
+		<value>deliverytype</value>
+	</glossary>
+	<glossary mode="on" id="typedoc" source="query">
+		<description>Тип документа</description>
+		<value>typedoc</value>
+	</glossary>
+	<glossary mode="on" id="projectsprav" source="query">
+		<description>Проекты</description>
+		<value>projectsprav</value>
+	</glossary>
+	<glossary mode="on" id="har" source="query">
+		<description>Характер вопроса</description>
+		<value>har</value>
+	</glossary>
+	<glossary mode="on" id="docscat" source="query">
+		<description>Категории</description>
+		<value>docscat</value>
+	</glossary>
+</rule>

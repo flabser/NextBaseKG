@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="handler" id="sign">
+	<description></description>
+	<rununderuser source="macro">CURRENT_USER</rununderuser>
+	<trigger>provider</trigger>
+	<scheduler>
+        <mininterval>5</mininterval>
+    </scheduler>
+	<script><![CDATA[
+		def died = 0;
+		def hh = 0;
+		def lh = 0;
+		String doHandler(_Session ses){
+                   //***//		
+                   def db = ses.getCurrentDatabase();
+                   accident(ses, "accidenttype = 'Наезд на пешехода'"); 
+	               accident(ses, "accidenttype = 'Столкновение'");
+	               accident(ses, "accidenttype = 'Наезд на велосипедиста'");
+	               accident(ses, "accidenttype = 'Сход трамвая с рельсов'");
+                   println("Смертельных: "  +  died);
+                   println("Тяжелых: "  +  hh);
+                   println("Легких: "  +  lh);
+                   
+                   if((died >= 1) || (hh >= 5)|| (lh >= 15)){
+                    return "1";
+                   }else return "0";
+                   return died;
+		}
+		public void accident(_Session ses, def budg){
+            def db = ses.getCurrentDatabase();			
+			
+			def col = db.getDocsCollection("accident", "form = 'accident'");
+            def l = col.getCount();
+			def sum = 0;
+			for(int i = 0; i < l; i  ){
+				def doc = col.getNthDocument(i);
+				died = doc.getValueNumber('died');
+                hh =  doc.getValueNumber('highheaviness');
+                lh = doc.getValueNumber('lowheaviness');
+			}
+          
+        }
+
+	]]></script>
+</rule>

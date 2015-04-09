@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="signers">
+	<description>Ответные документы</description>
+	<query>signers</query>		
+	<xsltfile>views\bossandemppicklist.xsl</xsltfile>	
+</rule>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="page" id="executersandgroups">
+	<description>Структура</description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>views/dialogbox-list.xsl</xsltfile>
+	<element mode="ON" type="QUERY">
+		<name>view_content</name>
+		<doctype>group</doctype>
+		<query source="static">form='group'</query>
+	</element>
+	<element mode="ON" type="QUERY">
+		<name>view_content</name>
+		<doctype>STRUCTURE</doctype>
+		<query source="macro">executors_by_freq</query>
+	</element>
+</rule>

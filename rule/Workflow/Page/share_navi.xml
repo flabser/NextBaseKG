@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="share_navi" mode="on">
+	<description></description>
+	<caching>CACHING_IN_USER_SESSION_SCOPE</caching>
+	<element mode="ON" type="SCRIPT">
+		<name></name>
+		<events>
+			<doscript source="file">page.share_navigator.DoScript</doscript>
+		</events>
+	</element>
+</rule>

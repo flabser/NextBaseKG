@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="execreport" mode="on">
+    <description>Карточка исполнения</description>
+    <xsltfile>forms/execution.xsl</xsltfile>
+    <doctype>main</doctype>
+    <events>
+        <queryopen source="file">form.execreport.QueryOpen</queryopen>
+        <querysave source="file">form.execreport.QuerySave</querysave>
+        <postsave source="file">form.execreport.PostSave</postsave>
+    </events>
+    <caption name="kr" source="KEYWORD">Резолюция</caption>
+    <caption name="saved" source="KEYWORD">Сохраненный</caption>
+    <caption name="newdoc" source="KEYWORD">Новый документ</caption>
+    <caption name="editing" source="KEYWORD">Редактирование</caption>
+    <caption name="readonly" source="KEYWORD">Только для чтения</caption>
+    <caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+    <caption name="close" source="KEYWORD">Закрыть</caption>
+    <caption name="properties" source="KEYWORD">Свойства</caption>
+    <caption name="attachments" source="KEYWORD">Вложения</caption>
+    <caption name="content" source="KEYWORD">Содержание</caption>
+    <caption name="createdate" source="KEYWORD">от</caption>
+    <caption name="doctypemultilang" source="KEYWORD">Отметка о исполнении</caption>
+    <caption name="attach" source="KEYWORD">Прикрепить</caption>
+    <caption name="delattach" source="KEYWORD">Удалить</caption>
+    <caption name="openattach" source="KEYWORD">Открыть</caption>
+    <caption name="logout" source="KEYWORD">Завершить работу</caption>
+    <caption name="cancel" source="KEYWORD">Отмена</caption>
+    <caption name="changeview" source="KEYWORD">Изменить вид</caption>
+    <caption name="searchcaption" source="KEYWORD">поиск</caption>
+    <caption name="files" source="KEYWORD">Файлы</caption>
+    <caption name="additional" source="KEYWORD">Дополнительно</caption>
+    <caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+    <caption name="permissions" source="KEYWORD">Права доступа</caption>
+    <caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+    <caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+    <caption name="help" source="KEYWORD">Помощь</caption>
+    <caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+    <caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+    <caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+    <caption name="executor" source="KEYWORD">Исполнитель</caption>
+    <caption name="finishdate" source="KEYWORD">Дата исполнения</caption>
+    <caption name="author" source="KEYWORD">Автор</caption>
+    <caption name="ndelo" source="KEYWORD">Код</caption>
+    <caption name="nomentype" source="KEYWORD">Номенклатура дел</caption>
+    <caption name="pdocviewtext" source="KEYWORD">Головной документ</caption>
+    <caption name="report" source="KEYWORD">Содержание отчета</caption>
+    <caption name="executed" source="KEYWORD">Исполнено</caption>
+    <caption name="noted" source="KEYWORD">Принято к сведению</caption>
+    <caption name="saving" source="KEYWORD">Сохранение</caption>
+    <caption name="whomread" source="KEYWORD">Кем прочтен</caption>
+    <caption name="DS" source="KEYWORD">ЭЦП</caption>
+    <caption name="new" source="KEYWORD">Новая</caption>
+    <caption name="attention" source ="KEYWORD">Внимание</caption>
+    <caption name="timeofreading" source="KEYWORD">Время прочтения</caption>
+    <caption name="showfilename" source="KEYWORD">Укажите имя файла для вложения</caption>
+    <caption name ="addcommentforattachment" source ="KEYWORD">Добавить комментарий к вложению?</caption>
+    <caption name="delete_file" source="KEYWORD">Удалить файл</caption>
+    <caption name="add_comment" source="KEYWORD">Добавить комментарий</caption>
+    <caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+    <caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+</rule>

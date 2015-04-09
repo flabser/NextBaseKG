@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><rule id="KnowledgeBase" mode="on" type="global">
+	<description>База знаний</description>
+	<orgname>ТОО "Lab of the Future"</orgname>
+	<liccount>100</liccount>
+	<logo>khowledgeBase.png</logo>
+    <appname>База знаний</appname>
+	<database autodeploy="ON">
+		<name>KnowledgeBase</name>
+		<driver>org.postgresql.Driver</driver>
+		<url>jdbc:postgresql://localhost/KnowledgeBase</url>
+		<username/>
+		<password/>
+	<connectionid>B5HhYWMropSwHfR1TKh9tw==@@@TXxnFPOxr8I=</connectionid></database>
+	<externalmodule type="STRUCTURE">Structure</externalmodule>
+	<daemons mode="off">
+	</daemons>
+	
+	<entrypoint>Provider?type=static&amp;id=start</entrypoint>
+	<defaultredirecturl>Provider?type=page&amp;id=article&amp;page=1&amp;title=тестовая строка</defaultredirecturl>
+	<langs>
+		<entry id="RUS" isprimary="1">Русский</entry>
+		<entry id="KAZ">Қазақша</entry>
+		<entry id="ENG">English</entry>
+		<entry id="CHN">中国</entry>
+	</langs>
+	<skins>
+		<entry default="on" errorpage="error.xsl" id="classic" path="./webapps/KnowledgeBase/classic/xsl">Classic</entry>
+	</skins>
+	<roles>
+		<entry id="administrator">Разрешает ввод и редактирование</entry>
+	</roles>
+	<markdelaysec>5</markdelaysec>
+
+	<eds mode="OFF">
+		<keypass/>
+		<keystore/>
+	</eds>
+</rule>

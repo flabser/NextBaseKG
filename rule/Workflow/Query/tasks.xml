@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="tasks">
+	<description>Задания</description>
+	<doctype>task</doctype>
+	<query source="static">TASKTYPE = 3</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<field mode="on">
+		<name>allcontrol</name>
+		<value source="resultset">allcontrol</value>
+		<attrvalue></attrvalue>
+	</field>
+</rule>

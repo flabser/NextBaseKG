@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="City" mode="on">
+	<description>Регион/город</description>
+	<xsltfile>forms/city.xsl</xsltfile>
+	<doctype>glossary</doctype>
+	<events> 
+		<queryopen source="file">form.city.QueryOpen</queryopen>
+		<querysave source="file">form.city.QuerySave</querysave>   
+	</events>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="name" source="KEYWORD">Регион/Город</caption>
+	<caption name="country" source="KEYWORD">Страна</caption>
+	<caption name="code" source="KEYWORD">Код</caption>
+	<caption name="rank" source="KEYWORD">Ранг</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="onlynumber" source="KEYWORD">Поле может содержать только числовые значения</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+</rule>

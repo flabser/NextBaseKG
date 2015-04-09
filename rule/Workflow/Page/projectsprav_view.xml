@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="projectsprav_view" mode="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/projectsprav_view.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>action_bar</name>
+		<events>
+			<doscript source="file">page.actionbar.projectsprav</doscript>
+		</events>
+	</element>
+	<element mode="ON" type="QUERY">
+		<name>view_content</name>
+		<doctype>document</doctype>
+		 <query source="static">form='projectsprav'</query>
+	</element>	 	
+</rule>

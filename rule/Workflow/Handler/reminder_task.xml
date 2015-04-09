@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><rule app="" id="reminder_task" isvalid="true" mode="ON" type="HANDLER">
+    <description>Reminder</description>
+    <rununderuser source="STATIC" type="TEXT">[observer]</rununderuser>
+    <trigger>SCHEDULER</trigger>
+    <scheduler mode="ON">
+        <starttime>15:02</starttime>
+        <nextstart/>
+    </scheduler>
+    <events>
+        <trigger source="file">handler.reminder_task.Trigger</trigger>
+    </events>
+</rule>

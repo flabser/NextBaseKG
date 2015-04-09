@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="outdocprj">
+	<description/>
+	<rununderuser source="macro">current_user</rununderuser>
+	<query source="static">form = 'outdocprj'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<doctype >PROJECT</doctype>	
+	<field mode="on">
+		<name>viewtext</name>
+		<value source="resultset">viewtext</value>
+		<attrvalue/>
+	</field>
+	<field mode="on">
+		<name>coordstatus</name>
+		<value source="resultset">coordstatus</value>
+		<attrvalue/>
+	</field> 
+</rule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="content" id="help_summary" mode="on" anonymous="on">	
+	<description>Help</description>	
+	<xsltfile>help.xsl</xsltfile>	
+	<field mode="on">		
+		<description></description>
+		<name>seealso</name>
+		<value>help</value>				
+	</field>
+	<caption name="helpcaption" source="KEYWORD">Помощь</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+</rule>

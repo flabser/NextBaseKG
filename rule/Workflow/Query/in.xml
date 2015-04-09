@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="in">
+	<description>Входящие</description>
+	<rununderuser source="macro">current_user</rununderuser>
+	<granted source="static" mode="off">{registrator}</granted>
+	<query source="static">form = 'IN'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<doctype>document</doctype>
+<!-- 	<field mode="on">	
+		<name>hasattachment</name>
+		<value source="resultset">has_attachment</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>hasresponse</name>
+		<value source="resultset">has_response</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>vn</name>
+		<value source="resultset">vn</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>dvn</name>
+		<value source="resultset">dvn</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>briefcontent</name>
+		<value source="resultset">briefcontent</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">
+		<name>allcontrol</name>
+		<value source="resultset">allcontrol</value>
+		<attrvalue></attrvalue>
+	</field>
+	<field mode="on">
+		<name>controltype</name>
+		<value source="resultset">controltype</value>
+		<attrvalue></attrvalue>
+	</field>
+	<field mode="on">
+		<name>corr</name>
+		<value source="resultset">corr</value>
+		<attrvalue></attrvalue>
+	</field> -->
+	
+</rule>

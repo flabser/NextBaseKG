@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="department" mode="on">
+	<description>Департамент</description>
+	<xsltfile>forms/department.xsl</xsltfile>
+	<doctype>department</doctype>
+	<events>
+		<queryopen source="file">structure.form.department.QueryOpen</queryopen>
+		<querysave source="file">structure.form.department.QuerySave</querysave>
+	</events> 
+	
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption> 
+	<caption name="newdept" source="KEYWORD">Новый департамент</caption>
+	<caption name="newemp" source="KEYWORD">Новый сотрудник</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="department" source="KEYWORD">Департамент</caption>
+	<caption name="name" source="KEYWORD">Полное название</caption>
+	<caption name="index" source="KEYWORD">Индекс</caption>
+	<caption name="levelhierarhy" source="KEYWORD">Уровень в должностной иерархии</caption>
+	<caption name="shortname" source="KEYWORD">Сокращенное название</caption>
+	<caption name="comment" source="KEYWORD">Комментарий</caption>
+	<caption name="headdivision" source="KEYWORD">Головное подразделение</caption>
+	<caption name="subdivision" source="KEYWORD">Тип подразделения</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="organization" source="KEYWORD">Организация</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="searchcaption" source="KEYWORD">Поиск</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<glossary mode="on" id="subdivision" source="query">
+		<description>Тип подразделения</description>
+		<value>subdivision</value>
+	</glossary>
+
+</rule>

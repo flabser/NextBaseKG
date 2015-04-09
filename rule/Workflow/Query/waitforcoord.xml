@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="waitforcoord">
+	<description>На согласование</description>
+	<doctype>PROJECT</doctype>
+	<query source="macro">WAITFORCOORD</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+</rule>

@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vocabulary primary="RUS">
+	<sentence mode="on"  keyword="Отсутствует соединение с сервером">
+		<entry lang="KAZ">Сервермен байланыс орнатылмаған</entry>
+		<entry lang="ENG">No connection to the server</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Завершить работу">
+		<entry lang="KAZ">Жұмысты аяқтау</entry>
+		<entry lang="ENG">Logout</entry>		
+	</sentence>	
+	<sentence mode="on" keyword="Cтраница">
+		<entry lang="KAZ">Бет</entry>
+		<entry lang="ENG">Pages</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Документов">
+		<entry lang="KAZ">Құжаттар саны</entry>
+		<entry lang="ENG">Documents</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Дата регистрации">
+		<entry lang="KAZ">Тіркелу күні</entry>
+		<entry lang="ENG">Registration Date</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Краткое содержание">
+		<entry lang="KAZ">Қысқаша мазмұны</entry>
+		<entry lang="ENG">Summary</entry>		
+	</sentence>
+	<sentence mode="on" keyword="срок">
+		<entry lang="KAZ">мерзімі</entry>
+		<entry lang="ENG">term</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Обновлено">
+		<entry lang="KAZ">Жаңартылды</entry>
+		<entry lang="ENG">Updated</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Избранные">
+		<entry lang="KAZ">Таңдалғандар</entry>
+		<entry lang="ENG"> Favorites</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>	 
+	<sentence mode="on" keyword="Тема">
+		<entry lang="KAZ">Тақырыбы</entry>
+		<entry lang="ENG">Theme</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>	
+	<sentence mode="on" keyword="Не исполненные">
+		<entry lang="KAZ">Орындалмағандар</entry>
+		<entry lang="ENG">Not executed</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>	
+	<sentence mode="on" keyword="Не выбран документ для удаления">
+		<entry lang="KAZ">Жойылатын құжат таңдалмады</entry>
+		<entry lang="ENG">The document for removal isn't chosen</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>	
+		<sentence mode="on"  keyword="Сохранить и закрыть">
+		<entry lang="KAZ">Сақтау және жабу</entry>
+		<entry lang="ENG">Save and close</entry>
+        <entry lang="CHN">保存并关闭</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Новый документ">
+		<entry lang="KAZ">Жаңа құжат</entry>
+		<entry lang="ENG">New document</entry>
+        <entry lang="CHN">新的文档</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Новый">
+		<entry lang="KAZ">Жаңа</entry>
+		<entry lang="ENG">New</entry>
+        <entry lang="CHN">新</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Помощь">
+		<entry lang="KAZ">Көмек</entry>
+		<entry lang="ENG">Help</entry>
+        <entry lang="CHN">帮助</entry>		
+	</sentence>	
+	<sentence mode="on" keyword="Страница">
+		<entry lang="KAZ">Бет</entry>
+		<entry lang="ENG">Page</entry>
+        <entry lang="CHN">首页</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Комментарий">
+		<entry lang="KAZ">Түсініктеме</entry>
+		<entry lang="ENG">Comment</entry>
+        <entry lang="CHN">评论</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Пароль">
+		<entry lang="KAZ">Құпия сөз</entry>
+		<entry lang="ENG">Password</entry>
+        <entry lang="CHN">密码</entry>		
+	</sentence>  
+	<sentence mode="on" keyword="Повтор пароля">
+		<entry lang="KAZ">Құпия сөзді қайталаңыз</entry>
+		<entry lang="ENG">Confirm password</entry>
+        <entry lang="CHN">密码</entry>		
+	</sentence>
+		<sentence mode="on" keyword="Отмена">
+		<entry lang="KAZ">Болдырмау</entry>
+		<entry lang="ENG">Cancel</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>	
+	<sentence mode="on" keyword="Язык интерфейса">
+		<entry lang="KAZ">Интерфейс тілі</entry>
+		<entry lang="ENG">Interface language</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Язык">
+		<entry lang="KAZ">Тілі</entry>
+		<entry lang="ENG">Language</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Китайский">
+		<entry lang="KAZ">Қытай</entry>
+		<entry lang="ENG">Chinese</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Сотрудник">
+		<entry lang="KAZ">Қызметкер</entry>
+		<entry lang="ENG">Employee</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Выберите файл">
+		<entry lang="KAZ">Файлды таңдаңыз</entry>
+		<entry lang="ENG">Select the file</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Выберите значение">
+		<entry lang="KAZ">Мәнін таңдаңыз</entry>
+		<entry lang="ENG">Select the value</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Файлы">
+		<entry lang="KAZ">Файлдар</entry>
+		<entry lang="ENG">Files</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Периодичность обновления видов">
+		<entry lang="KAZ">Жаңару аралығы</entry>
+		<entry lang="ENG">Periodicity of updating of types</entry>
+		<entry lang="CHN">更新數據的頻率 </entry>
+	</sentence>
+		<sentence mode="on" keyword="Группы">
+		<entry lang="KAZ">Топтар</entry>
+		<entry lang="ENG">Groups</entry>
+		<entry lang="CHN">工作組 </entry>
+	</sentence>
+				<sentence mode="on" keyword="Старый пароль">
+		<entry lang="KAZ">Ескі құпия сөз</entry>
+		<entry lang="ENG">Old password</entry>	
+        <entry lang="CHN">旧密码</entry>		
+	</sentence>
+				<sentence mode="on" keyword="Новый пароль">
+		<entry lang="KAZ">Жаңа құпия сөз</entry>
+		<entry lang="ENG">New password</entry>	
+        <entry lang="CHN">新密码</entry>		
+	</sentence>
+				<sentence mode="on" keyword="Повтор нового пароля">
+		<entry lang="KAZ">Жаңа құпия сөзді қайталау</entry>
+		<entry lang="ENG">Repeat new password</entry>	
+        <entry lang="CHN">重复新密码</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Количество документов в виде">
+		<entry lang="KAZ">Көрінетін құжаттардың саны</entry>
+		<entry lang="ENG">An amount of documents is in a kind</entry>
+		<entry lang="CHN">表单中的文件数量</entry>
+	</sentence>
+		<sentence mode="on" keyword="Интерфейс">
+		<entry lang="KAZ">Интерфейс</entry>
+		<entry lang="ENG">interface</entry>
+		<entry lang="CHN">它的界面 </entry>
+	</sentence>
+		<sentence mode="on" keyword="Посмотреть свойства текущего пользователя">
+		<entry lang="KAZ">Ағымдағы қолданушының қасиеттерін көру</entry>
+		<entry lang="ENG">View properties of the current user</entry>
+		<entry lang="CHN">查看当前用户的属性</entry>
+	</sentence>
+		<sentence mode="on" keyword="Свойства пользователя">
+		<entry lang="KAZ">Қолданушының қасиеттерi</entry>
+		<entry lang="ENG">Properties of the user</entry>
+		<entry lang="CHN">該物業的用戶。 </entry>
+	</sentence>
+		<sentence mode="on" keyword="Свойства">
+		<entry lang="KAZ">Қасиеттері</entry>
+		<entry lang="ENG">Properties</entry>
+		<entry lang="CHN">物业</entry>
+	</sentence>
+		<sentence mode="on" keyword="Департамент">
+		<entry lang="KAZ">Департамент</entry>
+		<entry lang="ENG">Department</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Полное имя">
+		<entry lang="KAZ">Толық есімі</entry>
+		<entry lang="ENG">Full name</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Сокращенное имя">
+		<entry lang="KAZ">Қысқартылған есімі</entry>
+		<entry lang="ENG">Short name</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Должность">
+		<entry lang="KAZ">Лауазым</entry>
+		<entry lang="ENG">Post</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>	
+		<sentence mode="on" keyword="Роли">
+		<entry lang="KAZ">Рөлдер</entry>
+		<entry lang="ENG">Roles</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Закрыть">
+		<entry lang="KAZ">Жабу</entry>
+		<entry lang="ENG">Close</entry>
+		<entry lang="CHN">关闭</entry>
+	</sentence>
+		<sentence mode="on" keyword="Справочники">
+		<entry lang="KAZ">Анықтамалар</entry>
+		<entry lang="ENG">References</entry>
+		<entry lang="CHN">参考文献</entry>
+	</sentence>
+	<sentence mode="on" keyword="Добавить в избранное">
+		<entry lang="KAZ">Таңдаулыларға қосу</entry>
+		<entry lang="ENG">Add to favourites</entry>
+		<entry lang="CHN"></entry>
+</sentence>
+			<sentence mode="on" keyword="Удалить с избранного">
+		<entry lang="KAZ">Таңдаулылардан өшіру</entry>
+		<entry lang="ENG">Remove from favourites</entry>
+		<entry lang="CHN"></entry>
+	</sentence>
+		<sentence mode="on" keyword="Удалить из избранных">
+		<entry lang="KAZ">Таңдаулылардан өшіру</entry>
+		<entry lang="ENG">Remove from favourites</entry>
+		<entry lang="CHN"></entry>
+	</sentence>
+		<sentence mode="on" keyword="Удалить файл">
+		<entry lang="KAZ">Файлды жою</entry>
+		<entry lang="ENG">Delete file</entry>
+		<entry lang="CHN">刪除文件</entry>
+	</sentence>
+	<sentence mode="on" keyword="Удалить">
+		<entry lang="KAZ">Жою</entry>
+		<entry lang="ENG">Delete</entry>
+		<entry lang="CHN">删除</entry>
+	</sentence>
+		<sentence mode="on" keyword="Статьи">
+		<entry lang="KAZ">Мақалалар</entry>
+		<entry lang="ENG">Articles</entry>		
+	</sentence>
+			<sentence mode="on" keyword="Заголовок">
+		<entry lang="KAZ">Тақырыбы</entry>
+		<entry lang="ENG">Title</entry>		
+	</sentence>
+			<sentence mode="on" keyword="Связанные документы">
+		<entry lang="KAZ">Байланысқан құжаттар</entry>
+		<entry lang="ENG">Connected documents</entry>		
+	</sentence>
+				<sentence mode="on" keyword="Связанные ссылки">
+		<entry lang="KAZ">Байланысқан сілтемелер</entry>
+		<entry lang="ENG">Connected links</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Коментарий">
+		<entry lang="KAZ">Түсініктеме</entry>
+		<entry lang="ENG">Comments</entry>		
+	</sentence>
+		<sentence mode="on" keyword="Новая статья">
+		<entry lang="KAZ">Жаңа мақала</entry>
+		<entry lang="ENG">New article</entry>		
+	</sentence>
+		<sentence mode="on" keyword="Статья">
+		<entry lang="KAZ">Мақала</entry>
+		<entry lang="ENG">Article</entry>		
+	</sentence>
+	<sentence mode="on" keyword='Поле "Заголовок" не заполнено.'>
+		<entry lang="KAZ">'Тақырыбы' жолы толтырылмады</entry>
+		<entry lang="ENG">'Title' is not filled</entry>		
+	</sentence>
+			<sentence mode="on" keyword='Поле "Содержание" не заполнено.'>
+		<entry lang="KAZ">"Мазмұны" жолы  толтырылмады</entry>
+		<entry lang="ENG">"Content" is not filled</entry>
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Добавить комментарий к вложению?">
+		<entry lang="KAZ">Тіркемеге түсініктеме қосу керек пе?</entry>
+		<entry lang="ENG">Add comments to attachment?</entry>
+		<entry lang="CHN"></entry>
+	</sentence>
+	<sentence mode="on" keyword="Добавить комментарий">
+		<entry lang="KAZ">Тіркемеге түсініктеме қосу</entry>
+		<entry lang="ENG">Add comments to the attachment</entry>
+		<entry lang="CHN"></entry>
+	</sentence>
+	<sentence mode="on" keyword="нет">
+		<entry lang="KAZ">жоқ</entry>
+		<entry lang="ENG">no</entry>
+		<entry lang="CHN">無  </entry>
+	</sentence>
+	<sentence mode="on" keyword="да">
+		<entry lang="KAZ">иә</entry>
+		<entry lang="ENG">yes</entry>
+		<entry lang="CHN">是否  </entry>
+	</sentence>
+	<sentence mode="on" keyword="Укажите имя файла для вложения">
+		<entry lang="KAZ">Тіркелетін файлды таңдаңыз</entry>
+		<entry lang="ENG">Please, select the file for attachment</entry>
+		<entry lang="CHN"></entry>
+	</sentence>
+	<sentence mode="on" keyword="Выберите файл">
+		<entry lang="KAZ">Файлды таңдаңыз</entry>
+		<entry lang="ENG">Select file</entry>
+		<entry lang="CHN">选择文件</entry>
+	</sentence>
+	<sentence mode="on" keyword="Файл не выбран">
+		<entry lang="KAZ">Файл таңдалмады</entry>
+		<entry lang="ENG">File is not selected</entry>
+		<entry lang="CHN">该文件未被选中</entry>
+	</sentence>
+		<sentence mode="on" keyword="Вернуться к списку документов">
+		<entry lang="KAZ">Құжаттар тізіміне оралу</entry>
+		<entry lang="ENG">Back to the list of documents</entry>
+		<entry lang="CHN"></entry>
+	</sentence>
+	<sentence mode="on" keyword="Дополнительно">
+		<entry lang="KAZ">Қосымша</entry>
+		<entry lang="ENG">More</entry>
+		<entry lang="CHN">此外</entry>
+	</sentence>
+	<sentence mode="on" keyword="Категории">
+		<entry lang="KAZ">Категориялар</entry>
+		<entry lang="ENG">Categories</entry>		
+	</sentence>
+		<sentence mode="on" keyword="Поиск">
+		<entry lang="KAZ">Іздеу</entry>
+		<entry lang="ENG">Search</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Срок исполнения">
+		<entry lang="KAZ">Орындау мерзімі</entry>
+		<entry lang="ENG">Due date </entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Внимание">
+		<entry lang="KAZ">Назар аударыңыз</entry>
+		<entry lang="ENG">Attention</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Автор">
+		<entry lang="KAZ">Автор</entry>
+		<entry lang="ENG">Author</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Дата записи">
+		<entry lang="KAZ">Жазба күні</entry>
+		<entry lang="ENG">Record date</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Вложения">
+		<entry lang="KAZ">Тіркемелер</entry>
+		<entry lang="ENG">Attachments</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Содержание">
+		<entry lang="KAZ">Мазмұны</entry>
+		<entry lang="ENG">Content</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on"  keyword="Записей">
+		<entry lang="KAZ">Жазба</entry>
+		<entry lang="ENG">Records</entry>
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Добавить">
+		<entry lang="KAZ">Қосу</entry>
+		<entry lang="ENG">Add</entry>		
+	</sentence>
+		<sentence mode="on" keyword="Название">
+		<entry lang="KAZ">Атауы</entry>
+		<entry lang="ENG">Name</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword='Поле "Название" не заполнено'>
+		<entry lang="KAZ">"Атауы" жолы толтырылмады</entry>
+		<entry lang="ENG">"Name" is not filled</entry>
+        <entry lang="CHN"></entry>		
+	</sentence>
+		<sentence mode="on" keyword="Документ сохранен">
+		<entry lang="KAZ">Құжат сақталды</entry>
+		<entry lang="ENG">Document is saved</entry>
+		<entry lang="CHN"></entry>
+	</sentence>
+		<sentence mode="on" keyword="Редактировать">
+		<entry lang="KAZ">Редакциялау</entry>
+		<entry lang="ENG">Editing</entry>	
+        <entry lang="CHN"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="Печать">
+		<entry lang="KAZ">Басып шығару</entry>
+		<entry lang="ENG">Print</entry>		
+	</sentence>
+		<sentence mode="on" keyword="Служба поддержки">
+		<entry lang="KAZ">Қызмет көрсету</entry>
+		<entry lang="ENG">Support service</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Назад">
+		<entry lang="KAZ">Кері</entry>
+		<entry lang="ENG">Back</entry>		
+	</sentence>
+			<sentence mode="on" keyword="Вперед">
+		<entry lang="KAZ">Ілгері</entry>
+		<entry lang="ENG">Forward</entry>		
+	</sentence>
+	<sentence mode="on" keyword="Домашняя страница">
+		<entry lang="KAZ">Басты бет</entry>
+		<entry lang="ENG">Homepage</entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+			<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+	<sentence mode="on" keyword="">
+		<entry lang="KAZ"></entry>
+		<entry lang="ENG"></entry>		
+	</sentence>
+</vocabulary>

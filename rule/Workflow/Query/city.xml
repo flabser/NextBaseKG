@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="city">
+	<description></description>
+	<doctype>glossary</doctype>
+	<query source="static">form = 'city'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">name</value>	
+		
+	</field>
+	<field mode="on">	
+		<name>country</name>
+		<value source="resultset">country</value>	
+		
+	</field>
+	<field mode="on">	
+		<name>direction</name>
+		<value source="resultset">direction</value>	
+		
+	</field>
+	<field mode="on">	
+		<name>code</name>
+		<value source="resultset">code</value>	
+		
+	</field>
+		
+</rule>

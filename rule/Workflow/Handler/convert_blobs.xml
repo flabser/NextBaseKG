@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><rule app="" id="convert_blobs" isvalid="true" mode="ON" type="HANDLER">
+    <description/>
+    <rununderuser source="STATIC" type="TEXT">[observer]</rununderuser>
+    <trigger>MANUALLY</trigger>
+    <scheduler mode="ON">
+        <starttime>17:17</starttime>
+        <nextstart/>
+    </scheduler>
+    <events>
+        <trigger source="file">handler.convert_blobs.Trigger</trigger>
+    </events>
+</rule>

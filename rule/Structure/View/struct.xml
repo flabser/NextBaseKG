@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="view" id="struct">
+	<description></description>
+	<query>struct</query>		
+	<xsltfile>views\struct.xsl</xsltfile>	
+</rule>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="handler" id="restore_relationship">
+	<rununderuser source="macro">CURRENT_USER</rununderuser>
+	<trigger>provider</trigger>
+	<scheduler>
+		<mininterval>5</mininterval>
+	</scheduler>
+	<tohandle source="STATIC"></tohandle>
+	<waitresponse>false</waitresponse>
+	<description>restore glossaries' relationship</description>
+	<script><![CDATA[
+	String doHandler(_Session ses, _DocumentCollection collection){
+		def db = ses.getCurrentDatabase();
+		def gloss = db.getGlossaryDocs("", "form = 'corr'");
+		gloss.each{			
+			if (it.getValueGlossary("corrcat") && !it.getValueGlossary("corrcat").isEmpty()){
+				it.setParentDocID(Integer.valueOf(it.getValueGlossary("corrcat").get(0)));
+				it.setParentDocType(Const.DOCTYPE_GLOSSARY);
+				it.setDefaultRuleID(it.getDocumentForm());
+				it.save("[observer]");
+			}
+		}
+	}
+	]]></script>
+</rule>

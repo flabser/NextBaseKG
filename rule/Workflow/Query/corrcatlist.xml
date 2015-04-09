@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="corrcatlist">
+	<description/>
+	<doctype>glossary</doctype>
+	<query source="static">form='corrcat'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>code</name>
+		<value source="resultset">code</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>fullname</name>
+		<value source="resultset">fullname</value>	
+		<attrvalue></attrvalue>	
+	</field>	
+</rule>

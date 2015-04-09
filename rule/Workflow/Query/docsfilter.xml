@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="docsfilter">
+	<description>Документы, категоризованные по проектам</description>
+	<rununderuser source="macro">current_user</rununderuser>
+	<granted source="static" mode="off">{registrator}</granted>
+	<!-- 	<query source="static">form = 'IN' or form = 'ISH'</query> -->
+	 <query source="static">project</query> 
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<!-- <groupby source="static" publishas="GLOSSARY">project</groupby> -->
+	<doctype>document</doctype>	
+</rule>

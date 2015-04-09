@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule id="bossandemp" app="" type="QUERY" isvalid="true" mode="ON">
+	<description>Структура</description>
+	<rununderuser source="STATIC" type="TEXT">observer</rununderuser>
+	<doctype>STRUCTURE</doctype>
+	<query source="MACRO" type="TEXT">EXPANDED_STRUCTURE</query>
+</rule>

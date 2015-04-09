@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="recyclebin" mode="on" history="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/recyclebin.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>action_bar</name>
+		<events>
+			<doscript source="file">knowledgebase.page.actionbar.RecycleBin</doscript>
+		</events>
+	</element>
+	<element mode="ON" type="QUERY">
+		<name>view_content</name>
+		<query source="macro">RECYCLE_BIN</query>
+		<doctype>document</doctype>
+	</element>
+    <element mode="ON" type="INCLUDED_PAGE">
+        <name>recyclebin-captions</name>
+        <value>recyclebin-captions</value>
+    </element>
+</rule>

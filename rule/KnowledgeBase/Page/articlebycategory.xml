@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="articlebycategory" mode="on" history="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/page.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>view_content</name>
+		<events>
+			<doscript source="file">knowledgebase.page.views.ArticlesByCategory</doscript>
+		</events>
+	</element>
+    <element mode="ON" type="INCLUDED_PAGE">
+        <name>captions</name>
+        <value>captions</value>
+    </element>
+</rule>

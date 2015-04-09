@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="userprofile">
+	<description>Информация пользователя</description>
+	<query>userprofile</query>		
+	<xsltfile>views\userprofile.xsl</xsltfile>	
+</rule>

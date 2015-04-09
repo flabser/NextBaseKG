@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="outline" mode="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<element mode="ON" type="SCRIPT">
+		<name>current_outline_entry</name>
+		<events>
+			<doscript source="file">page.current_entry.DoScript</doscript>
+		</events>
+	</element>	
+	<element mode="ON" type="SCRIPT">
+		<name>mydocs_navi</name>
+		<events>
+			<doscript source="file">page.mydocs_navi.DoScript</doscript>
+		</events>
+	</element>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>included_share_navi</name>
+		<value>share_navi</value>
+	</element>
+</rule>

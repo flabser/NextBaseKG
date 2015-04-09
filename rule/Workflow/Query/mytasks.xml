@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="mytasks">
+	<description>Карточки резолюции</description>
+	<doctype>task</doctype>
+	<query source="macro">MYTASKS</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+</rule>

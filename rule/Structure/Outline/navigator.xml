@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="outline" id="navigator" mode="on">
+	<description>Navigator outline</description>
+	<xsltfile>outline.xsl</xsltfile>
+	<outline>
+		<entry id="glossary" mode="on">
+			<caption source="KEYWORD">Структура</caption>
+			<hint source="KEYWORD">Структура</hint>
+			 <granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Session session){
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole(["supervisor","administrator","chancellery"]) ? user.getUserID() : "");
+				}
+				]]>
+			</granted>			
+			<entry mode="on" url="Provider?type=view&amp;id=structurelist" id="structurelist">
+				<caption source="KEYWORD">Структура организации</caption>
+				<hint source="KEYWORD">Структура организации</hint>
+			</entry>
+            <entry mode="on" url="Provider?type=page&amp;id=organizations" id="organizations">
+                <caption source="KEYWORD">Организации</caption>
+                <hint source="KEYWORD">Организации</hint>
+            </entry>
+			<entry mode="on" url="Provider?type=view&amp;id=group" id="group">
+				<caption source="KEYWORD">Группы пользователей</caption>
+				<hint source="KEYWORD">Группы пользователей</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=post&amp;sortfield=VIEWTEXT2&amp;order=ASC" id="post">
+				<caption source="KEYWORD">Должность</caption>
+				<hint source="KEYWORD">Должность</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=subdivisionlist&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="subdivisionlist">
+				<caption source="KEYWORD">Тип подразделения</caption>
+				<hint source="KEYWORD">Тип подразделения</hint>
+			</entry>
+		</entry>
+		<default>
+			<field mode="on">
+				<name>logout</name>
+				<value source="static">logout</value>
+				<caption source="KEYWORD">Завершить работу</caption>
+			</field>
+			<field mode="on">
+				<name>documentmanager</name>
+				<value source="static">documentmanager</value>
+				<caption source="KEYWORD">Документооборот</caption>
+			</field>
+			<field mode="on">
+				<name>outlinetitle</name>
+				<value source="static">outlinetitle</value>
+				<caption source="KEYWORD">Список документов</caption>
+			</field>
+			<field mode="on">
+				<name>orgtitle</name>
+				<value source="static">ТОО Avanti</value>
+			</field>
+		</default>
+	</outline>
+</rule>

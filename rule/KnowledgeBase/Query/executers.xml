@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="query" id="executers">
+	<description>Структура</description>
+	<rununderuser source="static">[observer]</rununderuser>
+	<doctype>STRUCTURE</doctype>
+	<cache mode="OFF"></cache>
+	<query source="macro">executors_by_freq</query>
+</rule>

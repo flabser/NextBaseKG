@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="discussion">
+	<description>Обсуждение</description>
+	<query source="macro">discussion</query>
+	<doctype>document</doctype>
+	<field mode="on" type="viewtext">	
+		<value source="resultset">VIEWTEXT</value>	
+		<attrvalue></attrvalue>	
+	</field>		
+</rule>

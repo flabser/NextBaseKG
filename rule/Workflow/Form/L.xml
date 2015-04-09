@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="L" mode="on">
+	<description>Обращения граждан</description>
+	<xsltfile>forms/obr.xsl</xsltfile>
+	<doctype>main</doctype>
+	<events>
+		<queryopen source="file">form.l.QueryOpen</queryopen>
+		<querysave source="file">form.l.QuerySave</querysave>
+		<postsave source="file">form.l.PostSave</postsave>
+	</events> 	
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="doctypemultilang" source="KEYWORD">Обращения граждан</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="changeview" source="KEYWORD">Изменить вид</caption>
+	<caption name="files" source="KEYWORD">Файлы</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name="searchcaption" source="KEYWORD">поиск</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="new" source="KEYWORD">Новое</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="address" source="KEYWORD">Адрес</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="remark" source="KEYWORD">Примечание</caption>
+	<caption name="comment" source="KEYWORD">Примечание</caption>
+	<caption name="cat" source="KEYWORD">Категория</caption>
+	<caption name="briefcontent" source="KEYWORD">Краткое содержание</caption>
+	<caption name="np" source="KEYWORD">Кол-во листов</caption>
+	<caption name="np2" source="KEYWORD">экз.</caption>
+	<caption name="phone" source="KEYWORD">Телефон</caption>
+	<caption name="recipient" source="KEYWORD">Получатель</caption>
+	<caption name="regionview" source="KEYWORD">Район/регион</caption>
+	<caption name="har" source="KEYWORD">Характер вопроса</caption>
+	<caption name="lang" source="KEYWORD">Язык обращения</caption>
+	<caption name="fio" source="KEYWORD">Ф.И.О.</caption>
+	<caption name="dvn" source="KEYWORD">от</caption>
+	<caption name="vn" source="KEYWORD">Входящий</caption>
+	<caption name="private" source="KEYWORD">Вид обращения</caption>
+	<caption name="otype" source="KEYWORD">Вид обращения</caption>
+	<caption name="vid" source="KEYWORD">Тип документа</caption>
+	<caption name="resultview" source="KEYWORD">Результат рассмотрения</caption>
+	<caption name="openinlotus" source="KEYWORD">Открыть документ в Lotus Notes</caption>
+	<caption name="ctrldate" source="KEYWORD">Срок исполнения</caption>
+	<caption name="rejected" source="KEYWORD">Отказано</caption>
+	<caption name="satisfied" source="KEYWORD">Удовлетворено</caption>
+	<caption name="clarified" source="KEYWORD">Разъяснено</caption>
+	<caption name="individual" source="KEYWORD">Индивидуальное</caption>
+	<caption name="collective" source="KEYWORD">Коллективное</caption>
+	<caption name="written" source="KEYWORD">Письменно</caption>
+	<caption name="orally" source="KEYWORD">Устно</caption>
+	<caption name="read" source="KEYWORD">Прочтен</caption>	
+	<caption name="DS" source="KEYWORD">ЭЦП</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="showfilename" source="KEYWORD">Укажите имя файла для вложения</caption>
+	<caption name ="addcommentforattachment" source ="KEYWORD">Добавить комментарий к вложению?</caption>
+	<caption name="whomread" source="KEYWORD">Кем прочтен</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name="timeofreading" source="KEYWORD">Время прочтения</caption>
+	<caption name="attention" source="KEYWORD">Внимание</caption>
+	<caption name="add_comment" source="KEYWORD">Добавить комментарий</caption>
+	<caption name="delete_file" source="KEYWORD">Удалить файл</caption>
+	<caption name="comments" source="KEYWORD">комментарий</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<glossary mode="on" id="typedoc" source="query">
+	
+		<description>Тип документа</description>
+		<value>typedoc</value>
+	</glossary>
+	<glossary mode="on" id="city" source="query">
+		<description>Район/регион</description>
+		<value>city</value>
+	</glossary>
+	<glossary mode="on" id="har" source="query">
+		<description>Характер вопроса</description>
+		<value>har</value>
+	</glossary>
+</rule>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="handler" id="fixLoginHash">
+	<rununderuser source="macro">CURRENT_USER</rununderuser>
+	<trigger>provider</trigger>
+	<scheduler>
+		<mininterval>5</mininterval>
+	</scheduler>
+	<tohandle source="STATIC"></tohandle>
+	<waitresponse>false</waitresponse>
+	<description>handler updates users' redirect url</description>
+	<script><![CDATA[
+	String doHandler(_Session ses, _DocumentCollection collection){
+		def sysDB = new kz.flabs.dataengine.h2.SystemDatabase();
+		def users = sysDB.getAllUsers("", 0, -1);
+		users.each{
+			HashMap<String, String> newRedirectUrls = new HashMap<String, String>();
+			it.redirectURLs.entrySet().each{app->
+				//app.setValue(app.getValue().replace("Avanti", "Workflow"));
+				newRedirectUrls.put(app.getKey().replace("Avanti", "Workflow"), app.getValue());				
+			}
+			it.redirectURLs = newRedirectUrls;
+			it.save(Const.sysGroupAsSet, Const.sysUser);
+		}
+		/* def db = ses.getCurrentDatabase();
+		def col = db.getTasksCollection("", Const.sysGroupAsSet, Const.sysUser);
+		for (int i = 0; i < col.getCount(); i++){
+			def doc = col.getNthDocument(i);
+			if (!doc.getValueString("briefcontent")){
+				String content = doc.getValueString("content");
+				content = content.substring(0, content.indexOf(".")+1);
+				doc.setBriefContent(content);
+			}			
+			doc.save(Const.sysUser);
+		}
+		println("*********************");
+		String[] fields = {};
+		def col = db.getAllGlossaries(0, -1, fields);
+		println(col.size());
+		col.each{
+			String form = it.getGlossaryForm().toLowerCase();
+			if (form != "cat") {
+				if (form == "vid") form = "typedoc";
+				it.setDefaultRuleID(form);
+				it.save("observer");
+			}
+		}	 
+		def colDoc = db.getAllDocumentsIDS(Const.DOCTYPE_MAIN, Const.sysGroupAsSet, Const.sysUser, fields, 0, 0);
+		colDoc.each{
+			db.getDocumentByID(it).save("observer");
+		}
+		colDoc = db.getAllDocumentsIDS(Const.DOCTYPE_PROJECT, Const.sysGroupAsSet, Const.sysUser, fields, 0, 0);
+		colDoc.each{
+			db.getProjectByID(it).save("observer");
+		}
+		colDoc = db.getAllDocumentsIDS(Const.DOCTYPE_TASK, Const.sysGroupAsSet, Const.sysUser, fields, 0, 0);
+		colDoc.each{
+			db.getTaskByID(it).save("observer");
+		}
+		colDoc = db.getAllDocumentsIDS(Const.DOCTYPE_EXECUTION, Const.sysGroupAsSet, Const.sysUser, fields, 0, 0);
+		colDoc.each{
+			db.getExecutionByID(it).save("observer");
+		}		 */
+	}
+	]]></script>
+</rule>

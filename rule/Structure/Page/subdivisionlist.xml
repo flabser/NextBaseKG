@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="subdivisionlist" mode="on" history="on" >
+	<description></description>
+	<caching>NO_CACHING</caching>
+    <xsltfile>pages/view.xsl</xsltfile>
+
+    <element mode="ON" type="QUERY">
+        <name>query</name>
+        <query source="static">form='subdivision'</query>
+       <sortby source="static">VIEWTEXT1#asc</sortby>
+        <doctype>glossary</doctype>
+    </element>
+    <element mode="ON" type="INCLUDED_PAGE">
+        <name>outline</name>
+        <value>outline</value>
+    </element>
+    <element mode="ON" type="INCLUDED_PAGE">
+        <name>actionbar</name>
+        <value>actionbar</value>
+    </element>
+    <caption name="viewtext" source="KEYWORD">Название</caption>
+    <caption name="title" source="KEYWORD">Тип подразделения</caption>
+    <caption name="help" source="KEYWORD">Помощь</caption>
+    <caption name="logout" source="KEYWORD">Завершить работу</caption>
+    <caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+    <caption name="page" source="KEYWORD">Страница</caption>
+    <caption name="documents" source="KEYWORD">Документов</caption>
+    <caption name="updates" source="KEYWORD">Обновлено</caption>
+    <caption name="from" source="KEYWORD">из</caption>
+    <caption name="btnDelete" source="KEYWORD">Удалить</caption>
+    <caption name="btnNewDocument" source="KEYWORD">Добавить</caption>
+
+</rule>

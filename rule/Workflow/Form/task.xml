@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="task" mode="on">
+	<description>Карточка резолюции</description>
+	<xsltfile>forms/task.xsl</xsltfile>
+	<doctype>main</doctype>
+	<events>
+		<queryopen source="file">form.task.QueryOpen</queryopen>
+		<querysave source="file">form.task.QuerySave</querysave>
+		<postsave source="file">form.task.PostSave</postsave>
+	</events> 
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="performer" source="KEYWORD">исполнитель</caption>
+	<caption name="date" source="KEYWORD">дата</caption>
+	<caption name="removedby" source="KEYWORD">кто снял</caption>
+	<caption name="control" source="KEYWORD">Контроль</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="onceonly" source="KEYWORD">Разовый</caption>
+	<caption name="daily" source="KEYWORD">Ежедневно</caption>
+	<caption name="weekly" source="KEYWORD">Еженедельно</caption>
+	<caption name="monthly" source="KEYWORD">Ежемесячно</caption>
+	<caption name="quarterly" source="KEYWORD">Ежеквартально</caption>
+	<caption name="semiannual" source="KEYWORD">Полугодовой</caption>
+	<caption name="annually" source="KEYWORD">Ежегодно</caption>
+	<caption name="kr" source="KEYWORD">Резолюция</caption>
+	<caption name="task" source="KEYWORD">Задание</caption>
+	<caption name="incontrol" source="KEYWORD">На контроле</caption>
+	<caption name="removedofcontrol" source="KEYWORD">Снято с контроля</caption>
+	<caption name="removcontrol" source="KEYWORD">Снять с контроля</caption>
+	<caption name="briefcontent" source="KEYWORD">Краткое содержание</caption>
+	<caption name="project" source="KEYWORD">Проект</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="changeview" source="KEYWORD">Изменить вид</caption>
+	<caption name="receiverslist" source="KEYWORD">Список получателей напоминания</caption>
+	<caption name="commentcaption" source="KEYWORD">Комментарий</caption>
+	<caption name="correspforacquaintance" source="KEYWORD">Список корреспондентов для ознакомления</caption>
+	<caption name="searchcaption" source="KEYWORD">поиск</caption>
+	<caption name="files" source="KEYWORD">Файлы</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name="new" source="KEYWORD">Новое</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="conectedproject" source="KEYWORD">Связан с проектом</caption>
+	<caption name="remaineddays" source="KEYWORD">Осталось дней</caption>
+	<caption name="delayeddays" source="KEYWORD">Просрочено дней</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="har" source="KEYWORD">Характер вопроса</caption>
+	<caption name="taskvn" source="KEYWORD">Номер</caption>
+	<caption name="controlstatus" source="KEYWORD">Статус контроля</caption>
+	<caption name="kp" source="KEYWORD">Перепоручение</caption>
+	<caption name="status" source="KEYWORD">Статус</caption>
+	<caption name="dvn" source="KEYWORD">от</caption>
+	<caption name="executors" source="KEYWORD">Внутренние исполнители</caption>
+	<caption name="extexecutors" source="KEYWORD">Внешние исполнители</caption>
+	<caption name="taskauthor" source="KEYWORD">Автор</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="taskdate" source="KEYWORD">Дата резолюции</caption>
+	<caption name="textresolution" source="KEYWORD">Текст резолюции</caption>
+	<caption name="controltype" source="KEYWORD">Тип контроля</caption>
+	<caption name="cyclecontrol" source="KEYWORD">Периодичность контроля</caption>
+	<caption name="comment" source="KEYWORD">Примечание</caption>
+	<caption name="ctrldate" source="KEYWORD">Срок исполнения</caption>
+	<caption name="pdocviewtext" source="KEYWORD">Головной документ</caption>
+	<caption name="pdocviewtextsummary" source="KEYWORD">Краткое содержание главного документа</caption>
+	<caption name="notesexecuted" source="KEYWORD">Отметки о исполнении</caption>
+	<caption name="DS" source="KEYWORD">ЭЦП</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="showfilename" source="KEYWORD">Укажите имя файла для вложения</caption>
+	<caption name ="addcommentforattachment" source ="KEYWORD">Добавить комментарий к вложению?</caption>
+	<caption name="removedfromcontrol" source="KEYWORD">Документ снят с контроля</caption>
+	<caption name="warning" source="KEYWORD">Предупреждение</caption>
+	<caption name="whomread" source="KEYWORD">Кем прочтен</caption>
+	<caption name="timeofreading" source="KEYWORD">Время прочтения</caption>
+	<caption name="attention" source="KEYWORD">Внимание</caption>
+	<caption name="putundercontrol" source="KEYWORD">Поставить на контроль</caption>
+	<caption name="add_comment" source="KEYWORD">Добавить комментарий</caption>
+	<caption name="delete_file" source="KEYWORD">Удалить файл</caption>
+	<caption name="comments" source="KEYWORD">комментарий</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+    <caption name="documentnotsigned" source="KEYWORD">Документ не подписан</caption>
+    <caption name="signistrue" source="KEYWORD">Подпись верна</caption>
+    <caption name="signisfalse" source="KEYWORD">Подпись неверна</caption>
+    <caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="parentdoccontent" source="KEYWORD">Содержание головного документа</caption>
+	<glossary mode="on" id="controltype" source="query">
+		<description>Типы контроля</description>
+		<value>controltype</value>
+	</glossary>
+	<glossary mode="on" id="projects" source="query">
+		<description>Проекты</description>
+		<value>projectsprav</value>
+	</glossary>
+	<glossary mode="on" id="har" source="query">
+		<description>Характер вопроса</description>
+		<value>har</value>
+	</glossary>
+	<glossary mode="on" id="category" source="query">
+		<description>Категории</description>
+		<value>docscat</value>
+	</glossary>
+</rule>

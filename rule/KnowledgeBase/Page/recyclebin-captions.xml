@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="recyclebin-captions" mode="on" history="off">
+	<description></description>
+	<caching>NO_CACHING</caching>
+    <caching>CACHING_IN_APPLICATION_SCOPE</caching>
+    <element mode="ON" type="STATIC_TAG"></element>
+    <caption name="category" source="KEYWORD">Корзина</caption>
+    <caption name="view" source="KEYWORD">Корзина</caption>
+    <caption name="datereg" source="KEYWORD">Дата регистрации</caption>
+    <caption name="corr" source="KEYWORD">Отправитель</caption>
+    <caption name="briefcontent" source="KEYWORD">Краткое содержание</caption>
+    <caption name="page" source="KEYWORD">Страница</caption>
+    <caption name="documents" source="KEYWORD">Документов</caption>
+    <caption name="updates" source="KEYWORD">Обновлено</caption>
+    <caption name="from" source="KEYWORD">из</caption>
+    <caption name="btnRemove" source="KEYWORD">Очистить</caption>
+    <caption name="btnRecover" source="KEYWORD">Восстановить</caption>
+    <caption name="BTNDELETEDOCUMENT" source="KEYWORD">Удалить документ</caption>
+    <caption name="name" source="KEYWORD">Название</caption>
+    <caption name="helpcaption" source="KEYWORD">Помощь</caption>
+    <caption name="logout" source="KEYWORD">Завершить работу</caption>
+    <caption name="recyclebin" source="KEYWORD">Корзина</caption>
+    <caption name="view_userprofile" source="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+    <caption name="search" source="KEYWORD">Поиск</caption>
+</rule>

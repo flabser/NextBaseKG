@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="docsbyproject" mode="on" history="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/page.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>action_bar</name>
+		<events>
+			<doscript source="file">page.actionbar.docsbyproject</doscript>
+		</events>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>view_content</name>
+		<events>
+			<doscript source="file">page.DocsListByProject.DoScript</doscript>
+		</events>
+	</element>
+	<caption name="category" source="KEYWORD">Документы организации</caption>
+	<caption name="viewnamecaption" source="KEYWORD">Входящие</caption>
+	<caption name="datereg" source="KEYWORD">Дата регистрации</caption>
+	<caption name="corr" source="KEYWORD">Отправитель</caption>
+	<caption name="briefcontent" source="KEYWORD">Описание документа</caption>
+	<caption name="viewtext1" source="KEYWORD">Откуда поступил</caption>
+	<caption name="viewtext2" source="KEYWORD">Описание документа</caption>
+	<caption name="viewtext3" source="KEYWORD"></caption>
+	<caption name="viewnumber">№</caption>
+	<caption name="viewdate" source="KEYWORD">Дата</caption>
+	<caption name="page" source="KEYWORD">Страница</caption>
+	<caption name="documents" source="KEYWORD">Документов</caption>
+	<caption name="updates" source="KEYWORD">Обновлено</caption>
+	<caption name="from" source="KEYWORD">из</caption>
+	<caption name="btnNewDocument" source="KEYWORD">Новый входящий документ</caption>
+	<caption name="BTNDELETEDOCUMENT" source="KEYWORD">Удалить документ</caption>
+	<caption name="filtercaption" source="KEYWORD">фильтр</caption>
+	<caption name="fastfiltercaption" source="KEYWORD">Фильтр</caption>
+	<caption name="helpcaption" source="KEYWORD">Помощь</caption>
+	<caption name="showall" source="KEYWORD">Все</caption>
+	<caption name="project" source="KEYWORD">Проект</caption>
+	<caption name="status" source="KEYWORD">Статус</caption>
+	<caption name="filtercategory" source="KEYWORD">Категория</caption>
+	<caption name="responsible" source="KEYWORD">Ответственный</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name ="addtofav" source ="KEYWORD">Добавить в избранное</caption>
+	<caption name ="removefromfav" source ="KEYWORD">Удалить с избранного</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name="search" source ="KEYWORD">Поиск</caption>
+</rule>

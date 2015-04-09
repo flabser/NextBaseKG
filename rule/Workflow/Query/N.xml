@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="n">
+	<description></description>
+	<doctype>glossary</doctype>
+	<query source="static">name ~ '$keyword' and form='n'</query>
+	<field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>	
+</rule>

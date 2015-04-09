@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="form" id="post" mode="on">
+	<description>Должность</description>
+	<xsltfile>forms/post.xsl</xsltfile>
+	<doctype>glossary</doctype>
+
+    <events>
+        <queryopen source="file">structure.form.post.QueryOpen</queryopen>
+        <querysave source="file">structure.form.post.QuerySave</querysave>
+    </events>
+
+
+	
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="name" source="KEYWORD">Должность</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="code" source="KEYWORD">Код</caption>
+	<caption name="rank" source="KEYWORD">Ранг</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+</rule>

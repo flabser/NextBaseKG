@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="post">
+	<description></description>
+	<doctype>glossary</doctype>
+	<query source="static">form='post'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>ranktext</name>
+		<value source="resultset">ranktext</value>	
+		<attrvalue></attrvalue>	
+	</field>
+</rule>

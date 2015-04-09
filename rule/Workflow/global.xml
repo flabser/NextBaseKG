@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><rule id="Workflow" mode="on" type="global">
+	<description>Электронный документооборот</description>
+	<orgname>ТОО "Lab of the Future"</orgname>
+	<liccount>100</liccount>
+	<logo>workflow_small.png</logo>
+	<database autodeploy="ON">
+		<name>Workflow</name>
+		<driver>org.postgresql.Driver</driver>
+		<url>jdbc:postgresql://localhost/Avanti</url>
+		<username/>
+		<password/>
+	<connectionid>exqWjZ6NY6SW+w+0WcsVBQ==@@@c4aMG0NMn78=</connectionid></database>
+
+	<externalmodule type="STRUCTURE">Structure</externalmodule>
+	<daemons>
+		<daemon>
+			<class>kz.flabs.appdaemon.CycleControl</class>
+			<scheduler mode="ON">
+				<mininterval daysofweek="WORKWEEK,">360</mininterval>
+			</scheduler>
+		</daemon>
+		<daemon>
+			<class>kz.flabs.appdaemon.Recalculator</class>
+			<scheduler mode="ON">
+				<mininterval daysofweek="WORKWEEK,">360</mininterval>
+			</scheduler>
+		</daemon>
+		<daemon>
+			<class>kz.flabs.appdaemon.TimeWaiting</class>
+			<scheduler mode="ON">
+				<mininterval daysofweek="WORKWEEK,">360</mininterval>
+			</scheduler>
+		</daemon>		
+	</daemons>
+	<entrypoint>Provider?type=static&amp;id=start</entrypoint>
+	<defaultredirecturl>Provider?type=page&amp;id=taskforme&amp;page=0</defaultredirecturl>
+	<langs>
+		<entry id="RUS" isprimary="1">Русский</entry>
+		<entry id="KAZ">Казакша</entry>
+		<entry id="ENG">English</entry>
+	</langs>
+	<skins>
+		<entry id="ipadandtab" path="./webapps/Workflow/ipadandtab/xsl">IPadAndTab</entry>
+		<entry default="on" errorpage="error.xsl" id="classic" path="./webapps/Workflow/classic/xsl">Classic</entry>
+	</skins>
+	<roles>
+		<entry id="workdoc_signer">Дает доступ к действию "Подписать" в служебных записках</entry>
+		<entry id="registrator_tasks">Разрешает регистрацию отдельных задании</entry>
+		<entry id="administrator">Разрешает ввод и редактирование значении справочников </entry>
+		<entry id="signer">Разрешает подписывать документы</entry>
+		<entry id="controller">Разрешает снимать с контроля документы у любых авторов задании</entry>
+		<entry id="registrator_outgoing">Разрешает регистрацию проектов исходящих документов</entry>
+		<entry id="registrator_incoming">Разрешает регистрацию входящих документов</entry>
+		<entry id="registrator_letter">Разрешает регистрацию обращении граждан</entry>
+		<entry id="chancellery">Разрешает регистрацию документов подготовленных к регистрации</entry>
+		<entry id="registrator_projects">Разрешает регистрацию проектов служебных записок</entry>		
+	</roles>
+	<markdelaysec>5</markdelaysec>
+	<eds mode="OFF">
+		<keypass/>
+		<keystore/>
+        <ocsp>http://ocsp.pki.kz:80</ocsp>
+	</eds>
+	<ocsp>http://ocsp.pki.kz:80</ocsp>
+</rule>

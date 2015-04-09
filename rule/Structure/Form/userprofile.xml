@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="userprofile" mode="on">
+	<description>Свойства пользовтеля</description>
+	<xsltfile>forms/userprofile.xsl</xsltfile>
+	<doctype>system</doctype>
+	<title source="KEYWORD">Свойства пользователя</title>
+	<events>
+		<queryopen source="file">structure.form.userprofile.QueryOpenStructure</queryopen>
+	</events>
+	
+	<caption name="close" source="KEYWORD">Закрыть</caption> 
+	<caption name="saveandclose" source="KEYWORD">Сохранить и закрыть</caption> 
+	<caption name="properties" source="KEYWORD">Свойства</caption> 
+	<caption name="settings" source="KEYWORD">Настройки системы</caption> 
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="lang" source="KEYWORD">Язык интерфейса</caption>
+	<caption name="interface" source="KEYWORD">Интерфейс</caption>
+	<caption name="filtermanage" source="KEYWORD">Управление фильтрами</caption>
+	<caption name="refreshperiod" source="KEYWORD">Периодичность обновления видов</caption>
+	<caption name="addfilter" source="KEYWORD">Добавить фильтр</caption>
+	<caption name="removefilter" source="KEYWORD">Удалить фильтр</caption>
+	<caption name="name" source="KEYWORD">Название</caption>
+	<caption name="project" source="KEYWORD">Проект</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="datereg" source="KEYWORD">Дата регистрации</caption>
+	<caption name="keyword" source="KEYWORD">Ключевое слово</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="oldpassword" source="KEYWORD">Старый пароль</caption>
+	<caption name="newpassword" source="KEYWORD">Новый пароль</caption>
+	<caption name="repeatnewpassword" source="KEYWORD">Повтор нового пароля</caption>
+	<caption name="role" source="KEYWORD">Роли</caption>
+	<caption name="group" source="KEYWORD">Группы</caption>
+	<caption name="doctype" source="KEYWORD">Тип документа</caption>
+ 	<caption name="skin" source="KEYWORD">Оформление</caption>
+ 	<caption name="employer" source="KEYWORD">Сотрудник</caption>
+ 	<caption name="chinese" source="KEYWORD">Китайский</caption>
+ 	<caption name="cancel" source="KEYWORD">Отмена</caption>
+ 	<caption name="docfilter" source="KEYWORD">Фильтр документов</caption>
+ 	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="countdocinview" source="KEYWORD">Количество документов в виде</caption>
+	<caption name="skin" source="KEYWORD">Скин</caption>
+	<caption name="department" source="KEYWORD">Департамент</caption>
+	<caption name="postid" source="KEYWORD">Должность</caption>
+	<caption name="fullname" source="KEYWORD">Полное имя</caption>
+	<caption name="shortname" source="KEYWORD">Сокращенное имя</caption>
+	<caption name="groups" source="KEYWORD">Группы</caption>
+	<caption name="filter" source="KEYWORD">Фильтры</caption>
+	<caption name ="min" source ="KEYWORD">мин</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<glossary mode="on" id="langs" source="macro">AVAILABLE_LANGS</glossary>
+	<glossary mode="on" id="skins" source="macro">AVAILABLE_SKINS</glossary>
+	<glossary mode="on" id="roles" source="macro">APPLICATION_ROLES</glossary>
+</rule>

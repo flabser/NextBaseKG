@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="actionbar" mode="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/json_constructor.xsl</xsltfile>
+	<element mode="ON" type="STATIC_TAG"></element>	
+	<element mode="ON" type="SCRIPT">
+		<name>dyn_elements</name>
+		<events>
+			<doscript source="file">page.json_constructor.DoScript</doscript>
+		</events>
+	</element>
+</rule>

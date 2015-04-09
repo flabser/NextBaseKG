@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="corrcat">
+	<description>Ответные документы</description>
+	<query>corrcat</query>		
+	<xsltfile>views\corr_glossary.xsl</xsltfile>	
+	<column>
+		<caption id="page" source="KEYWORD">Страница</caption>
+	</column>
+	<column>
+		<caption id="from" source="KEYWORD">из</caption>
+	</column>
+</rule>

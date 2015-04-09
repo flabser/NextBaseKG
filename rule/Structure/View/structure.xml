@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="view" id="structure">
+	<description>Ответные адокументы</description>
+	<query>structure</query>		
+	<xsltfile>views\structure.xsl</xsltfile>	
+</rule>

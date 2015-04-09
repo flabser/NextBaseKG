@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="global" id="Workspace" mode="on">
+	<description>Рабочая область</description>
+	<orgname>Avanti</orgname>
+	<liccount>100</liccount>
+	<logo>4ms_enterprise.png</logo>
+	<appname>Рабочая область</appname>
+	<externalmodule type="STRUCTURE">Structure</externalmodule>
+	<daemons>
+		<cyclecontrol>
+			<scheduler  mode="off">
+				<mininterval daysofweek="WORKWEEK,">360</mininterval>
+			</scheduler>
+		</cyclecontrol>
+		<timewaiting>
+			<scheduler  mode="off">
+				<mininterval daysofweek="WORKWEEK,">360</mininterval>
+			</scheduler>
+		</timewaiting>
+		<recalculator>
+			<scheduler  mode="off">
+				<mininterval daysofweek="WORKWEEK,">360</mininterval>
+			</scheduler>
+		</recalculator>
+	</daemons>
+	<entrypoint>Provider?type=page&amp;id=start</entrypoint>
+	<langs>
+		<entry id="RUS">Русский</entry>
+		<entry id="KAZ">Казакша</entry>
+		<entry id="ENG">English</entry>
+		<entry id="CHN">中国</entry>		
+	</langs>
+	<skins>
+		<entry id="classic" path="./webapps/Workspace/classic/xsl" default="on">Classic</entry>
+	</skins>
+	<markdelaysec>5</markdelaysec>
+	<eds mode="OFF">
+	</eds>
+	<xsx></xsx> 
+</rule>

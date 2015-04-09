@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="subdivisionlist" history="on">
+	<description>Тип подразделения</description>
+	<outline>navigator</outline>
+	<query>subdivision</query>
+	<xsltfile>views\glossary-view.xsl</xsltfile>
+	<column>
+		<caption id="category" source="KEYWORD">Справочники</caption>
+	</column>
+	<column>
+		<caption id="viewnamecaption" source="KEYWORD">Тип подразделения
+		</caption>
+	</column>
+	<column>
+		<caption id="viewtext1" source="KEYWORD">Название</caption>
+	</column>
+	<column>
+		<caption id="page" source="KEYWORD">Страница</caption>
+	</column>
+	<column>
+		<caption id="documents" source="KEYWORD">Документов</caption>
+	</column>
+	<column>
+		<caption id="updates" source="KEYWORD">Обновлено</caption>
+	</column>
+	<column>
+		<caption id="from" source="KEYWORD">из</caption>
+	</column>
+	<column>
+		<caption id="btnNewDocument" source="KEYWORD">Добавить</caption>
+	</column>
+	<field mode="on">
+		<description></description>
+		<name>newDocURL</name>
+		<value><![CDATA[Provider?type=document&amp;id=subdivision&amp;key=&amp;page=null]]></value>
+	</field>
+	<column>
+		<caption id="btnDelete" source="KEYWORD">Удалить</caption>
+	</column>
+	<column>
+		<caption id="helpcaption" source="KEYWORD">Помощь</caption>
+	</column>
+	<column>
+	<caption id ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	</column>
+	<action mode="on" type="NEW_DOCUMENT">
+		<caption source="KEYWORD">Новый тип подразделения</caption>
+		<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Session session){
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole(["supervisor","administrator"]) ? user.getUserID() : "");
+				}
+				]]>
+		</granted>
+	</action>
+	<action mode="on" type="DELETE_GLOSSARY">
+		<caption source="KEYWORD">Удалить</caption>
+		<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Session session){
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole(["supervisor","administrator"]) ? user.getUserID() : "");
+				}
+				]]>
+		</granted>
+	</action>
+</rule>

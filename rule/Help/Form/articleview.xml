@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="form" id="articleview" mode="on" history="on">
+	<description>Статья</description>
+	<xsltfile>pages/articleview.xsl</xsltfile>
+	<doctype>main</doctype>
+	
+	<events>
+		<queryopen source="file">help.form.article.QueryOpen</queryopen>
+		<querysave source="file">help.form.article.QuerySave</querysave>
+	</events> 
+	
+	<caption name ="help" source ="KEYWORD">Помощь</caption>
+	<caption name ="logout" source ="KEYWORD">Завершить работу</caption>
+	<caption name ="addtofav" source ="KEYWORD">Добавить в избранное</caption>
+	<caption name ="removefromfav" source ="KEYWORD">Удалить с избранного</caption>
+	<caption name ="search" source ="KEYWORD">Поиск</caption>
+	<caption name ="app_title" source ="KEYWORD">Помощь</caption> 
+	<caption name="viewtext" source="KEYWORD">Категория</caption>
+	<caption name="viewtext1" source="KEYWORD">Заголовок</caption>
+	<caption name ="viewtext2" source ="KEYWORD">Связаные документы</caption>
+	<caption name="viewtext3" source="KEYWORD">Коментарий</caption>
+	<caption name="linkeddocs" source="KEYWORD">Связанные ссылки</caption>
+	<caption name ="support" source ="KEYWORD">Служба поддержки</caption>
+	
+</rule>

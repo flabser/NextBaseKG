@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="workdoc" mode="on">
+	<description>Служебная записка</description>
+	<xsltfile>forms/workdoc.xsl</xsltfile>
+	<doctype>main</doctype>
+	<events> 
+		<queryopen source="file">form.workdoc.QueryOpen</queryopen>
+	</events>
+	<title source="KEYWORD">Служебная записка</title>
+	<default/>
+	<show>
+		<action mode="on" type="COMPOSE_TASK">
+			<caption source="KEYWORD">Резолюция</caption>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					return doc.getValueList("recipient");
+				}
+				]]>
+			</granted>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					def session = doc.getSession();
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole("chancellery") ? user.getUserID() : "");
+				}
+				]]>
+			</granted>
+		</action>
+		<action mode="on" type="COMPOSE_OUTGOING">
+			<caption source="KEYWORD">Проект исходящего</caption>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					def session = doc.getSession();
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole("chancellery") || user.hasRole("administrator")  ? user.getUserID() : "");
+				}
+				]]>
+			</granted>	
+		</action>
+		<action mode="on" type="COMPOSE_EXECUTION">
+			<caption source="KEYWORD">Отметить исполнение</caption>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					return doc.getValueList("recipient");
+				}
+				]]>
+			</granted>
+		</action>
+		<action mode="on" type="GRANT_ACCESS">
+			<caption source="KEYWORD">Ознакомить</caption>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					return getAsArray(doc.getValueString('author'));
+				}
+				]]></granted>
+		</action>
+	
+		<field mode="on">
+			<name>form</name>
+			<value source="docfield">form</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>project</name>
+			<value source="docfield">project</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>har</name>
+			<value source="docfield">har</value>
+		</field>
+		<field mode="on">
+			<name>vn</name>
+			<value source="docfield">vn</value>
+		</field>
+		<field mode="on">
+			<name>dvn</name>
+			<value source="docfield">dvn</value>
+			
+		</field>
+		<field mode="on" publishas="USER">
+			<name>signer</name>
+			<value source="docfield">corr</value>
+		</field>
+		<field mode="on" type="textlist" publishas="USER">
+			<name>recipient</name>
+			<value source="docfield" type="userid">recipient</value>
+		</field>
+		<field mode="on">
+			<name>briefcontent</name>
+			<value source="docfield">briefcontent</value>
+		</field>
+		<field mode="on">
+			<name>ctrldate</name>
+			<value source="docfield">ctrldate</value>
+		</field>
+		<field mode="on" publishas="USER">
+			<name>author</name>
+			<value source="docfield">author</value>
+		</field>
+		<field mode="on">
+			<name>vnish</name>
+			<value source="docfield">vnish</value>
+		</field>
+		<field mode="on" publishas="HTML">
+			<name>contentsource</name>
+			<value source="docfield">contentsource</value>
+		</field>
+		<field mode="on">
+			<name>rtfcontent</name>
+			<value source="doc_attachment">rtfcontent</value>
+		</field>
+		 <field mode="on">
+			<name>projecturl</name>
+			<value source="script"><![CDATA[
+				String[] getStringValue(_Document doc){
+					int projectID = 0;
+					projectID = doc.getValueInt("projectdocid");
+					String url = "";
+					String currentUserID = doc.getCurrentUser()?.getUserID();					
+					if (projectID != 0 && currentUserID) {						
+						def project = doc.getSession()?.getCurrentDatabase()?.getProjectByID(projectID);
+						url = project.getURL();
+					}
+					return getAsArray(url);
+				}
+				]]></value>
+		</field>
+		<field mode="on">
+			<name>projectviewtext</name>
+			<value source="script"><![CDATA[
+				String[] getStringValue(_Document doc){
+					int projectID = doc.getValueInt("projectdocid");
+					String currentUserID = doc.getCurrentUser()?.getUserID();
+					String viewtext = "";
+					if (projectID != 0 && currentUserID) {						
+						def project = doc.getSession()?.getCurrentDatabase()?.getProjectByID(projectID);
+						viewtext = project.getViewText();
+					}
+					return getAsArray(viewtext);
+				}
+				]]></value>
+		</field>
+	</show>
+	<save>
+	<field mode="on">
+			<value source="static">workdoc</value>
+			<docfield>defaultruleid</docfield>
+	</field>
+		
+	</save>
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("briefcontent"));
+		}
+	]]></viewtext>
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			def recipientsID = doc.getValueList("recipient");
+			String recipientsNames = "";
+			recipientsID.each{
+				recipientsNames += doc.getSession().getStructure().getUser(it)?.getShortName() + ", ";
+			}
+			if (recipientsNames) recipientsNames = recipientsNames.substring(0, recipientsNames.length() - 2);
+			return getAsArray(recipientsNames);
+		}
+	]]></viewtext>
+	
+	<viewtext></viewtext>
+	<viewdate><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("dvn"));
+		}
+	]]></viewdate>
+	<viewnumber><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("vn"));
+		}
+	]]></viewnumber>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="doctypemultilang" source="KEYWORD">Cлужебная записка</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="files" source="KEYWORD">Файлы</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="timeofreading" source="KEYWORD">Время прочтения</caption>
+	<caption name="whomread" source="KEYWORD">Кем прочтен</caption>
+	<caption name="commentcaption" source="KEYWORD">Комментарий</caption>
+	<caption name="correspforacquaintance" source="KEYWORD">Список корреспондентов для ознакомления</caption>
+	<caption name="searchcaption" source="KEYWORD">поиск</caption>
+	<caption name="memo" source="KEYWORD">Служебная записка</caption>
+	<caption name="projectdoc" source="KEYWORD">Проект документа</caption>
+	<caption name="projectout" source="KEYWORD">Проект исходящего</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="project" source="KEYWORD">Проект</caption>
+	<caption name="har" source="KEYWORD">Характер вопроса</caption>
+	<caption name="corr" source="KEYWORD">Подписал</caption>
+	<caption name="signer" source="KEYWORD">Подписал</caption>
+	<caption name="recipient" source="KEYWORD">Получатель</caption>
+	<caption name="briefcontent" source="KEYWORD">Краткое содержание</caption>
+	<caption name="ctrldate" source="KEYWORD">Срок исполнения</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="vnish" source="KEYWORD">Является ответным на</caption>
+	<caption name="contentsource" source="KEYWORD">Основной текст</caption>
+	<caption name="dvn" source="KEYWORD">от</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="add_comment" source="KEYWORD">Добавить комментарий</caption>
+	<caption name="delete_file" source="KEYWORD">Удалить файл</caption>
+	<caption name="comments" source="KEYWORD">комментарий</caption> 	
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name="DS" source="KEYWORD">ЭЦП</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+</rule>
+ 

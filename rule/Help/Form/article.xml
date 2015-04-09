@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="form" id="article" mode="on">
+	<description>Статья</description>
+	<xsltfile>forms/article.xsl</xsltfile>
+	<doctype>main</doctype>
+	<events>
+		<queryopen source="file">help.form.article.QueryOpen</queryopen>
+		<querysave source="file">help.form.article.QuerySave</querysave>
+	</events> 
+	<caption name="saveandclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption> 
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="searchcaption" source="KEYWORD">Поиск</caption>
+	<caption name="docdate" source="KEYWORD">Дата записи</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="docauthor" source="KEYWORD">Автор</caption>
+    <caption name ="help" source ="KEYWORD">Помощь</caption>
+	<caption name ="logout" source ="KEYWORD">Завершить работу</caption>
+	<caption name ="documents" source ="KEYWORD">Записей</caption>
+	<caption name ="addcommentforattachment" source ="KEYWORD">Добавить комментарий к вложению?</caption>
+	<caption name ="showfilename" source ="KEYWORD">Укажите имя файла для вложения</caption>
+	<caption name ="addcomment" source ="KEYWORD">Добавить комментарий</caption>
+	<caption name ="attention" source ="KEYWORD">Внимание</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name="delete_file" source="KEYWORD">Удалить файл</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="topic" source="KEYWORD">Заголовок</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="linked_docs" source="KEYWORD">Связаные документы</caption>
+	<caption name="app_title" source="KEYWORD">Помощь</caption>
+	<caption name="linked_docs_comment" source="KEYWORD">Комментарий</caption>
+	<caption name="comments" source="KEYWORD">комментарий</caption>
+	<caption name="formtitle" source="KEYWORD">Статья</caption>
+	<caption name ="addtofav" source ="KEYWORD">Добавить в избранное</caption>
+	<caption name ="removefromfav" source ="KEYWORD">Удалить с избранного</caption>
+	<caption name ="search" source ="KEYWORD">Поиск</caption>
+	
+	<caption name="viewtext" source="KEYWORD">Категория</caption>
+	<caption name="viewtext1" source="KEYWORD">Заголовок</caption>
+	<caption name ="viewtext2" source ="KEYWORD">Связаные документы</caption>
+	<caption name="viewtext3" source="KEYWORD">Коментарий</caption>
+	<caption name="linkeddocs" source="KEYWORD">Связанные ссылки</caption>
+	<caption name ="support" source ="KEYWORD">Служба поддержки</caption>
+	
+</rule>

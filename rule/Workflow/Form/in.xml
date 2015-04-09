@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="in" mode="on">
+	<description/>
+	<xsltfile>forms/in.xsl</xsltfile>
+	<doctype>main</doctype>
+	<default>
+		<action mode="on" type="SAVE">
+			<caption source="KEYWORD">Сохранить и закрыть</caption>
+			<granted source="macro" mode="on">current_user</granted>
+		</action>
+		<field mode="on" tosign="on">
+			<name>har</name>
+		</field>
+		<field mode="on">
+			<name>vn</name>
+			<value source="static"/>
+		</field>
+		<field mode="on" type="datetime">
+			<name>dvn</name>
+			<value source="macro">current_time</value>
+		</field>
+		<field mode="on">
+			<name>in</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>din</name>
+		</field>
+		<field mode="on" type="datetime">
+			<name>ctrldate</name>
+			<value source="script"><![CDATA[String[] getStringValue(_Session session){
+					return getAsArray(session.getCurrentDateAsString(30));
+			}]]>
+			</value>
+			
+		</field>
+		<field mode="on">
+			<name>recipient</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>deliverytype</name>
+			<value source="static"/>
+		</field>
+		<field mode="on" tosign="on">
+			<name>briefcontent</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>remark</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>lang</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>vid</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>vnish</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>backvnin</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>np</name>
+			<value source="static"/>
+		</field>
+		<field mode="on" publishas="USER">
+			<name>author</name>
+			<value source="macro">current_user</value>
+		</field>
+		<field mode="on">
+			<name>corr</name>
+		</field>
+	</default>
+	<show>
+		<granted source="static" mode="off">{registrator}</granted>
+		<action mode="on" type="SAVE">
+			<caption source="KEYWORD">Сохранить и закрыть</caption>	
+			<granted source="macro" mode="on">current_user</granted>
+		</action>
+		<action mode="on" type="GRANT_ACCESS">
+			<caption source="KEYWORD">Ознакомить</caption>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					return getAsArray(doc.getValueString('author'));
+				}
+				]]></granted>
+		</action>
+		<action mode="on" type="COMPOSE_TASK">
+			<caption source="KEYWORD">Резолюция</caption>
+			<granted source="static" mode="on">john</granted>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					return getAsArray(doc.getValueList("recipient").find{it == doc.getSession()?.getCurrentUser()}?:"");
+				}			
+				]]>
+			</granted>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					def session = doc.getSession();
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole("chancellery") ? user.getUserID() : "");
+				}
+				]]>
+			</granted>
+		</action>
+		<action mode="on" type="COMPOSE_DISCUSSION">
+			<caption source="KEYWORD">Обсуждение</caption>
+			<granted source="static" mode="on">john</granted>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					def session = doc.getSession();
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole("chancellery") ? user.getUserID() : "");
+				}
+				]]>
+			</granted>
+		</action>
+		<action mode="on" type="COMPOSE_EXECUTION">
+			<caption source="KEYWORD">Отметить исполнение</caption>
+			<granted source="static">john</granted>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					return getAsArray(doc.getValueList("recipient").find{it == doc.getSession()?.getCurrentUser()}?:"");					
+				}
+				]]>
+			</granted>
+		</action>
+	
+		<field mode="on">
+			<name>vn</name>
+			<value source="docfield">vn</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>har</name>
+			<value source="docfield">har</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>vid</name>
+			<value source="docfield">vid</value>
+		</field>
+		<field mode="on" type="datetime">
+			<name>dvn</name>
+			<value source="docfield">dvn</value>
+		</field>
+		<field mode="on">
+			<name>in</name>
+			<value source="docfield">in</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>deliverytype</name>
+			<value source="docfield">deliverytype</value>
+		</field>
+		<field mode="on" type="datetime">
+			<name>din</name>
+			<value source="docfield">din</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>project</name>
+			<value source="docfield">project</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>category</name>
+			<value source="docfield">category</value>
+		</field>
+		<field mode="on" publishas="EMPLOYER">
+			<name>recipient</name>
+			<value source="docfield">recipient</value>
+		</field>
+		<field mode="on">
+			<name>briefcontent</name>
+			<value source="docfield">briefcontent</value>
+		</field>
+		<field mode="on" type="datetime">
+			<name>ctrldate</name>
+			<value source="docfield">ctrldate</value>
+		</field>
+		<field mode="on" publishas="USER">
+			<name>author</name>
+			<value source="docfield">author</value>
+		</field>
+		<field mode="on">
+			<name>rtfcontent</name>
+			<value source="doc_attachment">rtfcontent</value>
+		</field>
+		<field mode="on">
+			<name>remark</name>
+			<value source="docfield">remark</value>
+			<caption source="KEYWORD">Примечание</caption>
+		</field>
+		<field mode="on">
+			<name>lang</name>
+			<value source="docfield">lang</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>corr</name>
+			<value source="docfield">corr</value>
+		</field>
+		<field mode="on">
+			<name>np</name>
+			<value source="docfield">np</value>
+		</field>
+		<field mode="on">
+			<name>vnish</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>backvnin</name>
+			<value source="static"/>
+		</field>
+	</show>
+	<events>
+		<queryopen source="file">form.in.QueryOpen</queryopen>
+		<querysave source="file">form.in.QuerySave</querysave>
+		<postsave source="file">form.in.PostSave</postsave>
+	</events> 
+	
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getGlossaryValue("corr", "docid#number=" + doc.getValueString("corr"), "name"));
+		}
+	]]></viewtext>  
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("briefcontent"));
+		}
+	]]></viewtext>
+	<viewtext><![CDATA[]]></viewtext>
+	<viewdate><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("dvn"));
+		}
+	]]></viewdate>
+	<viewnumber><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("vn"));
+		}
+	]]></viewnumber> 
+	<!-- <viewnumber><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("in"));
+		}
+	]]></viewnumber> -->
+	<!-- <querysave><![CDATA[
+		void doQuerySave(_Session session, _Document document, String user){
+			boolean v = true;
+			def validate = {
+				if (document.getValueString("briefcontent") == ""){
+					localizedMsgBox("Поле \"Краткое содержание\" не заполнено.");
+					v = false;
+				}
+				
+				if (document.getValueString("vid") == ""){
+					localizedMsgBox("Поле \"Тип документа\" не заполнено.");
+					v = false;
+				}
+				
+				if (document.getValueString("recipient") == ""){
+					localizedMsgBox("Поле \"Кому адресован\" не заполнено.");
+					v = false;
+				}
+				
+				if (document.getValueString("corr") == ""){
+					localizedMsgBox("Поле \"Откуда поступил\" не заполнено.");
+					v = false;
+				}
+				
+				if (document.getValueString("din") == ""){
+					localizedMsgBox("Поле \"Дата исх. документа\" не заполнено.");
+					v = false;
+				}
+												
+				if (document.getValueString("in") == ""){
+					localizedMsgBox("Поле \"Исходящий №\" не заполнено.");
+					v = false;
+				}			
+			}
+			validate();
+			if (v){
+				if (document.isNewDoc ){
+					def db = session.getCurrentDatabase();
+					int num = db.getRegNumber('in');
+					String vnAsText = Integer.toString(num);				
+					document.addStringField("vn", vnAsText);
+					document.addNumberField("vnnumber",num);
+					localizedMsgBox("Документ зарегистрирован под № " + vnAsText);
+					def dropevents = ["new.remove.doclink.norezol"];
+					document.dropEventAfterPush(dropevents);
+				}	
+				document.setValueString("viewtext", "Входящий документ № " + document.getValueString("vn") + " от " + document.getValueString("dvn"));  
+				def recipients = document.getValueList("recipient");
+				recipients.each{
+					document.addReader(it);
+				}
+				
+				setRedirectView("in");
+			}else{
+				stopSave();
+			}
+		}
+		]]>
+	</querysave> -->
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="doctypemultilang" source="KEYWORD">Входящий документ</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="changeview" source="KEYWORD">Изменить вид</caption>
+	<caption name="receiverslist" source="KEYWORD">Список получателей напоминания</caption>
+	<caption name="correspforacquaintance" source="KEYWORD">Список корреспондентов для ознакомления</caption>
+	<caption name="files" source="KEYWORD">Файлы</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name="searchcaption" source="KEYWORD">поиск</caption>
+	<caption name="newin" source="KEYWORD">Новый входящий документ</caption>
+	<caption name="inсoming" source="KEYWORD">Входящий документ</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="conectedproject" source="KEYWORD">Связан с проектом</caption>
+	<caption name="forum" source="KEYWORD">Обсуждение</caption>
+	<caption name="new" source="KEYWORD">Новый</caption>
+	<caption name="projectout" source="KEYWORD">Проект исходящего</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="har" source="KEYWORD">Характер вопроса</caption>
+	<caption name="vn" source="KEYWORD">Входящий</caption>
+	<caption name="dvn" source="KEYWORD">от</caption>
+	<caption name="din" source="KEYWORD">от</caption>
+	<caption name="vid" source="KEYWORD">Тип документа</caption>
+	<caption name="in" source="KEYWORD">Исходящий</caption>
+	<caption name="deliverytype" source="KEYWORD">Вид доставки</caption>
+	<caption name="project" source="KEYWORD">Проект</caption>
+	<caption name="recipient" source="KEYWORD">Кому адресован</caption>
+	<caption name="briefcontent" source="KEYWORD">Краткое содержание</caption>
+	<caption name="ctrldate" source="KEYWORD">Срок исполнения</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="remark" source="KEYWORD">Примечание</caption>
+	<caption name="lang" source="KEYWORD">Язык обращения</caption>
+	<caption name="corr" source="KEYWORD">Откуда поступил</caption>
+	<caption name="np" source="KEYWORD">Кол-во листов</caption>
+	<caption name="vnish" source="KEYWORD">Является ответным на</caption>
+	<caption name="backvnin" source="KEYWORD">Ответный исходящий</caption>
+	<caption name="DS" source="KEYWORD">ЭЦП</caption>
+	<caption name="userprofile" source="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name="timeofreading" source="KEYWORD">Время прочтения</caption>
+	<caption name="whomread" source="KEYWORD">Кем прочтен</caption>
+	<caption name="onefilenotfound4sign" source="KEYWORD">Не найдено одно из полей для подписи</caption>
+	<caption name="documentnotsigned" source="KEYWORD">Документ не подписан</caption>
+	<caption name="signisfalse" source="KEYWORD">Подпись верна</caption>
+	<caption name="signisfalse" source="KEYWORD">Подпись не верна</caption>
+	<caption name="invalidkey" source="KEYWORD">Недопустимый ключ</caption>
+	<caption name="algorithmnotfound" source="KEYWORD">Не найден криптографический алгоритм</caption>
+	<caption name="fillmechanismnotfound" source="KEYWORD">Не найден механизм заполнения</caption>
+	<caption name="invalidcharkey" source="KEYWORD">Недопустимая характеристика ключа</caption>
+	<caption name="invalidparalgo" source="KEYWORD">Недопустимый параметр алгоритма</caption>
+	<caption name="totalexceptionkey" source="KEYWORD">Общее исключение подписи</caption>
+	<caption name="filecertnotfound" source="KEYWORD">Не найден файл сертификата</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="showfilename" source="KEYWORD">Укажите имя файла для вложения</caption>
+	<caption name ="addcommentforattachment" source ="KEYWORD">Добавить комментарий к вложению?</caption>
+	<caption name="attention" source="KEYWORD">Внимание</caption>
+	<caption name="add_comment" source="KEYWORD">Добавить комментарий</caption>
+	<caption name="comments" source="KEYWORD">комментарий</caption>
+	<caption name="delete_file" source="KEYWORD">Удалить файл</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="outgoingprjlink" source ="KEYWORD">Ответный проект исходящего</caption>
+	<caption name ="outgoingprjexist" source ="KEYWORD">Проект исходящего создан ранее</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<glossary mode="on" id="vid" source="query">
+		<description>Тип документа</description>
+		<value>typedoc</value>
+	</glossary>
+	<glossary mode="on" id="deliverytype" source="query">
+		<description>Вид отправки</description>
+		<value>deliverytype</value>
+	</glossary>
+	<glossary mode="on" id="docscat" source="query">
+		<description>Категория</description>
+		<value>docscat</value>
+	</glossary>
+	<glossary mode="on" id="projectsprav" source="query">
+		<description>Проекты</description>
+		<value>projectsprav</value>
+	</glossary>
+</rule>

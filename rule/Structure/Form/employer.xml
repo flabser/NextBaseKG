@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="employer" mode="on">
+	<description>Сотрудник</description>
+	<xsltfile>forms/employer.xsl</xsltfile>
+	<doctype>employer</doctype>
+	<events>
+ 		<queryopen source="file">structure.form.employer.QueryOpen</queryopen>
+		<querysave source="file">structure.form.employer.QuerySave</querysave>
+<!-- 		<postsave source="file">form.employer.PostSave</postsave> -->
+	</events> 
+	
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="newdept" source="KEYWORD">Новый департамент</caption>
+	<caption name="newemp" source="KEYWORD">Новый сотрудник</caption>
+	<caption name="name" source="KEYWORD">Сотрудник</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="employer" source="KEYWORD">Сотрудник</caption>
+	<caption name="fullname" source="KEYWORD">Полное имя</caption>
+	<caption name="shortname" source="KEYWORD">Сокращенное имя</caption>
+	<caption name="password" source="KEYWORD">Пароль по умолчанию</caption>
+	<caption name="repeatpassword" source="KEYWORD">Повтор пароля</caption>
+	<caption name="organization" source="KEYWORD">Организация</caption>
+	<caption name="department" source="KEYWORD">Департамент</caption>
+	<caption name="post" source="KEYWORD">Должность</caption>
+	<caption name="phone" source="KEYWORD">Телефон</caption>
+	<caption name="rank" source="KEYWORD">Ранг</caption>
+	<caption name="index" source="KEYWORD">Индекс</caption>
+	<caption name="mailing" source="KEYWORD">Рассылка уведомлений</caption>
+	<caption name="comment" source="KEYWORD">Комментарий</caption>
+	<caption name="role" source="KEYWORD">Роли</caption>
+	<caption name="fired" source="KEYWORD">Уволен</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="applications" source="KEYWORD">Приложения и Роли</caption>
+	<caption name="birthdate" source="KEYWORD">Дата рождения</caption>
+	<caption name="publickey" source="KEYWORD">Публичный ключ</caption>
+	<caption name="electronicsignature" source="KEYWORD">Электронная подпись</caption>
+	<caption name="elsignstatus" source="KEYWORD">Электронная подпись отключена.</caption>
+	<caption name="touserandreplacer" source="KEYWORD">Пользователю и замещающему</caption>
+	<caption name="onlytouser" source="KEYWORD">Только пользователю</caption>
+	<caption name="onlytoreplacer" source="KEYWORD">Только замещающему</caption>
+	<caption name="shutoff" source="KEYWORD">Отключить</caption>
+	<caption name="groups" source="KEYWORD">Группы</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="searchcaption" source="KEYWORD">Поиск</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="reenterpassword" source ="KEYWORD">Повтор пароля</caption>
+	<glossary mode="on" id="post" source="query">
+		<description>Должность</description>
+		<value>post</value>
+	</glossary>
+	<glossary mode="on" id="roles" source="macro">APPLICATION_ROLES</glossary>
+	<glossary mode="on" id="group" source="query">
+		<description>Группа</description>
+		<value>group</value>
+	</glossary>
+	
+	<glossary mode="on" id="apps" source="macro">AVAILABLE_APPLICATIONS</glossary>
+ 	<glossary mode="on" id="application" source="macro">ALL_APPLICATIONS</glossary>
+	
+</rule>

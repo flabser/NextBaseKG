@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="struct">
+	<description>Структура</description>
+	<rununderuser source="static">observer</rununderuser>	
+	<doctype>glossary</doctype>
+	<query source="macro">struct</query>
+	<field mode="on">
+     	<name>viewtext</name>
+ 	    <value source="macro">VIEW_TEXT</value>
+   	</field> 
+     <field mode="on">    
+        <name>userid</name>
+        <value source="docfield">userid</value>    
+   	 </field>
+     <field mode="on">    
+        <name>userid</name>
+        <value source="static">userid</value>    
+   	 </field>
+</rule>

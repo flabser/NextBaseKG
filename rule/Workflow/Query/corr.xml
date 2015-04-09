@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="corr">
+	<description>Список корреспондентов</description>
+	<rununderuser source="static">observer</rununderuser>	
+	<doctype>GLOSSARY</doctype>
+	<query source="static">form = 'corr'</query>
+	<groupby source="static" publishas="GLOSSARY">corrcat</groupby>
+	<field mode="on">	
+		<name>code</name>
+		<value source="resultset">code</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>name</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>shortname</name>
+		<value source="resultset">shortname</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	
+	
+</rule>

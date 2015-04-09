@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="form" id="category" mode="on">
+	<description>Категория</description>
+	<title>Категория</title>
+	<xsltfile>forms/glossary-form.xsl</xsltfile>
+	<doctype>glossary</doctype>
+
+	<events> 
+		<queryopen source="file">help.form.category.QueryOpen</queryopen>
+		<querysave source="file">help.form.category.QuerySave</querysave>
+	</events>
+
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="docdate" source="KEYWORD">Дата записи</caption>
+	<caption name="docauthor" source="KEYWORD">Автор</caption>
+	<caption name="title" source="KEYWORD">Категория</caption>
+	<caption name="name" source="KEYWORD">Название</caption>
+	<caption name="app_title" source="KEYWORD">Помощь</caption>
+	<caption name="saveandclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name ="help" source ="KEYWORD">Помощь</caption>
+	<caption name ="logout" source ="KEYWORD">Завершить работу</caption>
+	<caption name ="documents" source ="KEYWORD">Записей</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+</rule>

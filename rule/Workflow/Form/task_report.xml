@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="task_report" mode="on">
+	<description>Форма отчета</description>
+	<xsltfile>forms/task_report.xsl</xsltfile>
+	<doctype>main</doctype>
+	<events>
+		<queryopen source="file">form.task_report.QueryOpen</queryopen>
+	</events> 
+	<querysave><![CDATA[
+		void doQuerySave(_Session ses, _Document doc, String user){
+            def struct = ses.getStructure();
+            def u = struct.getUser(doc.getValueString("taskauthor"));
+            String sh = u.getShortName();
+            def t = (_Task)doc;
+            String rview = "";   
+       		setRedirectView("report_tasks");
+	}
+	]]></querysave>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="performer" source="KEYWORD">исполнитель</caption>
+	<caption name="date" source="KEYWORD">дата</caption>
+	<caption name="removedby" source="KEYWORD">кто снял</caption>
+	<caption name="control" source="KEYWORD">Контроль</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="taskauthor" source="KEYWORD">Автор резолюции</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="onceonly" source="KEYWORD">Разовый</caption>
+	<caption name="daily" source="KEYWORD">Ежедневно</caption>
+	<caption name="weekly" source="KEYWORD">Еженедельно</caption>
+	<caption name="monthly" source="KEYWORD">Ежемесячно</caption>
+	<caption name="quarterly" source="KEYWORD">Ежеквартально</caption>
+	<caption name="semiannual" source="KEYWORD">Полугодовой</caption>
+	<caption name="annually" source="KEYWORD">Ежегодно</caption>
+	<caption name="kr" source="KEYWORD">Резолюция</caption>
+	<caption name="kp" source="KEYWORD">Перепоручение</caption>
+	<caption name="task" source="KEYWORD">Задание</caption>
+	<caption name="incontrol" source="KEYWORD">На контроле</caption>
+	<caption name="removedofcontrol" source="KEYWORD">Снято с контроля</caption>
+	<caption name="briefcontent" source="KEYWORD">Краткое содержание</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="searchcaption" source="KEYWORD">поиск</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="taskdate" source="KEYWORD">Дата резолюции</caption>
+	<caption name="controltype" source="KEYWORD">Тип контроля</caption>
+	<caption name="ctrldate" source="KEYWORD">Срок исполнения</caption>
+	<caption name="from" source="KEYWORD">с</caption>
+	<caption name="to" source="KEYWORD">по</caption>
+	<caption name="inbrowserwindow" source="KEYWORD">в окне браузера</caption>
+	<caption name="openreport" source="KEYWORD">Открыть отчет </caption>
+	<caption name="reportfiletype" source="KEYWORD">Тип файла отчета </caption>
+	<caption name="report" source="KEYWORD">Отчет</caption>
+	<caption name="bydefaultinprogram" source="KEYWORD">в программе по умолчанию</caption>
+	<caption name="new" source="KEYWORD">Новый</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<glossary mode="on" id="controltype" source="query">
+		<description>Типы контроля</description>
+		<value>controltype</value>
+	</glossary>
+</rule>

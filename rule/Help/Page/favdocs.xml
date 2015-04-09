@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="favdocs" mode="on" history="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/favdoc-page.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="QUERY">
+		<name>query</name>
+		<doctype>document</doctype>
+		<query source="macro">FAVOURITES</query>
+		<query source="macro">favourites_count</query>
+	</element>	
+	<caption name="viewtext" source="KEYWORD">Краткое содержание</caption>
+	<caption name ="help" source ="KEYWORD">Помощь</caption>
+	<caption name ="logout" source ="KEYWORD">Завершить работу</caption>
+	<caption name ="documents" source ="KEYWORD">Записей</caption> 	
+	<caption name ="removefromfav" source ="KEYWORD">Удалить с избранного</caption>
+	<caption name ="removefromfavsbutton" source ="KEYWORD">Удалить из избранных</caption>
+	<caption name ="search" source ="KEYWORD">Поиск</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="app_title" source ="KEYWORD">Помощь</caption> 
+</rule>

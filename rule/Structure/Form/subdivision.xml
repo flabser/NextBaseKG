@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="form" id="SubDivision" mode="on">
+    <description>Тип подразделения</description>
+    <xsltfile>forms/subdivision.xsl</xsltfile>
+    <doctype>glossary</doctype>
+    <default>	
+    </default>
+    <show>
+        <field mode="on">	
+            <name>name</name>			
+            <value source="docfield">name</value>
+            <caption source="KEYWORD">Тип подразделения</caption>	
+        </field>
+        <field mode="on">	
+            <name>code</name>			
+            <value source="docfield">code</value>
+            <caption source="KEYWORD">Код</caption>	
+        </field>
+    </show>
+    <save>		
+        <field mode="on">	
+            <value source="static">subdivision</value>
+            <docfield>form</docfield>				
+        </field>
+        <field mode="on">	
+            <value source="webformfield">name</value>
+            <docfield>name</docfield>				
+        </field>
+        <field mode="on">	
+            <value source="webformfield">code</value>
+            <docfield>code</docfield>				
+        </field>
+        <field mode="on">	
+            <value source="webformfield">name</value>
+            <docfield type="viewtext"></docfield>				
+        		</field>
+			<field mode="on">
+			<value source="static">subdivision</value>
+			<docfield>defaultruleid</docfield>
+		</field>
+		
+	</save>
+	<querysave><![CDATA[
+		void doQuerySave(_Session session, _Document document, String user){
+		boolean v = true;
+		def validate = {
+			if (document.getValueString("code") == ""){
+					localizedMsgBox("Поле \"Код\" не заполнено.");
+					v = false;
+				}
+			if (document.getValueString("name") == ""){
+					localizedMsgBox("Поле \"Тип поздразделения\" не заполнено.");
+					v = false;
+				}
+			
+			}
+			validate();
+			if (v){
+				document.setViewText(document.getValueString('name'));
+				document.addViewText(document.getValueString('code'));
+			}else{
+				stopSave();
+			}
+			}
+	]]>
+	</querysave>
+	
+	<viewdate><![CDATA[]]></viewdate>
+	<viewnumber><![CDATA[]]></viewnumber>
+    <caption name="newdoc" source="KEYWORD">Новый документ</caption>
+    <caption name="editing" source="KEYWORD">Редактирование</caption>
+    <caption name="readonly" source="KEYWORD">Только для чтения</caption>
+    <caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+    <caption name="saved" source="KEYWORD">Сохраненный</caption>
+    <caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="name" source="KEYWORD">Тип подразделения</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="code" source="KEYWORD">Код</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+</rule>

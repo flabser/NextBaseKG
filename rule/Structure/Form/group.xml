@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="Group" mode="on">
+    <description>Группа сотрудников</description>
+    <xsltfile>forms/group.xsl</xsltfile>
+    <doctype>group</doctype>
+   <events>
+ 		<queryopen source="file">structure.form.group.QueryOpen</queryopen>
+		<querysave source="file">structure.form.group.QuerySave</querysave>
+<!-- 		<postsave source="file">form.employer.PostSave</postsave> -->
+	</events>
+   
+
+    <caption name="newdoc" source="KEYWORD">Новый документ</caption>
+    <caption name="editing" source="KEYWORD">Редактирование</caption>
+    <caption name="readonly" source="KEYWORD">Только для чтения</caption>
+    <caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+    <caption name="saved" source="KEYWORD">Сохраненный</caption>
+    <caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="name" source="KEYWORD">Группа пользователей</caption>
+	<caption name="description" source="KEYWORD">Описание</caption>
+	<caption name="ownergroup" source="KEYWORD">Владелец группы</caption>
+	<caption name="partgroup" source="KEYWORD">Участники группы</caption>
+	<caption name="role" source="KEYWORD">Роли</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="searchcaption" source="KEYWORD">Поиск</caption>
+    <glossary mode="on" id="roles" source="macro">APPLICATION_ROLES</glossary>
+    <caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+</rule>

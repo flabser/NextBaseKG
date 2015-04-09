@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="docsbyprojectlist">
+	<description>Документы, категоризованные по проектам</description>
+	<rununderuser source="macro">current_user</rununderuser>
+	<granted source="static" mode="off">{registrator}</granted>
+	<!-- 	<query source="static">form = 'IN' or form = 'ISH'</query> -->
+	 <query source="static">project#glossary ~ '$keyword'</query> 
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<!-- <groupby source="static" publishas="GLOSSARY">project</groupby> -->
+	<doctype>document</doctype>	
+	<field mode="on" publishas="GLOSSARY">	
+		<name>category</name>
+		<value source="resultset">project</value>	
+		<attrvalue></attrvalue>	
+	</field>
+</rule>

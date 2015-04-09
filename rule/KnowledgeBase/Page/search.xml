@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="search" mode="on" history="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/search.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>view_content</name>
+		<events>
+			<doscript source="file">knowledgebase.page.views.Search</doscript>
+		</events>
+	</element>
+	<caption name="viewdate" source="KEYWORD"></caption>
+	<caption name="viewtext" source="KEYWORD">Тема</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="documents" source="KEYWORD">Записей</caption>
+	<caption name="search" source="KEYWORD">Поиск</caption>
+	<caption name="addtofav" source="KEYWORD">Добавить в избранное</caption>
+	<caption name="removefromfav" source="KEYWORD">Удалить с избранного</caption>
+	<caption name="view_userprofile" source="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name="app_title" source="KEYWORD">База знаний</caption>
+</rule>

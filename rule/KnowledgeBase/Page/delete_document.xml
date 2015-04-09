@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="delete_document" mode="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<element mode="ON" type="SCRIPT">
+		<name></name>
+		<events>
+			<doscript source="file">knowledgebase.page.actions.DeleteDocument</doscript>
+		</events>
+	</element>
+</rule>

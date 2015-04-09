@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="outline" id="navigator" mode="on">
+	<description>Navigator outline</description>
+	<xsltfile>outline.xsl</xsltfile>
+	<outline>
+		<entry id="mydocs" mode="on">			
+			<caption source="KEYWORD">Мои документы</caption>
+			<hint source="KEYWORD">Мои документы</hint>
+			<granted source="script" mode="off"><![CDATA[
+				String[] getStringValue(_Session session){
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole("registrator_incoming1") ? user.getUserID() : "");
+				}
+				]]>
+			</granted>
+			<entry mode="on"
+				url="Provider?type=view&amp;id=toconsider&amp;page=0" id="toconsider">
+				<caption source="KEYWORD">На рассмотрение</caption>
+				<hint source="KEYWORD">На рассмотрение</hint>					
+			</entry>
+			<entry mode="on"
+				url="Provider?type=view&amp;id=taskforme&amp;page=0" id="taskforme">
+				<caption source="KEYWORD">Поручено мне</caption>
+				<hint source="KEYWORD">Поручено мне</hint>
+			</entry>
+			<entry mode="on"
+				url="Provider?type=view&amp;id=mytasks&amp;page=0" id="mytasks">
+				<caption source="KEYWORD">Мои задания</caption>
+				<hint source="KEYWORD">Мои задания</hint>
+			</entry>
+			<entry mode="on"
+				url="Provider?type=view&amp;id=completetask&amp;page=0" id="completetask">
+				<caption source="KEYWORD">Исполненные</caption>
+				<hint source="KEYWORD">Исполненные</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=waitforcoord&amp;page=0" hint="На согласование" id="waitforcoord">
+				<caption source="KEYWORD">На согласование</caption>
+				<hint source="KEYWORD">На согласование</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=waitforsign&amp;page=0" hint="На подпись" id="waitforsign">
+				<caption source="KEYWORD">На подпись</caption>
+				<hint source="KEYWORD">На подпись</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=favdocs&amp;page=0" hint="На подпись" id="favdocs">
+				<caption source="KEYWORD">Избранные</caption>
+				<hint source="KEYWORD">Избранные</hint>
+			</entry>
+		</entry>
+		<entry id="orgdocs" mode="on">
+			<caption source="KEYWORD">Документы организации</caption>
+			<hint source="KEYWORD">Документы организации</hint>
+			<entry mode="on" url="Provider?type=view&amp;id=sz&amp;page=0" hint="Служебные записки" id="sz">
+				<caption source="KEYWORD">Служебные записки</caption>
+				<hint source="KEYWORD">Служебные записки</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=in&amp;page=0" hint="Входящие" id="in">
+				<caption source="KEYWORD">Входящие</caption>
+				<hint source="KEYWORD">Входящие</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=ish&amp;page=0" hint="Исходящие" id="ish">
+				<caption source="KEYWORD">Исходящие</caption>
+				<hint source="KEYWORD">Исходящие</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=obr&amp;page=0" hint="Обращения граждан" id="obr">
+				<caption source="KEYWORD">Обращения граждан</caption>
+				<hint source="KEYWORD">Обращения граждан</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=tasks&amp;page=0" hint="Задания" id="tasks">
+				<caption source="KEYWORD">Задания</caption>
+				<hint source="KEYWORD">Задания</hint>
+			</entry>
+			<entry mode="off" url="Provider?type=view&amp;id=ord&amp;page=0" hint="Приказы" id="ord">
+				<caption source="KEYWORD">Приказы</caption>
+				<hint source="KEYWORD">Приказы</hint>
+			</entry>
+		</entry>
+		<entry id="projects" mode="on">
+			<caption source="KEYWORD">Проекты организации</caption>
+			<hint source="KEYWORD">Проекты организации</hint>
+			<entry mode="on" type="link" url="Provider?type=view&amp;id=workdocprj&amp;page=0" hint="Служебные записки" id="workdocprj">
+				<caption source="KEYWORD">Служебные записки</caption>
+				<hint source="KEYWORD">Служебные записки</hint>
+			</entry>
+			<entry mode="on" type="link" url="Provider?type=view&amp;id=outdocprj&amp;page=0" hint="Исходящие" id="outdocprj">
+				<caption source="KEYWORD">Исходящие</caption>
+				<hint source="KEYWORD">Исходящие</hint>
+			</entry>
+			<entry mode="off" url="Provider?type=view&amp;id=ordprj&amp;page=0" hint="Приказы" id="ordprj">
+				<caption source="KEYWORD">Приказы</caption>
+				<hint source="KEYWORD">Приказы</hint>
+			</entry>
+		</entry>
+		<entry id="regdocs" mode="on">
+			<caption source="KEYWORD">На регистрацию</caption>
+			<hint source="KEYWORD">На регистрацию</hint>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Session session){
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole(["chancellery", "administrator"]) ? user.getUserID() : "");
+				}
+				]]>
+			</granted>
+			
+			<entry mode="on" type="link" url="Provider?type=view&amp;id=outdocreg&amp;page=0" hint="Исходящие" id="outdocreg">
+				<caption source="KEYWORD">Исходящие</caption>
+				<hint source="KEYWORD">Исходящие</hint>
+			</entry>
+			<entry mode="off" url="Provider?type=view&amp;id=ordreg&amp;page=0" hint="Приказы" id="ordreg">
+				<caption source="KEYWORD">Приказы</caption>
+				<hint source="KEYWORD">Приказы</hint>
+			</entry>
+		</entry>
+		<entry id="reports" mode="on">
+			<caption source="KEYWORD">Отчеты</caption>
+			<hint source="KEYWORD">Отчеты</hint>
+			<entry mode="on" type="link" url="Provider?type=view&amp;id=report_tasks&amp;page=0" hint="Задания" id="report_tasks">
+				<caption source="KEYWORD">Задания</caption>
+				<hint source="KEYWORD">Задания</hint>
+			</entry>
+		</entry>
+		<entry id="category" mode="off">
+			<caption source="KEYWORD">По категориям</caption>
+			<hint source="KEYWORD">По категориям</hint>
+			<entry mode="on" url="Provider?type=view&amp;id=docsbyprojectlist" id="docsbyprojectlist">
+				<caption source="KEYWORD">По проектам</caption>
+				<hint source="KEYWORD">По проектам</hint>
+			</entry>
+		</entry>
+		<entry id="glossary" mode="on">
+			<caption source="KEYWORD">Справочники</caption>
+			<hint source="KEYWORD">Справочники</hint>
+			 <granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Session session){
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole(["supervisor","administrator","chancellery"]) ? user.getUserID() : "");
+				}
+				]]>
+			</granted>			
+			<entry mode="off" url="Provider?type=view&amp;id=structurelist" id="structurelist">
+				<caption source="KEYWORD">Структура организации</caption>
+				<hint source="KEYWORD">Структура организации</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=controltype" id="controltype">
+				<caption source="KEYWORD">Тип контроля</caption>
+				<hint source="KEYWORD">Тип контроля</hint>
+			</entry>
+			<entry mode="off" url="Provider?type=view&amp;id=folder" id="folder">
+				<caption source="KEYWORD">Папка</caption>
+				<hint source="KEYWORD">Папка</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=docscat&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="docscat">
+				<caption source="KEYWORD">Категория</caption>
+				<hint source="KEYWORD">Категория</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=har" id="har">
+				<caption source="KEYWORD">Характер вопроса</caption>
+				<hint source="KEYWORD">Характер вопроса</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=typedoc&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="typedoc">
+				<caption source="KEYWORD">Тип документа</caption>
+				<hint source="KEYWORD">Тип документа</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=deliverytype&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="deliverytype">
+				<caption source="KEYWORD">Вид доставки</caption>
+				<hint source="KEYWORD">Вид доставки</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=cat" id="cat">
+				<caption source="KEYWORD">Категория граждан</caption>
+				<hint source="KEYWORD">Категория граждан</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=nomentypelist&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="nomentypelist">
+				<caption source="KEYWORD">Номенклатура дел</caption>
+				<hint source="KEYWORD">Номенклатура дел</hint>
+			</entry>
+			<entry mode="off" url="Provider?type=view&amp;id=post&amp;sortfield=VIEWTEXT2&amp;order=ASC" id="post">
+				<caption source="KEYWORD">Должность</caption>
+				<hint source="KEYWORD">Должность</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=corrlist&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="corrlist">
+				<caption source="KEYWORD">Корреспонденты</caption>
+				<hint source="KEYWORD">Корреспонденты</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=corrcatlist&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="corrcatlist">
+				<caption source="KEYWORD">Категория корреспондентов</caption>
+				<hint source="KEYWORD">Категория корреспондентов</hint>
+			</entry>
+			<entry mode="off" url="Provider?type=view&amp;id=subdivisionlist&amp;sortfield=VIEWTEXT1&amp;order=ASC" id="subdivisionlist">
+				<caption source="KEYWORD">Тип подразделения</caption>
+				<hint source="KEYWORD">Тип подразделения</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=city" id="city">
+				<caption source="KEYWORD">Регион/Город</caption>
+				<hint source="KEYWORD">Регион/Город</hint>
+			</entry>
+			<entry mode="on" url="Provider?type=view&amp;id=projectsprav" id="projectsprav">
+				<caption source="KEYWORD">Проекты</caption>
+				<hint source="KEYWORD">Проекты</hint>
+			</entry>			
+			<entry mode="off" url="Provider?type=view&amp;id=group" id="group">
+				<caption source="KEYWORD">Группы пользователей</caption>
+				<hint source="KEYWORD">Группы пользователей</hint>
+			</entry>
+		</entry>
+		<entry id="recyclebin" mode="on">
+			<caption source="KEYWORD">Корзина</caption>
+			<hint source="KEYWORD">Корзина</hint>
+			<entry mode="on" url="Provider?type=view&amp;id=recyclebin" id="recyclebin">
+				<caption source="KEYWORD">Корзина</caption>
+				<hint source="KEYWORD">Корзина</hint>
+			</entry>
+		</entry>
+		<default>
+			<field mode="on">
+				<name>logout</name>
+				<value source="static">logout</value>
+				<caption source="KEYWORD">Завершить работу</caption>
+			</field>
+			<field mode="on">
+				<name>documentmanager</name>
+				<value source="static">documentmanager</value>
+				<caption source="KEYWORD">Документооборот</caption>
+			</field>
+			<field mode="on">
+				<name>outlinetitle</name>
+				<value source="static">outlinetitle</value>
+				<caption source="KEYWORD">Список документов</caption>
+			</field>
+			<field mode="on">
+				<name>orgtitle</name>
+				<value source="static">ТОО Avanti</value>
+			</field>
+		</default>
+	</outline>
+</rule>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="view" id="docthread">
+	<description>Ответные адокументы</description>
+	<query>responses</query>		
+	<xsltfile>views\docthread.xsl</xsltfile>	
+</rule>

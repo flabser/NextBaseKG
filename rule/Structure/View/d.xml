@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="d" history="on">
+	<description>Обсуждения</description>
+	<query>d</query>		
+	<xsltfile>views\view.xsl</xsltfile>
+	<title source="KEYWORD">Обсуждения</title>
+	<field mode="off">
+		<description></description>
+		<name>newDocURL</name>
+		<value><![CDATA[Provider?type=document&amp;id=in&amp;key=]]></value>
+	</field>
+	<column>
+		<caption id="category" source="KEYWORD">Документы организации</caption>
+	</column>
+	<column>
+		<caption id="view" source="KEYWORD">Обсуждения</caption>
+	</column>
+	<column>
+		<caption id="datereg" source="KEYWORD">Дата регистрации</caption>
+	</column>
+	<column>
+		<caption id="corr" source="KEYWORD">Отправитель</caption>
+	</column>
+	<column>
+		<caption id="briefcontent" source="KEYWORD">Краткое содержание</caption>
+	</column>	
+	<column>
+		<caption id="viewtext1" source="KEYWORD">Откуда поступил</caption>
+	</column>	
+	<column>
+		<caption id="viewtext2" source="KEYWORD">Краткое содержание</caption>
+	</column>	
+	<column>
+		<caption id="viewtext3" source="KEYWORD"></caption>
+	</column>	
+	<column>
+		<caption id="viewnumber">№</caption>
+	</column>	
+	<column>
+		<caption id="viewdate" source="KEYWORD">Дата</caption>
+	</column>	
+	<column>
+		<caption id="page" source="KEYWORD">Страница</caption>
+	</column>
+	<column>
+		<caption id="documents" source="KEYWORD">Документов</caption>
+	</column>
+	<column>
+		<caption id="updates" source="KEYWORD">Обновлено</caption>
+	</column>
+	<column>
+		<caption id="from" source="KEYWORD">из</caption>
+	</column>
+	<column>
+		<caption id="btnNewDocument" source="KEYWORD">Новый входящий документ</caption>
+	</column>
+	<column>
+		<caption id="BTNDELETEDOCUMENT" source="KEYWORD">Удалить документ</caption>
+	</column>
+	<column>
+	<caption id ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	</column>
+	<column>
+		<caption id="helpcaption" source="KEYWORD">Помощь</caption>
+	</column>
+	<action mode="on" type="NEW_DOCUMENT">
+		<caption source="KEYWORD">Новый входящий документ</caption>
+		<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Session session){
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole(["registrator_incoming", "administrator"]) ? user.getUserID() : "");
+				}
+				]]>
+		</granted>
+		
+	</action>
+	<action mode="on" type="DELETE_DOCUMENT">
+		<caption source="KEYWORD">Удалить документ</caption>
+		<granted source="script" mode="on"><![CDATA[
+			String[] getStringValue(_Session session){
+				def user = session.getStructure().getUser(session.getCurrentUser());
+				return getAsArray(user.hasRole(["administrator", "chancellery"]) ? user.getUserID() : "");
+			}
+			]]></granted>
+
+	</action>
+	<glossary mode="on" id="projectsprav" source="query">
+		<description>Проекты</description>
+		<value>projectsprav</value>
+	</glossary>
+			<glossary mode="on" id="docscat" source="query">
+		<description>Категории</description>
+		<value>docscat</value>
+	</glossary>
+</rule>

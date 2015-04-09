@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="bossandemp">
+	<description>Ответные документы</description>
+	<query>bossandemp</query>		
+	<xsltfile>views\bossandemp.xsl</xsltfile>	
+</rule>

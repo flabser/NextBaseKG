@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="finaldoctype" mode="on" history="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/page-glossary.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>action_bar</name>
+		<events>
+			<doscript source="file">page.actionbar.finaldoctype</doscript>
+		</events>
+	</element>
+	<element mode="ON" type="QUERY">
+		<name>view_content</name>
+		<doctype>glossary</doctype>
+		<query source="static">form = 'finaldoctype'</query>
+		<sortby source="static">VIEWTEXT1#asc</sortby>
+	</element>
+	<caption name="category" source="KEYWORD">Справочники</caption>
+	<caption name="viewnamecaption" source="KEYWORD">Тип конечного документа</caption>
+	<caption name="viewtext1" source="KEYWORD">Название</caption>
+	<caption name="page" source="KEYWORD">Страница</caption>
+	<caption name="documents" source="KEYWORD">Документов</caption>
+	<caption name="updates" source="KEYWORD">Обновлено</caption>
+	<caption name="from" source="KEYWORD">из</caption>
+	<caption name="btnNewDocument" source="KEYWORD">Добавить</caption>
+	<caption name="btnDelete" source="KEYWORD">Удалить</caption>
+	<caption name="helpcaption" source="KEYWORD">Помощь</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name="search" source ="KEYWORD">Поиск</caption>
+</rule>

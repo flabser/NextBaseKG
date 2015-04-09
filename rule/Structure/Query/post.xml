@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="post">
+	<description></description>
+	<doctype>glossary</doctype>
+	<query source="static">form='post'</query>
+	<field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>ranktext</name>
+		<value source="resultset">ranktext</value>	
+		<attrvalue></attrvalue>	
+	</field>
+</rule>

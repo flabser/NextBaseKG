@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="subdivision">
+	<description></description>
+	<doctype>glossary</doctype>
+	<query source="static">form='subdivision'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<field mode="on">	
+		<name>name</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>kod</name>
+		<value source="resultset">kod</value>	
+		<attrvalue></attrvalue>	
+	</field>
+		
+</rule>

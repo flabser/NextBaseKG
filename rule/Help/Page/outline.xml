@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="outline" mode="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/outline.xsl</xsltfile>
+	<element mode="ON" type="SCRIPT">
+		<name>current_outline_entry</name>
+		<events>
+			<doscript source="file">help.page.current_outline_entry.DoScript</doscript>
+		</events>
+	</element>	
+	 
+	<element mode="ON" type="SCRIPT">
+		<name>share_navi</name>
+		<events>
+			<doscript source="file">help.page.outline.DoScript</doscript>
+		</events>
+	</element>
+	<element mode="ON" type="SCRIPT">
+		<name>action_bar</name>
+		<events>
+			<doscript source="file">help.page.actionbar.DoScript</doscript>
+		</events>
+	</element>
+	<caption name ="deleting" source ="KEYWORD">Удаление</caption>
+	<caption name ="documentsdeleted" source ="KEYWORD">Документов удалено</caption>
+	<caption name ="documentsnotdeleted" source ="KEYWORD">Документов не удалено</caption>
+	<caption name ="support" source ="KEYWORD">Служба поддержки</caption>
+	<caption name ="back" source ="KEYWORD">Назад</caption>
+	<caption name ="forward" source ="KEYWORD">Вперед</caption>
+</rule>

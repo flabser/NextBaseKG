@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="outline" mode="on">
+	<description></description>
+    <caching>CACHING_IN_USER_SESSION_SCOPE</caching>
+    <element mode="ON" type="SCRIPT">
+        <name>outline</name>
+        <events>
+            <doscript source="file">structure.page.navigator.DoScript</doscript>
+        </events>
+    </element>
+	<caption name ="deleting" source ="KEYWORD">Удаление</caption>
+	<caption name ="documentsdeleted" source ="KEYWORD">Документов удалено</caption>
+	<caption name ="documentsnotdeleted" source ="KEYWORD">Документов не удалено</caption>
+</rule>

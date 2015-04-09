@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="favdocs">
+	<description>Избранные документы</description>
+	<doctype>task</doctype>
+	<query source="macro">FAVOURITES</query>
+	<query source="macro">favourites_count</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+</rule>

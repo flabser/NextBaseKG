@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="d">
+	<description>Входящие</description>
+	<rununderuser source="macro">current_user</rununderuser>
+	<granted source="static" mode="off">{registrator}</granted>
+	<query source="static">form = 'discussion'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<filtered>
+		<condition>
+			<fieldname>fieldname</fieldname>
+			<value>value</value>
+		</condition>
+	</filtered>
+	<doctype>document</doctype>
+</rule>

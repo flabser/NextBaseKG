@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="mydocs_count" mode="on">
+	<description>Количество моих документов</description>
+	<xsltfile>views\mydocs_count.xsl</xsltfile>
+	<count>toconsider</count>	
+	<count>taskforme</count>	
+	<count>mytasks</count>	
+	<count>completetask</count>	
+	<count>waitforcoord</count>	
+	<count>waitforsign</count>	
+	<count>favdocs</count>	
+</rule>

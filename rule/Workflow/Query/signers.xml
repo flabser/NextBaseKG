@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="signers">
+    <description>Структура</description>
+    <rununderuser source="static">observer</rununderuser>    
+    <doctype>STRUCTURE</doctype>
+    <query source="macro">signer</query>
+    <field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">fullname</value>	
+		<attrvalue></attrvalue>	
+	</field>	
+</rule>

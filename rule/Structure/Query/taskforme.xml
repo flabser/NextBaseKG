@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="taskforme">
+	<description>Карточки резолюции</description>
+	<doctype>task</doctype>
+	<query source="macro">TASKSFORME</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<!--<field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">viewtext</value>	
+		<attrvalue></attrvalue>	
+	</field>
+			
+--></rule>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="view" id="structurefullpicklist" history="on'">
+	<description>Ответные адокументы</description>
+	<query>structurelist</query>		
+	<xsltfile>views\structurefullpicklist.xsl</xsltfile>	
+</rule>

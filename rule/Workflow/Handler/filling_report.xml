@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="handler" id="filling_report">
+	<rununderuser source="macro">CURRENT_USER</rununderuser>
+	<trigger>provider</trigger>
+	<scheduler>
+		<mininterval>5</mininterval>
+	</scheduler>
+	<waitresponse>true</waitresponse>
+	<showfile>true</showfile>
+	<script><![CDATA[
+	String doHandler(_Session ses, Map<String, String[]> formData){
+		try{
+						
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+									
+			String ctrldatefrom;
+			String ctrldateto;
+			String allcontrol;
+			String taskauthor;
+			String taskdatefrom;
+			String taskdateto;
+			String controltype;		
+			String reportName = "tasks";
+			
+			ctrldatefrom = formData.get("ctrldatefrom")[0];
+			ctrldateto = formData.get("ctrldateto")[0];
+			allcontrol = formData.get("allcontrol")[0];
+			taskauthor = formData.get("taskauthor")[0];
+			taskdatefrom = formData.get("taskdatefrom")[0];
+			taskdateto = formData.get("taskdateto")[0];
+			controltype = formData.get("controltype")[0];
+			
+			//Определяем формат будущего отчета и способ его отображения
+			String typeReportFile = "";
+			String openReportWith = "";
+			
+			typeReportFile = formData.get("typefilereport")[0];
+			//openReportWith = formData.get("openreportwith")[0];
+			
+			Date tmpDate;
+			
+			String sqlConditionForQuery = "tasktype = 3";
+
+			if (taskdatefrom && taskdateto) {
+			
+				java.sql.Date tDateFrom = new java.sql.Date(dateFormat.parse(taskdatefrom).getTime());
+				tmpDate = dateFormat.parse(taskdateto);
+				Calendar currentCalendar = Calendar.getInstance();
+				currentCalendar.setTime(tmpDate);
+				currentCalendar.add(Calendar.DAY_OF_MONTH, 1);
+				java.sql.Date tDateTo = new java.sql.Date(currentCalendar.getTimeInMillis());
+				
+				sqlConditionForQuery += " and taskdate between '" + tDateFrom + "' and '" + tDateTo + "'";
+			} 
+						
+			if (taskauthor){
+				sqlConditionForQuery += " and taskauthor = '" + taskauthor + "'";
+			}			
+			
+			if (controltype){
+				sqlConditionForQuery += " and controltype = " + controltype;
+			}
+			
+			if (ctrldatefrom && ctrldateto) {
+			
+				java.sql.Date cDateFrom = new java.sql.Date(dateFormat.parse(ctrldatefrom).getTime());
+				tmpDate = dateFormat.parse(ctrldateto);
+				Calendar currentCalendar = Calendar.getInstance();
+				currentCalendar.setTime(tmpDate);
+				currentCalendar.add(Calendar.DAY_OF_MONTH, 1);
+				java.sql.Date cDateTo = new java.sql.Date(currentCalendar.getTimeInMillis());
+				
+				sqlConditionForQuery += " and ctrldate between '" + cDateFrom + "' and '" + cDateTo + "'";
+			} 
+									
+			System.out.println("Compiling reports...");
+			JasperCompileManager.compileReportToFile("webapps/Workflow/reports/taskauthor/taskauthor.jrxml");
+			JasperCompileManager.compileReportToFile("webapps/Workflow/reports/executors/executors.jrxml");
+			JasperCompileManager.compileReportToFile("webapps/Workflow/reports/executors/responsible_executor.jrxml");
+			JasperCompileManager.compileReportToFile("webapps/Workflow/reports/tasks.jrxml");
+			JasperCompileManager.compileReportToFile("webapps/Workflow/reports/control/type_name.jrxml");
+			System.out.println("Done!");			
+			
+			System.out.println("Filling report...");
+			
+			Map parameters = new HashMap();
+			parameters.put("current_date", "дата: " + dateFormat.format(new Date()));
+			parameters.put("period", "период: " + taskdatefrom + " - " + taskdateto);
+			
+			def cdb = ses.getCurrentDatabase();
+			
+			
+			def tasks = cdb.getTasksCollection(sqlConditionForQuery, Const.sysGroupAsSet, Const.sysUser).getBaseCollection();
+			JRDataSource dataSource = new JRBeanArrayDataSource(tasks.toArray());
+			
+			JasperPrint print = JasperFillManager.fillReport(JasperCompileManager.compileReportToFile("webapps/Workflow/reports/" + reportName + ".jrxml"), parameters, dataSource);
+			System.out.println("Done!");
+			
+			String format = "";
+			String app = "";
+			
+			switch(typeReportFile){
+				case "1":
+					JasperExportManager.exportReportToPdfFile(print, new File("").getAbsolutePath() + "\\webapps\\Workflow\\reports\\"+ reportName +".pdf");
+					format = "pdf";
+					app = "AcroRd32.exe";
+					break;
+				case "2":
+					JExcelApiExporter xlsExporter = new JExcelApiExporter();
+					xlsExporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
+					xlsExporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, new File("").getAbsolutePath() + "\\webapps\\Workflow\\reports\\"+ reportName +".xls");
+					xlsExporter.exportReport();
+					format = "xls";
+					app = "excel.exe";
+					break;
+				case "3":					
+					JRHtmlExporter exporter = new JRHtmlExporter();
+					exporter.setParameter(JRHtmlExporterParameter.IMAGES_URI, "\\Workflow\\reports\\" + reportName + ".html_files\\");
+					exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
+					exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, new File("").getAbsolutePath() + "\\webapps\\Workflow\\reports\\"+ reportName +".html");
+					//JasperExportManager.exportReportToHtmlFile(print, new File("").getAbsolutePath() + "\\webapps\\Workflow\\reports\\"+ reportName +".html");
+					exporter.exportReport();
+					format = "html";
+					app = "iexplore.exe";
+					break;
+				default:
+					JasperExportManager.exportReportToPdfFile(print, new File("").getAbsolutePath() + "\\webapps\\Workflow\\reports\\"+ reportName +".pdf");
+					format = "pdf";
+					app = "AcroRd32.exe";
+					break;
+			}
+							
+			System.out.println(JasperExportManager.exportReportToXml(print));
+			return new File("").getAbsolutePath() + "\\webapps\\Workflow\\reports\\tasks." + format;
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	]]></script>
+</rule>

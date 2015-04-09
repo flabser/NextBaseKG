@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="corr" mode="on">
+	<description>Тип документа</description>
+	<xsltfile>forms/corr.xsl</xsltfile>
+	<doctype>glossary</doctype>
+	<events> 
+		<queryopen source="file">form.corr.QueryOpen</queryopen>
+		<querysave source="file">form.corr.QuerySave</querysave>   
+	</events>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="name" source="KEYWORD">Имя корреспондента</caption>
+	<caption name="shortname" source="KEYWORD">Короткое имя корреспондента</caption>
+	<caption name="code" source="KEYWORD">Код</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="corresp" source="KEYWORD">Корреспондент</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name="onlynumber" source="KEYWORD">Поле может содержать только числовые значения</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name ="integration" source ="KEYWORD">Интеграция</caption>
+	<caption name ="typeofintegration" source ="KEYWORD">Вид интеграции</caption>
+	<caption name ="notused" source ="KEYWORD">Не используется</caption>
+	<caption name ="corrid" source ="KEYWORD">ID корреспондента</caption>
+	<glossary mode="on" id="corrcatlist" source="query">
+		<description>Категория корреспондента</description>
+		<value>corrcatlist</value>
+	</glossary>
+</rule>

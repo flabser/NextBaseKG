@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="form" id="n" mode="on">
+	<description>Номенклатура дел</description>
+	<outline>navigator</outline>
+	<xsltfile>forms/n.xsl</xsltfile>
+	<doctype>glossary</doctype>
+	<default>	
+	</default>
+	<show>
+		<field mode="on">	
+			<name>code</name>			
+			<value source="docfield">code</value>
+			<caption source="KEYWORD">Код</caption>	
+		</field>
+		<field mode="on">	
+			<name>kod</name>			
+			<value source="docfield">kod</value>
+			<caption source="KEYWORD">Код</caption>	
+		</field>
+		<field mode="on">	
+			<name>rank</name>			
+			<value source="docfield">rank</value>
+			<caption source="KEYWORD">Ранг</caption>	
+		</field>
+		<field mode="on">	
+			<name>ndelo</name>			
+			<value source="docfield">ndelo</value>
+			<caption source="KEYWORD">Номенклатура</caption>	
+		</field>
+		<field mode="on">	
+			<name>name</name>			
+			<value source="docfield">name</value>	
+			<caption source="KEYWORD">Название</caption>
+		</field>
+	</show>
+	<save>		
+		<field mode="on">	
+			<value source="static">n</value>
+			<docfield>form</docfield>				
+		</field>
+		<field mode="on">	
+			<value source="webformfield">kod</value>
+			<docfield type="number">kod</docfield>				
+		</field>
+		<field mode="on">
+			<value source="webformfield">rank</value>
+			<docfield type="number">rank</docfield>
+		</field>
+		<field mode="on">	
+			<value source="webformfield">name</value>
+			<docfield>name</docfield>				
+		</field>
+		<field mode="on">	
+			<value source="webformfield">ndelo</value>
+			<docfield>ndelo</docfield>				
+		</field>
+		<field mode="on">	
+			<value source="webformfield">name</value>
+			<docfield type="viewtext"></docfield>				
+		</field>
+		<field mode="on">
+			<value source="static">n</value>
+			<docfield>defaultruleid</docfield>
+		</field>
+		
+	</save>
+	<querysave><![CDATA[
+		void doQuerySave(_Session session, _Document document, String user){
+		boolean v = true;
+		def validate = {			
+			if (document.getValueString("ndelo") == ""){
+					localizedMsgBox("Поле \"Номенклатура\" не заполнено.");
+					v = false;
+				}
+			if (document.getValueString("rank") == ""){
+					localizedMsgBox("Поле \"Ранг\" не заполнено.");
+					v = false;
+				}
+			if (document.getValueString("kod") == ""){
+					localizedMsgBox("Поле \"Код\" не заполнено.");
+					v = false;
+				}
+			if (document.getValueString("name") == ""){
+					localizedMsgBox("Поле \"Название\" не заполнено.");
+					v = false;
+				}
+			
+			
+			
+			}
+			validate();
+			if (v){
+			document.setViewText(document.getValueString('name') );
+			}else{
+				stopSave();
+			}
+			}
+	]]>
+	</querysave>
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("viewtext"));
+		}
+	]]></viewtext>
+	<viewtext><![CDATA[]]></viewtext>
+	<viewtext><![CDATA[]]></viewtext>
+	<viewdate><![CDATA[]]></viewdate>
+	<viewnumber><![CDATA[]]></viewnumber>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="name" source="KEYWORD">Номенклатура дел</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="code" source="KEYWORD">Код</caption>
+	<caption name="rank" source="KEYWORD">Ранг</caption>
+	<caption name="nomen" source="KEYWORD">Номенклатура</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="nomentype" source="KEYWORD">Номенклатура дел</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Документ сохранен</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+</rule>

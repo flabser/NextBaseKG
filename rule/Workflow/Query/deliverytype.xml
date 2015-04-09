@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="deliverytype">
+	<description></description>
+	<doctype>glossary</doctype>
+	<query source="static">form='deliverytype'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+</rule>

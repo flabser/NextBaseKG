@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="n">
+	<description>Ответные документы</description>
+	<query>n</query>		
+	<xsltfile>views\glossary.xsl</xsltfile>	
+	<column>
+		<caption id="page" source="KEYWORD">Страница</caption>
+	</column>
+	<column>
+		<caption id="from" source="KEYWORD">из</caption>
+	</column>
+</rule>

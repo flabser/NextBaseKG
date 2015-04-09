@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="kr">
+	<description>Карточки резолюции</description>
+	<rununderuser source="static">observer</rununderuser>	
+	<doctype>document</doctype>
+	<query source="static">form = 'kr'</query>
+	<field mode="on">	
+		<name>vn</name>
+		<value source="script">_Document.getValueString('vn')</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>dvn</name>
+		<value source="script">_Document.getValueString('dvn')</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>briefcontent</name>
+		<value source="script">_Document.getValueString('briefcontent')</value>	
+		<attrvalue></attrvalue>	
+	</field>		
+</rule>

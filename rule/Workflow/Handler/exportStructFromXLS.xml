@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="handler" id="exportStructFromXLS">
+	<rununderuser source="macro">CURRENT_USER</rununderuser>
+	<trigger>provider</trigger>
+	<script><![CDATA[
+			String doHandler(_Session session, _DocumentCollection collection){
+				
+				def db = session.getCurrentDatabase();
+				
+				def struct = db.dataBase.getStructure();
+				def glossaries = db.dataBase.getGlossaries();						
+				def chars = ["а":"a", "б":"b", "в":"v", "г":"g", "д":"d", "е":"e", "ё":"e", "ж":"zh", "з":"z", "и":"i", "й":"y", "к":"k", 
+				"л":"l", "м":"m", "н":"n", "о":"o", "п":"p", "р":"r", "с":"s", "т":"t", "у":"u", "ф":"f", "х":"kh", "ц":"ts", "ч":"ch", 
+				"ш":"sh", "щ":"shch", "ъ":"", "ы":"y", "ь":"", "э":"e", "ю":"yu", "я":"ya", "ә":"a", "і":"i", "ң":"n", "ғ":"g", "ү":"u", "ұ":"u", "қ":"k", "ө":"o", "һ":"kh"];
+				def split = {str ->
+					StringTokenizer token = new StringTokenizer(str, " ");
+					String[] elements = new String[token.countTokens()];
+					int i = 0;
+					while (token.hasMoreTokens()) {						
+						elements[i] = token.nextToken().trim().replace(".", "");
+						i++;
+					}
+					return elements;
+				}
+				
+				def transliterate = {str ->
+					for (String s : chars.keySet()) {
+						if (str.contains(s)) {
+							str = str.replace(s, chars.get(s));
+						}
+						if (str.contains(s.toUpperCase())) {
+							str = str.replace(s.toUpperCase(), chars.get(s).toUpperCase());
+						}
+					}
+					return str;				
+				}
+				
+			 	def formatUserID = {str ->
+			 		def fio = split(str);
+			 		
+			 		String login = "";
+					if (fio.length >= 2 && fio[1].length() >= 3) {
+						login = fio[1].substring(0, 3);
+					} else if (fio.length >= 2 && fio[1].length() >= 1) {
+						login = fio[1].substring(0, 3);
+					}
+					if (fio.length >= 1 && fio[0].length() <= 7) {
+						login += fio[0];
+					} else if (login.length() > 0){
+						login += fio[0].substring(0, 7);
+					} else {
+						login += fio[0].substring(0, 8);
+					}
+					return login;
+			 	}
+				
+				def createOrg = {orgName->					
+					def organization = new Organization(struct);
+					organization.setFullName(orgName);
+					organization.setShortName(orgName);
+					organization.setViewText(orgName);
+					organization.setAddress("");
+					organization.setComment("");
+					organization.setIsMain(1);
+					organization.save(Const.sysGroupAsSet, Const.sysUser);
+					return organization;
+				}
+				def createDep = {depName, parentUnit->
+					def department = new Department(struct);
+					department.setFullName(depName);
+					department.setShortName(depName);
+					department.setViewText(depName);
+					department.setComment("");
+					switch (parentUnit.docType) {
+						case Const.DOCTYPE_ORGANIZATION:
+							department.setOrgID(parentUnit.getDocID());
+							break;
+						case Const.DOCTYPE_DEPARTMENT:
+							department.setMainID(parentUnit.getDocID());
+							break;
+						case Const.DOCTYPE_EMPLOYER:
+							department.setEmpID(parentUnit.getDocID());
+							break;
+					}				
+					department.parentDocID = parentUnit.getDocID();
+					department.parentDocType = parentUnit.docType;
+					department.save(Const.sysGroupAsSet, Const.sysUser);
+					return department;
+				}
+				
+			try {
+				/*File errors = new File("errors.log");
+				PrintWriter printer = new PrintWriter(errors);
+				File file = new File("errors.log");*/				
+											
+				File xlsFile = new File("Structure.xls");
+								
+				Workbook workbook = Workbook.getWorkbook(xlsFile);
+								
+				Sheet sheet = workbook.getSheet(0);	
+				
+								
+				println(sheet.getRows());
+				println(sheet.getColumns());
+								
+				def org;
+				def dep;
+				def mainDep;
+				def emp;
+				int orgID;
+				int depID;
+				int empID;
+				int postID;
+				for (int i = 0; i <= sheet.getRows()-2; i++) {
+					for (int j = 0; j <= sheet.getColumns()-2; j++) {
+						Cell cell = sheet.getCell(j, i);
+						if (cell.getType() != CellType.EMPTY && cell.getType() != CellType.NUMBER) {
+							LabelCell labCell = (LabelCell) cell;							
+							String value = labCell.getString().trim();
+							
+							if (value.contains("ТОО")) {
+							
+								orgID = struct.hasUnit(value, Const.DOCTYPE_ORGANIZATION);
+								if (orgID == 0){
+									org = createOrg(value);									
+								} else {
+									org = struct.getOrganization(orgID, Const.sysGroupAsSet, Const.sysUser);									
+								}
+								dep = org;
+								continue;
+							} 							
+						
+							if (value.contains("№ п/п") || value.contains("Ранг") || value.contains("Ф.И.О.") || value.contains("Должность")) continue;
+							
+							
+							if (j == 2) {
+								Colour cellBackground = labCell.getCellFormat().getBackgroundColour();
+								Cell nextCell = sheet.getCell(j+2, i);
+								if (cellBackground == Colour.TAN && nextCell.getType() == CellType.EMPTY) {
+									
+									depID = struct.hasUnit(value, Const.DOCTYPE_DEPARTMENT);
+									if ( depID == 0){
+										mainDep = createDep(value, org);
+									} else {
+										mainDep = struct.getDepartment(depID, Const.sysGroupAsSet, Const.sysUser);
+									}									
+									dep = mainDep;
+									continue;
+								}
+								
+								
+								
+								if (cellBackground == Colour.DEFAULT_BACKGROUND && nextCell.getType() == CellType.EMPTY) {
+									
+									depID = struct.hasUnit(value, Const.DOCTYPE_DEPARTMENT);
+									if ( depID == 0){
+										dep = createDep(value, mainDep);
+									} else {
+										dep = struct.getDepartment(depID, Const.sysGroupAsSet, Const.sysUser);
+									} 
+									continue;
+								}								
+							
+								postID = glossaries.getGlossaryElementID(value, "post");
+								if (postID == 0) {
+									def glos = new Glossary(db.dataBase);
+									glos.setName(value);
+									glos.setViewText(value);
+									glos.setCode("0");
+									glos.addStringField("ranktext", "0");
+									glos.defaultRuleID = "post";
+									glos.form = "post";
+									glos.save(Const.sysGroupAsSet, Const.sysUser);
+									postID = glos.getDocID();
+									
+								} 
+								continue;							
+								
+							}
+							if (j == 4) {
+								Cell nextCell = sheet.getCell(j+1, i);
+								if (nextCell.getType() == CellType.EMPTY) {
+									if (value.equalsIgnoreCase("вакансия")) continue;
+									String fio = transliterate(value);
+									String userid = formatUserID(fio).toLowerCase();
+									if (!struct.getAppUser(fio)) {
+										User user = new User(userid);
+										user.setPassword("123");
+										//смертельный номер
+										def redURL = db.dataBase.getParent().globalSetting.syncroGlobalSettings.redirectURLs;
+										user.redirectURLs = redURL;
+										emp = new Employer(struct);	
+										emp.setUser(user);
+										emp.setFullName(value);
+										emp.setViewText(value);
+										String[] fios = split(value);
+										String shortName = fios[0];
+										
+										if (fios.length >= 2) {
+											shortName += " " + fios[1].substring(0, 1);
+										} 
+										if (fios.length == 3) {
+											shortName += " " + fios[2].substring(0, 1);
+										}
+										emp.setShortName(shortName);
+										emp.setPostID(postID);
+										emp.parentDocType = dep.docType;
+										emp.parentDocID = dep.getDocID();										
+										switch (dep.docType) {
+											case Const.DOCTYPE_ORGANIZATION:
+												emp.setOrgID(dep.getDocID());
+												break;
+											case Const.DOCTYPE_DEPARTMENT:
+												emp.setDepID(dep.getDocID());
+												break;
+											case Const.DOCTYPE_EMPLOYER:
+												emp.setBossID(dep.getDocID());
+												break;
+										}									
+										
+										emp.save(Const.sysGroupAsSet, Const.sysUser);
+									}
+								}
+							}							
+						}
+					}
+				}
+				//printer.flush();
+				//printer.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			} 
+			}
+			]]> 
+	</script>
+</rule>

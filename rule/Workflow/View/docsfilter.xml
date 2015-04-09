@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="docsfilter">
+	<description>Фильтры документов</description>
+	<outline>navigator</outline>
+	<query>docsfilter</query>		
+	<xsltfile>views\docsfilter.xsl</xsltfile>
+	<column>
+		<caption id="filtername" source="KEYWORD">Название фильтра</caption>
+	</column>		
+	<column>
+		<caption id="doctype" source="KEYWORD">Тип документа</caption>
+	</column>		
+	<column>
+		<caption id="project" source="KEYWORD">Проект</caption>
+	</column>		
+	<column>
+		<caption id="author" source="KEYWORD">Автор</caption>
+	</column>		
+	<column>
+		<caption id="category" source="KEYWORD">Категория</caption>
+	</column>		
+	<column>
+		<caption id="regdate" source="KEYWORD">Дата регистрации</caption>
+	</column>		
+	<column>
+		<caption id="keyword" source="KEYWORD">Ключевое слово</caption>
+	</column>		
+	<column>
+		<caption id="in" source="KEYWORD">Входящий</caption>
+	</column>		
+	<column>
+		<caption id="ish" source="KEYWORD">Исходящий</caption>
+	</column>		
+	<column>
+		<caption id="task" source="KEYWORD">Задание</caption>
+	</column>		
+	<column>
+		<caption id="sz" source="KEYWORD">Служебная записка</caption>
+	</column>		
+	<column>
+		<caption id="obr" source="KEYWORD">Обращения граждан</caption>
+	</column>		
+	<column>
+		<caption id="workdocprj" source="KEYWORD">Проект служебной записки</caption>
+	</column>		
+	<column>
+		<caption id="outdocprj" source="KEYWORD">Проект исходящего</caption>
+	</column>		
+	<column>
+		<caption id="from" source="KEYWORD">с</caption>
+	</column>		
+	<column>
+		<caption id="to" source="KEYWORD">по</caption>
+	</column>		
+	<glossary mode="on" id="projectsprav" source="query">
+		<description>Проекты</description>
+		<value>projectsprav</value>
+	</glossary>
+	<glossary mode="on" id="docscat" source="query">
+		<description>категории</description>
+		<value>docscat</value>
+	</glossary>
+</rule>

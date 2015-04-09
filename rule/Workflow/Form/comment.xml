@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="comment" mode="on">
+	<description>Комментарий</description>
+	<xsltfile>forms/comment.xsl</xsltfile>
+	<doctype>task</doctype>
+	<title source="KEYWORD">Комментарий</title>
+ 	<default>
+		<action mode="on" type="SAVE">
+			<caption source="KEYWORD">Сохранить и закрыть</caption>
+			<granted source="macro" mode="on">current_user</granted>
+		</action>
+	</default>
+	<show>
+		<action mode="on" type="SAVE">
+			<caption source="KEYWORD">Сохранить и закрыть</caption>
+			<granted source="macro" mode="on">current_user</granted>
+		</action>
+		<action mode="on" type="COMPOSE_COMMENT">
+			<caption source="KEYWORD">Комментарий</caption>
+			<granted source="static" mode="on">kairatdkuliyevf</granted>
+			<granted source="static" mode="on">john</granted>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					def session = doc.getSession();
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole("chancellery") ? user.getUserID() : "");
+				}
+				]]>
+			</granted>
+		</action>
+		<field mode="on">
+			<name>form</name>
+			<value source="docfield">form</value>
+		</field>
+		
+		<field mode="on">
+			<name>projecturl</name>
+			<value source="script"><![CDATA[
+				String[] getStringValue(_Document doc){
+					int projectID = 0;
+					projectID = doc.getValueInt("projectdocid");
+					String url = "";
+					String currentUserID = doc.getCurrentUser()?.getUserID();					
+					if (projectID != 0 && currentUserID) {						
+						def project = doc.getSession()?.getCurrentDatabase()?.getProjectByID(projectID);
+						url = project.getURL();
+					}
+					return getAsArray(url);
+				}
+				]]></value>
+		</field>
+		<field mode="on">
+			<name>projectviewtext</name>
+			<value source="script"><![CDATA[
+				String[] getStringValue(_Document doc){
+					int projectID = doc.getValueInt("projectdocid");
+					String currentUserID = doc.getCurrentUser()?.getUserID();
+					String viewtext = "";
+					if (projectID != 0 && currentUserID) {						
+						def project = doc.getSession()?.getCurrentDatabase()?.getProjectByID(projectID);
+						viewtext = project.getViewText();
+					}
+					return getAsArray(viewtext);
+				}
+				]]></value>
+		</field>
+	</show>
+	<save>
+		<field mode="on">
+			<value source="static">comment</value>
+			<docfield>defaultruleid</docfield>
+		</field>
+		<field mode="on">
+			<value source="static">comment</value>
+			<docfield>form</docfield>
+		</field>
+		<field mode="on">
+			<value source="webformfield">taskdate</value>
+			<docfield type="datetime">taskdate</docfield>
+		</field>
+		<field mode="on">
+			<value source="webformfield">taskauthor</value>
+			<docfield>taskauthor</docfield>
+		</field>
+		<field mode="on"  publishas="HTML">
+			<value source="webformfield">content</value>
+			<docfield>content</docfield>
+		</field>
+		<field mode="on">
+			<value source="static">1</value>
+			<docfield type="number">allcontrol</docfield>
+		</field>
+		<field mode="on">
+			<value source="webformfield">taskvn</value>
+			<docfield>taskvn</docfield>
+			<caption source="KEYWORD">Номер</caption>
+			<iferror>
+			</iferror>
+		</field>
+	</save>
+	<querysave><![CDATA[
+		void doQuerySave(_Session ses, _Document doc, String user){
+		def pdoc = doc.getParentDocument();
+		def readers = pdoc.getReaders();
+		readers.each{
+			doc.addReader(it);
+		}           
+      	
+	}
+	]]></querysave>
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray("Test");
+		}
+	]]></viewtext>
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray("Test");
+		}
+	]]></viewtext>
+	<viewtext></viewtext>
+	<viewdate><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray("25.05.2012");
+		}
+	]]></viewdate>
+	<viewnumber><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray("0");
+		}
+	]]></viewnumber>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="doctypemultilang" source="KEYWORD">Комментарий</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="files" source="KEYWORD">Файлы</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен еще</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="taskdate" source="KEYWORD">Дата регистрации</caption>
+    <caption name="taskauthor" source="KEYWORD">Автор</caption>
+    <caption name="saving" source="KEYWORD">Сохранение</caption>
+    <caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+    <caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+	
+</rule>
+ 

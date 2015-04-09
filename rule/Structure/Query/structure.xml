@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="structure">
+    <description>Структура</description>
+    <rununderuser source="static">observer</rununderuser>    
+    <doctype>STRUCTURE</doctype>
+    <cache mode="ON"></cache>
+    <query source="macro">structure</query>
+</rule>

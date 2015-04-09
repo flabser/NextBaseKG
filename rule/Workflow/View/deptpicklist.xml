@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="view" id="deptpicklist">
+	<description>Департаменты</description>
+	<query>bossandemppicklist</query>		
+	<xsltfile>views\deptpicklist.xsl</xsltfile>	
+</rule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="workdocprj">
+	<description/>
+	<rununderuser source="macro">current_user</rununderuser>
+	<query source="static">form = 'workdocprj'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<doctype form='workdocprj'>PROJECT</doctype>
+	<field mode="on">
+		<name>coordstatus</name>
+		<value source="resultset">coordstatus</value>
+		<attrvalue/>
+	</field>
+</rule>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="form" id="discussion" mode="on">
+	<description>Обсуждение</description>
+	<xsltfile>forms/discussion.xsl</xsltfile>
+	<doctype>main</doctype>
+	<title source="KEYWORD">Обсуждение</title>
+	<default>
+		<action mode="on" type="SAVE">
+			<caption source="KEYWORD">Сохранить и закрыть</caption>
+			<granted source="macro" mode="on">current_user</granted>
+		</action>
+		<field mode="on" type="datetime">
+			<name>dvn</name>
+			<value source="macro">current_time</value>
+		</field>
+		<field mode="on" publishas="USER">
+			<name>author</name>
+			<value source="macro">current_user</value>
+		</field>
+		<field mode="on"  publishas="HTML">
+			<name>contentsource</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>theme</name>
+			<value source="static"/>
+		</field>
+		<field mode="on">
+			<name>status</name>
+			<value source="static"/>
+		</field>
+	</default>
+	<show>
+		<action mode="on" type="SAVE">
+			<caption source="KEYWORD">Сохранить и закрыть</caption>
+			<granted source="macro" mode="on">current_user</granted>
+		</action>
+		<action mode="on" type="COMPOSE_COMMENT">
+			<caption source="KEYWORD">Комментарий</caption>
+			<granted source="script" mode="on"><![CDATA[
+				String[] getStringValue(_Document doc){
+					def session = doc.getSession();
+					def user = session.getStructure().getUser(session.getCurrentUser());
+					return getAsArray(user.hasRole("chancellery") ? user.getUserID() : "");
+				}
+				]]>
+			</granted>
+		</action>
+		<field mode="on">
+			<name>form</name>
+			<value source="docfield">form</value>
+		</field>
+		<field mode="on">
+			<name>dvn</name>
+			<value source="docfield">dvn</value>
+		</field>
+		<field mode="on">
+			<name>theme</name>
+			<value source="docfield">theme</value>
+		</field>
+		<field mode="on">
+			<name>status</name>
+			<value source="docfield">status</value>
+		</field>
+		<field mode="on" publishas="USER">
+			<name>author</name>
+			<value source="docfield">author</value>
+		</field>
+		<field mode="on"  publishas="HTML">
+			<name>contentsource</name>
+			<value source="docfield">contentsource</value>
+	</field>
+		<field mode="on">
+			<name>theme</name>
+			<value source="docfield">theme</value>
+		</field>
+		<field mode="on">
+			<name>status</name>
+			<value source="docfield">status</value>
+		</field>
+		<field mode="on">
+			<name>discussionurl</name>
+			<value source="script"><![CDATA[
+				String[] getStringValue(_Document doc){
+					int discussionID = 0;
+					int discussionType = 0;
+					discussionID = doc.getParentDocID();
+					discussionType = doc.getParentDocType();
+					String url = "";
+					String currentUserID = doc.getCurrentUser()?.getUserID();					
+					if (discussionID != 0 && discussionType != 0 && currentUserID) {						
+						def pdoc = doc.getSession()?.getCurrentDatabase()?.getDocumentByComplexID(discussionType, discussionID);
+						url = pdoc.getURL();
+					}
+					return getAsArray(url);
+				}
+				]]></value>
+		</field>
+		<field mode="on">
+			<name>discussionviewtext</name>
+			<value source="script"><![CDATA[
+				String[] getStringValue(_Document doc){
+					int discussionID = 0;
+					int discussionType = 0;
+					discussionID = doc.getParentDocID();
+					discussionType = doc.getParentDocType();
+					String viewtext = "";
+					String currentUserID = doc.getCurrentUser()?.getUserID();					
+					if (discussionID != 0 && discussionType != 0 && currentUserID) {						
+						def pdoc = doc.getSession()?.getCurrentDatabase()?.getDocumentByComplexID(discussionType, discussionID);
+						viewtext = pdoc.getValueString("viewtext");
+					}
+					return getAsArray(viewtext);
+				}
+				]]></value>
+		</field>
+	</show>
+	<save>
+		<field mode="on">
+			<value source="static">discussion</value>
+			<docfield>defaultruleid</docfield>
+		</field>
+		<field mode="on">
+			<value source="static">discussion</value>
+			<docfield>form</docfield>
+		</field>
+		<field mode="on">
+			<value source="static"></value>
+			<docfield>sign</docfield>
+		</field>
+		<field mode="on">
+			<value source="static"></value>
+			<docfield>signedfields</docfield>
+			<iferror></iferror>
+		</field>
+		<field mode="on">
+			<value source="webformfield">dvn</value>
+			<docfield type="datetime">dvn</docfield>
+		</field>
+		<field mode="on">
+			<value source="webformfield">author</value>
+			<docfield>author</docfield>
+		</field>
+		<field mode="on">
+			<value source="webformfield">theme</value>
+			<docfield>theme</docfield>
+		</field>
+		<field mode="on"  publishas="HTML">
+			<value source="webformfield">contentsource</value>
+			<docfield>contentsource</docfield>
+		</field>
+		<field mode="on">
+			<value source="webformfield">status</value>
+			<docfield>status</docfield>
+		</field>
+
+	</save>
+	<querysave><![CDATA[
+		void doQuerySave(_Session ses, _Document doc, String user){
+		def pdoc = doc.getParentDocument();
+		def readers = pdoc.getReaders();
+		readers.each{
+			doc.addReader(it);
+		}
+		doc.setValueString("viewtext", doc.getValueString("theme"));             
+      	
+	}
+	]]></querysave>
+	<viewtext></viewtext>
+	<viewtext><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("theme"));
+		}
+	]]></viewtext>
+	LL
+	<viewtext></viewtext>
+	<viewdate><![CDATA[
+		String[] getStringValue(_Document doc){
+			return getAsArray(doc.getValueString("dvn"));
+		}
+	]]></viewdate>
+	<viewnumber></viewnumber>
+	<caption name="close" source="KEYWORD">Закрыть</caption>
+	<caption name="properties" source="KEYWORD">Свойства</caption>
+	<caption name="attachments" source="KEYWORD">Вложения</caption>
+	<caption name="content" source="KEYWORD">Содержание</caption>
+	<caption name="progress" source="KEYWORD">Ход исполнения</caption>
+	<caption name="saved" source="KEYWORD">Сохраненный</caption>
+	<caption name="newdoc" source="KEYWORD">Новый документ</caption>
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="doctypemultilang" source="KEYWORD">Обсуждение</caption>
+	<caption name="attach" source="KEYWORD">Прикрепить</caption>
+	<caption name="delattach" source="KEYWORD">Удалить</caption>
+	<caption name="openattach" source="KEYWORD">Открыть</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="files" source="KEYWORD">Файлы</caption>
+	<caption name="additional" source="KEYWORD">Дополнительно</caption>
+	<caption name="statusdoc" source="KEYWORD">Состояние документа</caption>
+	<caption name="permissions" source="KEYWORD">Права доступа</caption>
+	<caption name="infofread" source="KEYWORD">Информация о прочтении</caption>
+	<caption name="infofreaders" source="KEYWORD">Кем прочтен еще</caption>
+	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+    <caption name="dvn" source="KEYWORD">Дата регистрации</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="theme" source="KEYWORD">Тема</caption>
+	<caption name="status" source="KEYWORD">Статус</caption>
+	<caption name="saving" source="KEYWORD">Сохранение</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<caption name ="yes" source ="KEYWORD">Да</caption>
+	<caption name ="no" source ="KEYWORD">Нет</caption>
+	<caption name="saveclose" source="KEYWORD">Сохранить и закрыть</caption>
+</rule>
+ 

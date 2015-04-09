@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?><rule id="make_many_docs" app="" type="HANDLER" isvalid="true" mode="ON"><description>reminder unexecuted</description><rununderuser source="STATIC" type="TEXT">[observer]</rununderuser><trigger>MANUALLY</trigger><scheduler mode="OFF"></scheduler><tohandle source="MACRO" type="TEXT">ALLTASKS</tohandle><!--String doHandler(_Session session, _DocumentCollection collection){--><script><![CDATA[String doHandler(_Session session, _DocumentCollection collection){
+			try {
+				def changeParentDoc;
+				
+				/*Замыкание для вычисления случайного числа в заданном диапазоне*/
+				
+				def getRandomNumberInRange = { begin, end ->
+					if (begin > end) {
+						throw new IllegalArgumentException();
+					}
+					int number = (int) ((end - begin) * Math.random() + begin);
+					return number;
+				}
+				
+				/*Замыкание для получения случайных заголовков из подготовленного файла*/
+				
+				def getSomeRandomHeader = {->
+					def file = new File("D:\\headers.txt");
+					if (file) {
+						FileReader reader = new FileReader(file);
+						BufferedReader buffer = new BufferedReader(reader);
+						String line;
+						StringBuffer headersBuf = new StringBuffer(1000);
+						while ((line = buffer.readLine())!= null) {
+							headersBuf.append(line);
+						}
+						String[] headers = headersBuf.toString().split("\\.");
+						Random random = new Random();
+						int index = random.nextInt(headers.length);
+						return headers[index] + ".";
+						} else {
+							println("Уупс, кажется не хватает файла");
+						}
+				}
+				
+				/*Замыкание для получения случайных предложений из подготовленного файла*/
+				
+				def getSomeRandomText = {countOfSentence ->				
+					File file = new File("D:\\content.txt");
+					FileReader reader = new FileReader(file);
+					BufferedReader buffer = new BufferedReader(reader);
+					String line;
+					StringBuffer contentBuf = new StringBuffer(1000);
+					StringBuffer result = new StringBuffer(1000);
+					while ((line = buffer.readLine()) != null) {
+						contentBuf.append(line);
+					}
+					String[] sentences = contentBuf.toString().split("\\.");
+					for (int i = 1; i < countOfSentence; i++) {
+						Random random = new Random();
+						int index = random.nextInt(countOfSentence);
+						result.append(sentences[index] + ".");
+					}
+					return result.toString();				
+				}
+				
+				/*Замыкание для получения случайной даты в заданном диапазоне*/
+				
+				def getRandomDateInRange = {begin, end -> 
+					if (begin == null || end == null) {
+						throw new IllegalArgumentException();
+					}
+					if (begin.after(end)) {
+						throw new IllegalArgumentException();
+					}
+					Random r = new Random();
+					long time = (long) (r.nextDouble()*(end.getTime() - begin.getTime())) + begin.getTime();
+					return new Date(time);			
+				}
+				
+				/*Замыкание для получения случайной даты в прошедшем месяце*/
+				
+				def getRandomDateFromLastMonth = {->
+					Date end = new Date();
+					Calendar c = Calendar.getInstance();
+					c.add(Calendar.MONTH, -1);
+					Date begin = new Date(c.getTimeInMillis());
+					if (begin == null || end == null) {
+						throw new IllegalArgumentException();
+					}
+					if (begin.after(end)) {
+						throw new IllegalArgumentException();
+					}
+					Random r = new Random();
+					long time = (long) (r.nextDouble()*(end.getTime() - begin.getTime())) + begin.getTime();
+					return new Date(time);				
+				}
+				
+				/*Замыкание для обработки ответных документов*/
+				
+				changeParentDoc = {respcol, maincopy ->
+					for (rd in respcol) {
+						def responses = rd.getResponses();
+						rd.setSession(session);
+						rd.setNewDoc();
+						rd.makeResponse(maincopy);
+						rd.setNotesID(Util.generateRandomAsText());
+						println(rd);
+						rd.save("observer");
+						println(rd);
+						changeParentDoc(responses, rd);				
+					}
+				}
+				
+				def cdb = session.getCurrentDatabase();
+				def prjcol = cdb.getAllDocuments(Const.DOCTYPE_PROJECT, Const.sysGroupAsSet, "observer", null, 0, 0);
+				prjcol.each{
+						println("Проект служебной записки");
+						int vn = getRandomNumberInRange(1, 20000);
+						it.setValueString("vn", vn.toString());
+						it.setValueNumber("vnnumber", vn);
+						it.setValueDate("projectdate", getRandomDateFromLastMonth());
+						it.setValueString("briefcontent", getSomeRandomHeader());
+						it.setValueString("contentsource", getSomeRandomText(3));
+					it.setNewDoc();
+					it.setNotesID(Util.generateRandomAsText());
+					it.save("observer");
+					println(it);
+				}				
+				println("projects were duplicated");
+				prjcol = cdb.getAllDocuments(Const.DOCTYPE_MAIN, Const.sysGroupAsSet, "observer", null, 0, 0);
+				prjcol.each{
+					int counter = 0;
+					if (it.getForm()[0] == "IN") {
+						println("Входящий");
+						it.setValueNumber("vn", getRandomNumberInRange(1, 20000));
+						it.setValueDate("dvn", getRandomDateFromLastMonth());
+						it.setValueNumber("in", getRandomNumberInRange(1, 20000));
+						it.setValueDate("din", getRandomDateFromLastMonth());
+						it.setValueString("briefcontent", getSomeRandomHeader());
+						it.setValueString("remark", getSomeRandomText(3));
+					}
+					if (it.getForm()[0] == "ISH") {
+						println("Исходящий");
+						it.setValueNumber("vn", getRandomNumberInRange(1, 20000));
+						it.setValueDate("dvn", getRandomDateFromLastMonth());
+						it.setValueString("briefcontent", getSomeRandomHeader());
+						it.setValueString("contentsource", getSomeRandomText(3));
+					}
+					if (it.getForm()[0] == "L") {
+						println("Обращение граждан");
+						it.setValueNumber("vn", getRandomNumberInRange(1, 20000));
+						it.setValueDate("dvn", getRandomDateFromLastMonth());
+						it.setValueString("briefcontent", getSomeRandomHeader());
+						it.setValueString("remark", getSomeRandomText(3));
+					}
+					if (it.getForm()[0] == "SZ") {
+						println("Служебная записка");
+						it.setValueNumber("vn", getRandomNumberInRange(1, 20000));
+						it.setValueDate("dvn", getRandomDateFromLastMonth());
+						it.setValueString("briefcontent", getSomeRandomHeader());
+						it.setValueString("contentsource", getSomeRandomText(3));
+					}
+					it.setSession(session);
+					def resps = it.getResponses();
+					it.setNewDoc();
+					it.setNotesID(Util.generateRandomAsText());
+					it.save("observer");
+					println(it);
+					//println("Осталось обработать " + k-- + " документов");
+					changeParentDoc(resps, it);
+				}
+				println("maindocs were duplicated");
+				prjcol = cdb.getTasksCollection('tasktype = 3', Const.sysGroupAsSet, Const.sysUser);
+				println("prjcol " + prjcol.getCount());
+				for (int i = 0; i < prjcol.getCount(); i++){
+					def task = prjcol.getNthDocument(i);
+					task.setSession(session);
+					def resps = task.getResponses();
+					task.setValueNumber("taskvn", getRandomNumberInRange(1, 20000));
+					task.setValueDate("taskdate", getRandomDateFromLastMonth());
+					task.setBriefContent(getSomeRandomHeader());
+					task.setContent(getSomeRandomText(3));
+					task.setNewDoc();
+					task.setNotesID(Util.generateRandomAsText());
+					task.save("observer");
+					println(task);
+					changeParentDoc(resps, task);
+				}
+				println("tasks were duplicated");
+        		return "";
+        	}
+        	catch(e) {
+				e.printStackTrace();
+			}
+        }]]></script><!--}--></rule>

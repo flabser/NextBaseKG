@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="query" id="versions">
+	<description>Версии проектов</description>
+	<query source="static">vnnumber ~ '$vnnumber' and form ~ '$form' and (docversion > 1 or isrejected = 1)</query>
+	<doctype>project</doctype>
+		<field mode="on">	
+		<name>docversion</name>
+		<value source="resultset">docversion</value>	
+		<attrvalue></attrvalue>	
+	</field>	
+</rule>

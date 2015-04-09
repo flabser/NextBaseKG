@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="corrcat" mode="on" history="off">
+	<description>Отображение категорий корреспондентов в диалогах выбора</description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/corr_glossary.xsl</xsltfile>
+	<element mode="ON" type="QUERY">
+		<name>view_content</name>
+		<query source="static">form='corrcat'</query>
+		<sortby source="static">VIEWTEXT1#asc</sortby>
+		<doctype>glossary</doctype>
+	</element>
+	<caption name="page" source="KEYWORD">Страница</caption>
+	<caption name="from" source="KEYWORD">из</caption>
+</rule>

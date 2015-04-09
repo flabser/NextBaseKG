@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="handler" id="notify_executors">
+	<rununderuser source="static">observer</rununderuser>
+	<trigger>provider</trigger>
+	<script><![CDATA[
+			String doHandler(_Session ses, Map<String, String[]> formData){
+			try{
+				def sync = ses.getSynchronizer();
+				def recipients = formData.get("notifyrecipients");
+				def cdb = ses.getCurrentDatabase();
+		        int docType = Integer.parseInt(formData.get("doctype")[0]);
+			    def doc = null;
+			    String form = "";			    	
+			    def parentDoc = null;			    	
+			  	switch(docType){
+	    		    	case 896: 
+					    	doc = cdb.getDocumentByID(Integer.parseInt(formData.get("key")[0]));
+					    	parentDoc = doc;
+					    	form = doc.getValueString("form");					
+					    	break;
+				    	case 897: doc = cdb.getTaskByID(Integer.parseInt(formData.get("key")[0]));
+				    		if (doc.getResolType() == 3) {
+				    			parentDoc = doc;
+	    					} else {
+	    						parentDoc = doc.getGrandParentDocument();
+	    					}
+					    	form = parentDoc.getValueString("form");
+					    	break;
+    		    	}
+
+		    			def recipientsMail = [];
+		    			recipients.each{
+		    				if (ses.getStructure()?.getUser(it)?.getEmail()) {
+		    					recipientsMail.add(ses.getStructure()?.getUser(it)?.getEmail());
+		    				} 
+		    			}
+		    			println("--------------------------"  + recipientsMail);
+		    			if (recipientsMail){
+		    				String msubject = '[СЭД] Напоминание о документе на исполнение  ' + parentDoc?.getValueString("vn") + ' (' + parentDoc?.getValueString("briefcontent") + ')';
+
+		    				String body = '<b><font color="#000080" size="4" face="Default Serif">Напоминание о документе на исполнение</font></b><hr>';
+				        	body += '<table cellspacing="0" cellpadding="4" border="0" style="padding:10px; font-size:12px; font-family:Arial;">';
+				        	body += '<tr>';
+				        	body += '<td style="border-bottom:1px solid #CCC;" valign="top" colspan="2">';
+				        	body += 'Вы не исполнили документ <b>' + parentDoc.getValueString("vn") + '</b> от <b>' + parentDoc.getValueString("dvn") + '</b>';
+							body += '</td></tr><tr>';
+							body += '<td colspan="2"></td>';
+							body += '</tr><tr>';
+							body += '<td valign="top" width="240px">Краткое содержание:</td><td valign="top" width="600px">' + parentDoc.getValueString("briefcontent") + '</td>';
+							body += '</tr><tr>';
+							body += '<td valign="top">Поручение:</td><td valign="top">' + doc.getValueString("viewtext") + '</td>';
+							body += '</tr><tr>';
+							body += '<td valign="top">Сопроводительный текст напоминания:</td><td valign="top">' + formData.get("comment")[0] + '</td>';
+							body += '</tr></table>';
+							body += '<p><font size="2" face="Arial">Для работы с документом перейдите по <a href="' + doc.getFullURL() + '">ссылке...</a></p></font>';
+
+		    				def mailAgent = ses.getMailAgent();			    			
+			    			boolean wasSent = mailAgent.sendMail(recipientsMail, msubject, body);
+			    			if (wasSent) {
+			    				ses.getLogger().normalLogEntry("Message was successfully sent");
+			    			} else {
+			    				ses.getLogger().normalLogEntry("Message was not sent");
+			    			}
+		    			}else{
+		    			    ses.getLogger().warningLogEntry("Memo has not sent  as not specified any email");	
+		    			}
+		    		
+		    	}catch(Exception e){
+    			   	e.printStackTrace();
+			    }
+			}
+		    ]]>
+	</script>
+</rule>

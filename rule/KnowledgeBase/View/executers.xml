@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="view" id="executers" history="off">
+	<description>Исполнители</description>
+	<query>executers</query>
+	<xsltfile>views/dialogbox-list.xsl</xsltfile>
+</rule>

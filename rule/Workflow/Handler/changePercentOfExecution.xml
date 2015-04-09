@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="handler" id="changePercentOfExecution">
+	<rununderuser source="macro">CURRENT_USER</rununderuser>
+	<trigger>provider</trigger>
+	<script><![CDATA[
+			String doHandler(_Session ses, Map<String, String[]> formData){
+				try{
+					def cdb = ses.getCurrentDatabase();
+					int docid = Integer.parseInt(formData.get("key")[0]);
+					String executorID = formData.get("executor")[0];
+			    	int percent = Integer.parseInt(formData.get("percent")[0]);
+			    	def doc = cdb.getTaskByID(docid);
+			    	def exec = doc.getExecutor(executorID);
+			    	exec.setPercentOfExecution(percent);
+			    	doc.save("observer");
+				}catch(Exception e){
+				 	e.printStackTrace();
+				}	
+			}
+			]]> 
+	</script>
+</rule>

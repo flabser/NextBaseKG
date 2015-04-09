@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="page" id="favdocs" mode="on" history="on">
+	<description></description>
+	<caching>NO_CACHING</caching>
+	<xsltfile>pages/favdoc-page.xsl</xsltfile>
+	<element mode="ON" type="INCLUDED_PAGE">
+		<name>outline</name>
+		<value>outline</value>
+	</element>
+	<element mode="ON" type="QUERY">
+		<name>view_content</name>
+		<doctype>document</doctype>
+		<query source="macro">FAVOURITES</query>
+		<query source="macro">favourites_count</query>
+	</element>
+    <element mode="ON" type="INCLUDED_PAGE">
+        <name>captions</name>
+        <value>captions</value>
+    </element>
+	<caption name ="title" source ="KEYWORD">Избранные</caption>
+</rule>

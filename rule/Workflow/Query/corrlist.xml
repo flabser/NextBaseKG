@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="corrlist">
+	<description>Список корреспондентов</description>
+	<rununderuser source="static">observer</rununderuser>	
+	<doctype>glossary</doctype>
+	<query source="static">form='corr'</query>
+	<field mode="on">	
+		<name>name</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	
+</rule>
+

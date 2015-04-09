@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<rule type="form" id="userprofile" mode="on">
+	<description></description>
+	<xsltfile>forms/userprofile.xsl</xsltfile>
+	<doctype>system</doctype>
+	<title source="KEYWORD">Свойства пользователя</title>
+	<events>
+		<queryopen source="file">knowledgebase.form.userprofile.QueryOpen</queryopen>
+	</events>
+	<default>
+	</default>
+	<show>
+		<field mode="on">
+			<name>userid</name>
+			<value source="docfield">userid</value>
+		</field>
+		<field mode="on">
+			<name>shortname</name>
+			<value source="docfield">shortname</value>
+			<caption source="KEYWORD">Сокращенное имя</caption> 
+		</field>
+		<field mode="on">
+			<name>fullname</name>
+			<value source="docfield">fullname</value>
+			<caption source="KEYWORD">Полное имя</caption>  
+		</field>
+		<field mode="on">
+			<name>historyvis</name>
+			<value source="docfield">historyvis</value>
+		</field>
+		<field mode="on" publishas="GLOSSARY">
+			<name>post</name>
+			<value source="docfield">postid</value>
+			<caption source="KEYWORD">Должность</caption>
+		</field>
+		<field mode="on" publishas="DEPARTMENT">
+			<name>department</name>
+			<value source="docfield">depid</value>
+			<caption source="KEYWORD">Департамент</caption>
+		</field>
+		<field mode="on">
+			<name>email</name>
+			<value source="docfield">email</value>
+		</field>
+		<field mode="on">
+			<name>instmsgaddress</name>
+			<value source="docfield">instmsgaddress</value>
+		</field>
+		<field mode="on">
+			<name>skin</name>
+			<value source="docfield">skin</value>
+			<caption source="KEYWORD">Скин</caption>  
+		</field>
+		<field mode="on">
+			<name>lang</name>
+			<value source="docfield">lang</value>
+			<caption source="KEYWORD">Язык интерфейса</caption> 
+		</field>
+		<field mode="on">
+			<name>countdocinview</name>
+			<value source="docfield">pagesize</value>
+			<caption source="KEYWORD">Количество документов в виде</caption> 
+		</field>
+		<field mode="on" publishas="GROUP">
+			<name>groups</name>
+			<value source="docfield">groups</value>
+			<caption source="KEYWORD">Группы</caption>
+		</field>
+		<field mode="on" publishas="ROLE">
+			<name>role</name>
+			<value source="docfield">role</value>
+			<caption source="KEYWORD">Роли</caption>
+		</field>
+		<field mode="on">
+			<name>filter</name>
+			<value source="macro">FILTER</value>
+			<caption source="KEYWORD">Фильтры</caption>
+		</field>
+	</show>
+	<save>
+		<field mode="on">	
+			<value source="webformfield">historyvis</value>
+			<docfield>historyvis</docfield>				
+		</field>
+	</save>
+	<caption name="close" source="KEYWORD">Закрыть</caption> 
+	<caption name="saveandclose" source="KEYWORD">Сохранить и закрыть</caption> 
+	<caption name="properties" source="KEYWORD">Свойства</caption> 
+	<caption name="settings" source="KEYWORD">Настройки системы</caption> 
+	<caption name="editing" source="KEYWORD">Редактирование</caption>
+	<caption name="readonly" source="KEYWORD">Только для чтения</caption>
+	<caption name="modenotdefined" source="KEYWORD">Режим не определен</caption>
+	<caption name="logout" source="KEYWORD">Завершить работу</caption>
+	<caption name="lang" source="KEYWORD">Язык интерфейса</caption>
+	<caption name="interface" source="KEYWORD">Интерфейс</caption>
+	<caption name="filtermanage" source="KEYWORD">Управление фильтрами</caption>
+	<caption name="refreshperiod" source="KEYWORD">Периодичность обновления видов</caption>
+	<caption name="addfilter" source="KEYWORD">Добавить фильтр</caption>
+	<caption name="removefilter" source="KEYWORD">Удалить фильтр</caption>
+	<caption name="name" source="KEYWORD">Название</caption>
+	<caption name="project" source="KEYWORD">Проект</caption>
+	<caption name="category" source="KEYWORD">Категория</caption>
+	<caption name="author" source="KEYWORD">Автор</caption>
+	<caption name="datereg" source="KEYWORD">Дата регистрации</caption>
+	<caption name="keyword" source="KEYWORD">Ключевое слово</caption>
+	<caption name="help" source="KEYWORD">Помощь</caption>
+	<caption name="oldpassword" source="KEYWORD">Старый пароль</caption>
+	<caption name="newpassword" source="KEYWORD">Новый пароль</caption>
+	<caption name="repeatnewpassword" source="KEYWORD">Повтор нового пароля</caption>
+	<caption name="role" source="KEYWORD">Роли</caption>
+	<caption name="group" source="KEYWORD">Группы</caption>
+	<caption name="doctype" source="KEYWORD">Тип документа</caption>
+ 	<caption name="skin" source="KEYWORD">Оформление</caption>
+ 	<caption name="employer" source="KEYWORD">Сотрудник</caption>
+ 	<caption name="chinese" source="KEYWORD">Китайский</caption>
+ 	<caption name="cancel" source="KEYWORD">Отмена</caption>
+ 	<caption name="docfilter" source="KEYWORD">Фильтр документов</caption>
+ 	<caption name="documentsavedcaption" source="KEYWORD">Идет сохранение документа...</caption>
+	<caption name="documentmarkread" source="KEYWORD">Документ отмечен как прочтенный</caption>
+	<caption name="pleasewaitdocsave" source="KEYWORD">Пожалуйста ждите... Идет сохранение документа</caption>
+	<caption name="cancel" source="KEYWORD">Отмена</caption>
+	<caption name="countdocinview" source="KEYWORD">Количество документов в виде</caption>
+	<caption name="skin" source="KEYWORD">Скин</caption>
+	<caption name="department" source="KEYWORD">Департамент</caption>
+	<caption name="postid" source="KEYWORD">Должность</caption>
+	<caption name="fullname" source="KEYWORD">Полное имя</caption>
+	<caption name="shortname" source="KEYWORD">Сокращенное имя</caption>
+	<caption name="groups" source="KEYWORD">Группы</caption>
+	<caption name="filter" source="KEYWORD">Фильтры</caption>
+	<caption name ="min" source ="KEYWORD">мин</caption>
+	<caption name ="view_userprofile" source ="KEYWORD">Посмотреть свойства текущего пользователя</caption>
+	<glossary mode="on" id="langs" source="macro">AVAILABLE_LANGS</glossary>
+	<glossary mode="on" id="skins" source="macro">AVAILABLE_SKINS</glossary>
+	<glossary mode="on" id="roles" source="macro">APPLICATION_ROLES</glossary>
+	<caption name="app_title" source="KEYWORD">База знаний</caption>
+	
+</rule>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule type="query" id="har">
+	<description></description>
+	<doctype>glossary</doctype>
+	<query source="static">form = 'har'</query>
+	<sortby source="static">VIEWTEXT1#asc</sortby>
+	<field mode="on">	
+		<name>viewtext</name>
+		<value source="resultset">name</value>	
+		<attrvalue></attrvalue>	
+	</field>
+	<field mode="on">	
+		<name>code</name>
+		<value source="resultset">code</value>	
+		<attrvalue></attrvalue>	
+	</field>
+</rule>

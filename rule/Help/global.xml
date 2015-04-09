@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><rule id="Help" mode="on" type="global">
+	<description>База знаний</description>
+	<orgname>ТОО "Lab of the Future"</orgname>
+	<liccount>100</liccount>
+	<logo>khowledgeBase.png</logo>
+    <appname>База знаний</appname>
+	<database autodeploy="ON">
+		<name>Projects</name>
+		<driver>org.postgresql.Driver</driver>
+		<url>jdbc:postgresql://localhost/Help</url>
+		<username/>
+		<password/>
+	<connectionid>BwFRFcoLl0xThXFdeDRQXQ==@@@Asc+8jDVQtI=</connectionid></database>
+	<externalmodule type="STRUCTURE">Structure</externalmodule>
+	<daemons mode="off">
+	</daemons>
+	
+	<entrypoint>Provider?type=static&amp;id=start</entrypoint>
+	<defaultredirecturl>Provider?type=page&amp;id=article&amp;page=1
+	</defaultredirecturl>
+	<langs>
+		<entry id="RUS" isprimary="1">Русский</entry>
+		<entry id="KAZ">Қазақша</entry>
+		<entry id="ENG">English</entry>
+		<entry id="CHN">中国</entry>
+	</langs>                                                                                                                                                                              	<skins>
+		<entry default="on" errorpage="error.xsl" id="classic" path="./webapps/Help/classic/xsl">Classic</entry>
+	</skins>
+	<roles>
+		<entry id="administrator">Разрешает ввод и редактирование</entry>
+	</roles>
+	<markdelaysec>5</markdelaysec>
+
+	<eds mode="OFF">
+		<keypass/>
+		<keystore/>
+	</eds>
+</rule>

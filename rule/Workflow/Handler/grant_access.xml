@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule type="handler" id="grant_access">
+	<rununderuser source="macro">CURRENT_USER</rununderuser>
+	<trigger>provider</trigger>
+	<script><![CDATA[
+			String doHandler(_Session ses, Map<String, String[]> formData){
+			try{
+				def cdb = ses.getCurrentDatabase();
+				def sync = ses.getSynchronizer();
+				int docType = Integer.parseInt(formData.get("doctype")[0]);
+				def doc = null;
+			    String form = "";
+			    def parentDoc = null;
+			    def recipients = formData.get("grantusers");
+			    switch(docType){
+				   	case 896: 
+						doc = cdb.getDocumentByID(Integer.parseInt(formData.get("key")[0]));
+						parentDoc = doc;
+						form = doc.getValueString("form");					
+						break;
+					case 897: 
+						doc = cdb.getTaskByID(Integer.parseInt(formData.get("key")[0]));
+					    doc.session = ses;
+						if (doc.getResolType() == 3) {
+							parentDoc = doc;
+						} else {
+							parentDoc = doc.getGrandParentDocument();
+						}
+				    	form = parentDoc.getValueString("form");
+						break;
+		    	}
+		    	def recipientsRus = [];
+				def recipientsNA = [];
+				recipients.each{
+				    parentDoc.addReader(it);
+			    	def r = ses?.getStructure()?.getUser(it);
+			    	recipientsRus.add(r?.getShortName());
+			    	recipientsNA.add(r?.getNotesName());
+				}						
+				parentDoc.save("observer");
+				def allReaders = parentDoc.getReaders();
+				def responses = parentDoc.getDescendants();
+				responses.each{response->
+				    allReaders.each{reader->
+			    		response.addReader(reader);
+			    	}
+			    	response.save("observer");
+				}		
+				if (sync.isOn()){			 	    
+			    	def dominoSession = ses.getDominoSession();		    	
+			    	String basePath = "";
+			    	String notesID = "";		    	
+					notesID = doc.getNotesID();
+					switch(form){
+						case "IN": 
+					    	basePath = "Docs"+File.separator+"incoming.nsf";
+				    		break;
+						case "ISH": 
+						    basePath = "Docs"+File.separator+"outgoing.nsf";
+				    		break;
+						case "SZ": 
+						    basePath = "Docs"+File.separator+"workdoc.nsf";
+				    		break;
+					}		    
+		    		//чтобы передать имя базы в качестве аргумента, мы должны выяснить, в какой именно базе должен быть создан документ
+		    		def ldb = dominoSession.getDatabase(basePath);
+		    		def queueDB = dominoSession.getDatabase("KMG"+File.separator+"qevent.nsf");		    	
+					def ldoc = ldb.getDocumentByUNID(notesID);
+					def ndoc = ldb.createDocument();
+					def author = ses?.getStructure()?.getUser(doc.getValueString("author"));
+					if (ndoc) {
+						ndoc.setItemValue("AuthorRus", author?.getShortName());
+						ndoc.setItemValue("AuthorNA", author?.getNotesName());
+						ndoc.setNames("AuthorNA");
+						ndoc.setItemValue("GrantDate", new Date());
+						ndoc.setItemValue("Form", "WDAccess");			
+						if (ldoc) ndoc.makeResponse(ldoc);							
+						ndoc.setItemValue("GrantUsers", new Vector(recipientsRus.unique()));
+						ndoc.setItemValue("GrantUsersNA", new Vector(recipientsNA.unique()));
+						ndoc.setItemValue("GrantUsersOnlyNA", new Vector(recipientsNA.unique()));
+						ndoc.setNames("GrantUsersNA");
+						ndoc.setNames("GrantUsersOnlyNA");
+						ndoc.setItemValue("GrantText", formData.get("comment")[0]);
+						ndoc.saveDocument();
+						ndoc.dropEvent("enabler.workdoc", queueDB);
+						}
+					}else{
+						def recipientsMail = [];
+		    			recipients.each{
+		    				if (ses.getStructure()?.getUser(it)?.getEmail()) {
+		    					recipientsMail.add(ses.getStructure()?.getUser(it)?.getEmail());
+		    				}
+		    			}
+		    			if (recipientsMail){
+		    				String docNumber = "";
+		    				String docDate = "";
+		    				switch(form) {
+		    					case "ISH":
+		    					case "SZ" :
+		    						docNumber = parentDoc?.getValueString("vn");
+		    						docDate   = parentDoc?.getValueString("dvn");
+		    						break;
+		    					case "IN":
+		    						docNumber = parentDoc?.getValueString("in");
+		    						docDate   = parentDoc?.getValueString("din");
+		    						break;
+		    					case "KR":
+		    						docNumber = parentDoc?.getValueString("taskvn");
+		    						docDate   = parentDoc?.getValueString("taskdate");
+		    						break;
+		    				}
+		    				String msubject = '[СЭД] Вам дан доступ на ознакомление с документом ' + docNumber + ' от ' + docDate + ' (' + parentDoc?.getValueString("briefcontent") + ')';
+
+		    				String body = '<b><font color="#000080" size="4" face="Default Serif">Доступ на ознакомление</font></b><hr>';
+				        	body += '<table cellspacing="0" cellpadding="4" border="0" style="padding:10px; font-size:12px; font-family:Arial;">';
+				        	body += '<tr>';
+				        	body += '<td style="border-bottom:1px solid #CCC;" valign="top" colspan="2">';
+				        	body += 'Вам предоставлен доступ на ознакомление с документом ' + docNumber + ' от ' + docDate + '<br>';
+							body += '</td></tr><tr>';
+							body += '<td colspan="2"></td>';
+							body += '</tr><tr>';
+							body += '<td valign="top" width="240px">Краткое содержание:</td><td valign="top" width="600px">' + parentDoc.getValueString("briefcontent") + '</td>';
+							body += '</tr><tr>';
+							body += '<td valign="top">Сопроводительный текст напоминания:</td><td valign="top">' + formData.get("comment")[0] + '</td>';
+							body += '</tr></table>';
+							body += '<p><font size="2" face="Arial">Для работы с документом перейдите по <a href="' + parentDoc.getFullURL() + '">ссылке...</a></p></font>';    			
+
+		    				def mailAgent = ses.getMailAgent();
+			    			boolean wasSent = mailAgent.sendMail(recipientsMail, msubject, body);
+			    			if (wasSent) {
+			    				ses.getLogger().normalLogEntry("Message was successfully sent");
+			    			} else {
+			    				ses.getLogger().normalLogEntry("Message was not sent");
+			    			}
+			    		}
+					}
+				}catch(Exception e){
+				 	e.printStackTrace();
+				}	
+			}
+			]]>
+	</script>
+</rule>
