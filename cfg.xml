@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<nextbase>
+	<name>Nopanic</name>
+    <adminapp mode="on"/>
+    <hostname>192.168.10.21</hostname>
+    <port>38883</port>
+    <webserver>
+    	<version>7</version>
+    	<webservices mode="OFF"/>
+    </webserver>	
+    <ssl mode="OFF">
+        <port>38789</port>
+    	<keypass>123456</keypass>
+    	<keystore>c:\tmp\ssl\aikonamedia.jks</keystore>
+    	<clientauth mode="OFF">
+	   	 	<truststorepass>123456</truststorepass>
+	    	<truststorefile>c:\tmp\ssl\truststore.jks</truststorefile>
+    	</clientauth>
+    </ssl>
+    <applications> 
+         <app>
+            <name mode="off">Help</name>
+        </app>
+         <app>
+            <name mode="off">CashTracker</name>
+        </app>
+        <app>
+            <name mode="off">WTS</name>
+        </app>        
+        <app>
+            <name mode="off">ITS</name>
+        </app>        
+        <app>
+            <name mode="on">Structure</name>
+        </app>        
+         <app>
+            <name mode="on">Workspace</name>
+        </app>
+        <app>
+            <name mode="on">Workflow</name>
+        </app>
+        <app>
+            <name mode="off">Projects</name>
+        </app>
+        <app>
+            <name mode="off">MySupport</name>
+        </app>
+        <app>
+            <name mode="on">KnowledgeBase</name>
+        </app>
+        <app>
+            <name mode="off">Whiteboard</name>
+        </app>
+    </applications>
+    <logging>
+        <verbose>true</verbose>
+    </logging>
+    <mailagent mode="ON">
+        <smtphost>192.168.0.1</smtphost>
+        <defaultsender>info@flabs.kz</defaultsender>
+    </mailagent>
+    <instmsgagent>
+    	<xmppserver>192.168.0.13</xmppserver>       
+        <xmpplogin>support@zion</xmpplogin>
+        <xmpppwd>support</xmpppwd>        
+    </instmsgagent>
+    <debug mode="ON"></debug>
+</nextbase>
