@@ -693,6 +693,30 @@
 											</div>
 										</td>
 									</tr>
+										<xsl:if test="document/fields/parentrtfcontent">
+											<tr>
+												<td class="fc" style="padding-top:5px">
+													Вложения головного документа :
+												</td>
+												<td style="padding-top:5px">
+													<xsl:for-each select="document/fields/parentrtfcontent/entry">
+														<xsl:variable name='filename' select='@filename'/>
+														<xsl:variable name="extension" select="tokenize(lower-case($filename), '\.')[last()]"/>
+														<img src="/SharedResources/img/iconset/file_extension_{$extension}.png" style="margin-right:5px">
+															<xsl:attribute name="onerror">javascript:changeAttIcon(this)</xsl:attribute>
+														</img>
+														<a style="vertical-align:5px">
+															<xsl:attribute name='href'>Provider?type=getattach&amp;formsesid=<xsl:value-of select="/request/formsesid"/>&amp;doctype=<xsl:value-of select="/request/document/@doctype"/>&amp;key=<xsl:value-of select="@id"/>&amp;field=rtfcontent&amp;id=rtfcontent&amp;file=<xsl:value-of select='$filename'/>	</xsl:attribute>
+															<xsl:value-of select='replace($filename,"%2b","+")'/>
+														</a>&#xA0;&#xA0;
+														<xsl:if test="comment !=''">
+															<xsl:value-of select="concat(//document/captions/comments/@caption,':',comment)"/>
+															<br/><br/>
+														</xsl:if><br/>
+													</xsl:for-each>
+												</td>
+											</tr>
+										</xsl:if>
 									<xsl:if test="document/@status !='new'">
 										<tr>
 											<td class="fc">
@@ -974,30 +998,30 @@
 									</tr>
 								</table>
 							</div>
-							<div id="tabs-4" style="height:500px">
-								<xsl:if test="$status !='new'">
-									<div display="block" style="display:block; width:90%; margin-left:25px; font-size:14px" id="execution">
-											<br/>
-											<div id="progressDiv" style="width:99%; overflow:hidden">
-												<table>
-													<tr>
-														<td>
-															<xsl:if test="document/fields/progress/entry[1]/viewtext !=''">
-									 							<a href="{document/fields/progress/entry/@url}" class="doclink" style="color:blue; margin-left:3px; vertical-align:7px">
-									 								<xsl:value-of select="document/fields/progress/entry[1]/viewtext"/>
-									  							</a>
-									  						</xsl:if>
-															<xsl:if test="document/fields/progress/entry/viewtext ='' and $status = 'new'">
-									  							<xsl:value-of select="document/fields/title"/>
-									  						</xsl:if>
-							  							</td>
-							  						</tr>
-					  								<xsl:apply-templates select="document/fields/progress/entry/responses[entry]"/>
-					  							</table>
+								<xsl:if test="$status != 'new'">
+									<div id="tabs-4" style="height:500px">
+										<div display="block" style="display:block; width:90%; margin-left:25px; font-size:14px" id="execution">
+												<br/>
+												<div id="progressDiv" style="width:99%; overflow:hidden">
+													<table>
+														<tr>
+															<td>
+																<xsl:if test="document/fields/progress/entry[1]/viewtext !=''">
+																	<a href="{document/fields/progress/entry/@url}" class="doclink" style="color:blue; margin-left:3px; vertical-align:7px">
+																		<xsl:value-of select="document/fields/progress/entry[1]/viewtext"/>
+																	</a>
+																</xsl:if>
+																<xsl:if test="document/fields/progress/entry/viewtext ='' and $status = 'new'">
+																	<xsl:value-of select="document/fields/title"/>
+																</xsl:if>
+															</td>
+														</tr>
+														<xsl:apply-templates select="document/fields/progress/entry/responses[entry]"/>
+													</table>
+												</div>
 											</div>
-										</div>
-									</xsl:if>
-								</div>
+									</div>
+								</xsl:if>
 							<input type="hidden" name="parentdocid" value="{document/@parentdocid}"/>
 							<input type="hidden" name="parentdoctype" value="{document/@parentdoctype}"/>
 							<xsl:for-each select="extexecid/item">

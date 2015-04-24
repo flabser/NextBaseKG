@@ -48,7 +48,13 @@ class QueryOpen extends _FormQueryOpen {
 				publishParentDocs(parentDoc, session, 'new');
 				def content =  parentDoc.getValueString("content") ?: parentDoc.getValueString("contentsource") ?: parentDoc.getValueString("remark");
 				publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
-			} 
+				def parentdoc = doc.getParentDocument();
+				try{
+					publishDocumentAttachment(parentdoc,"parentrtfcontent","rtfcontent");
+				}catch(_Exception e){
+
+				}
+			}
 		}
 		def db = session.getCurrentDatabase();
 		def maxdate = 10;
@@ -67,6 +73,7 @@ class QueryOpen extends _FormQueryOpen {
 		}catch(_Exception e){
 
 		}
+		publishValue("control", control)
 	}
 
 	def getRespProgress(_Document gdoc, _Session session) {
@@ -136,19 +143,7 @@ class QueryOpen extends _FormQueryOpen {
 
 		}
 		
-		if(doc.getField("parentdocid") && doc.getValueNumber("parentdocid") != 0){
-			def gpdoc = doc.getGrandParentDocument();
-			if(gpdoc){
-				gpdoc.session = session;
-				publishParentDocs(gpdoc, session, "existing")
-				def content =  gpdoc.getValueString("content") ?: gpdoc.getValueString("contentsource") ?: gpdoc.getValueString("remark");
-				publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
-			}
-		}else{
-			publishParentDocs(doc, session, "existing")
-			def content =  doc.getValueString("content") ?: doc.getValueString("contentsource") ?: doc.getValueString("remark");
-			publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
-		}
+
 		publishEmployer("taskauthor",doc.getAuthorID())
 		publishEmployer("author",doc.getValueString("taskauthor"))
 		publishValue("taskvn",doc.getValueString("taskvn"))
@@ -173,6 +168,26 @@ class QueryOpen extends _FormQueryOpen {
 			publishAttachment("rtfcontent","rtfcontent")
 		}catch(_Exception e){
 
+		}
+		if(doc.getField("parentdocid") && doc.getValueNumber("parentdocid") != 0){
+			def gpdoc = doc.getGrandParentDocument();
+			if(gpdoc){
+				gpdoc.session = session;
+				publishParentDocs(gpdoc, session, "existing")
+				def content =  gpdoc.getValueString("content") ?: gpdoc.getValueString("contentsource") ?: gpdoc.getValueString("remark");
+				publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
+				def parentdoc = doc.getParentDocument();
+				try{
+					publishDocumentAttachment(parentdoc,"parentrtfcontent","rtfcontent");
+				}catch(_Exception e){
+
+				}
+				publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
+			}
+		}else{
+			publishParentDocs(doc, session, "existing")
+			def content =  doc.getValueString("content") ?: doc.getValueString("contentsource") ?: doc.getValueString("remark");
+			publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
 		}
 		/*
 		 def parentDoc = db.getDocumentByComplexID(webFormData.getParentDocID())
