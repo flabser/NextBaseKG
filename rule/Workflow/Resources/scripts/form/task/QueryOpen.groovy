@@ -44,6 +44,11 @@ class QueryOpen extends _FormQueryOpen {
 				publishParentDocs(gpdoc, session, 'new')
 				def content =  gpdoc.getValueString("content") ?: gpdoc.getValueString("contentsource") ?: gpdoc.getValueString("remark");
 				publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
+                try{
+                    publishDocumentAttachment(gpdoc,"parentrtfcontent","rtfcontent");
+                }catch(_Exception e){
+
+                }
 			}else{
 				publishParentDocs(parentDoc, session, 'new');
 				def content =  parentDoc.getValueString("content") ?: parentDoc.getValueString("contentsource") ?: parentDoc.getValueString("remark");
@@ -178,7 +183,7 @@ class QueryOpen extends _FormQueryOpen {
 				publishValue("pdoccontent",_Helper.getNormalizedRichText(content))
 				def parentdoc = doc.getParentDocument();
 				try{
-					publishDocumentAttachment(parentdoc,"parentrtfcontent","rtfcontent");
+					publishDocumentAttachment(gpdoc,"parentrtfcontent","rtfcontent");
 				}catch(_Exception e){
 
 				}
