@@ -50,7 +50,7 @@ class QuerySave extends _FormQuerySave {
         Date tDate = new Date()
         if (doc.isNewDoc || !doc.getValueString("vn")){
             def db = session.getCurrentDatabase()
-            int num = db.getRegNumber('in_' + doc.getValueString("project"))
+            int num = db.getRegNumber('in')
             String vnAsText = Integer.toString(num)
             doc.addStringField("mailnotification", "")
             doc.replaceStringField("vn", vnAsText)
