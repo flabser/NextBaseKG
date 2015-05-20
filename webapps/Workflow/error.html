@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Nextbase - Ошибка</title>						
+				<link rel="stylesheet" href="classic/css/main.css" />	
+				<link rel="stylesheet" href="classic/css/actionbar.css" />			
+				<script><![CDATA[
+					function CancelForm(){
+			   	  		window.history.back();
+					}
+					function goToLogin(){
+					 	window.location = "Provider?type=static&id=start&autologin=0";					
+					}
+					
+					function reloadPage(){
+					 	window.location.reload()					
+					}
+					
+					function loadXmlPage(){
+			   	  		window.location = window.location + "&amp;onlyxml=1"
+					}
+					
+				]]></script>
+</head>
+<body style="background-image: url(/SharedResources/img/classic/f.gif); font-family:arial;">
+			<!--<font style="font-size:1.7em; font-family:Verdana, Verdana, Geneva, sans-serif; color:#696969">Ошибка 401: Авторизация отклонена</font>&#xA0;
+				--><br/>				
+				
+		<br /><br />
+		<br /><br />
+		<br />
+		<br />
+		
+			
+			<table width="100%" border="0" >
+				<tr>
+					<td width="20%" align="right" style="font-size:9pt;">
+						<font style="font-size:1.9em">NextBase</font>
+						<br />
+						
+						Copyright F-lab's 2011</font><br />
+					</td>
+					<td width="1%"></td>
+					<td style="height: 500px" bgcolor="#CD0000" width="1"></td>
+					<td >
+					
+					<table style="width:100%;  margin-left:4%">
+						<tr>
+							<td>
+								<font style="font-size:2em;">Ошибка</font>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<br/>
+								
+								<font style="font-size:1em;"><xsl:value-of select="request/error/message/errortext"/></font>
+								
+								<ul style="font-size:0.9em; margin-top:15px">
+										<li type="square" style="margin-top:5px"><a href="javascript:reloadPage()">Обновить страницу</a></li>
+										<li type="square" style="margin-top:5px"><a href="javascript:CancelForm()">Вернуться на предыдущую страницу</a></li>
+								</ul>
+									
+							</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				
+			</table>
+			<div style="z-index:999; margin-top:-2%; margin-left:22.5%; font-family:arial; font-size:0.71em">&#xA0;<a href="http://www.flabs.kz" target="_blank">F-lab's</a>&#xA0; &#8226; &#xA0;<a href="http://www.smartdoc.kz" target="_blank">Служба поддержки пользователей</a></div>
+	</body>
+</html>
+<html>
+			<head>
+				
+			</head>
+			
+				
+		</html>

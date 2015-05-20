@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="attachments.Directory" value="D:\Development\workspace\ASPServer\webapps\FrontWS\WEB-INF\attachments"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="ForeignersSearchService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="testService" qname="ns1:testService" returnQName="ns1:testServiceReturn" returnType="ns2:ServiceInfo" soapAction="" xmlns:ns1="http://ump.webservices.lof.kz" xmlns:ns2="http://common.webservices.lof.kz"/>
+  <operation name="getFullData" qname="ns3:getFullData" returnQName="ns3:getFullDataReturn" returnType="ns4:PersonFullData" soapAction="" xmlns:ns3="http://ump.webservices.lof.kz" xmlns:ns4="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns3:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns3:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getPersonByFIO" qname="ns5:getPersonByFIO" returnQName="ns5:getPersonByFIOReturn" returnType="ns6:PersonSearchResult" soapAction="" xmlns:ns5="http://ump.webservices.lof.kz" xmlns:ns6="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns5:firstName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns5:lastName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns5:middleName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns5:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns5:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns5:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getPersonByDoc" qname="ns7:getPersonByDoc" returnQName="ns7:getPersonByDocReturn" returnType="ns8:PersonSearchResult" soapAction="" xmlns:ns7="http://ump.webservices.lof.kz" xmlns:ns8="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns7:serial" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns7:number" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns7:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="getFullData testService getPersonByFIO getPersonByDoc"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="ForeignersSearchService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.ump.ForeignersSearchServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="ForeignersSearchService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.ump.webservices.lof.kz,http://ump.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://ump.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="ForeignersSearchServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:PersonFullData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.PersonFullData" xmlns:ns9="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:Street" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Street" xmlns:ns10="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns11:Region" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Region" xmlns:ns11="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:DocType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.DocType" xmlns:ns12="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns13:VisitPurpose" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.VisitPurpose" xmlns:ns13="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:Document" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Document" xmlns:ns14="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:PersonShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.PersonShortData" xmlns:ns15="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:VisitData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.VisitData" xmlns:ns16="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns17:City" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.City" xmlns:ns17="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns18:Nationality" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Nationality" xmlns:ns18="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns19:PersonSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.PersonSearchResult" xmlns:ns19="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns20:Country" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Country" xmlns:ns20="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns21:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns21="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns22:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Address" xmlns:ns22="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns23:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns23="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns24:District" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.District" xmlns:ns24="http://store.ump.webservices.lof.kz"/>
+  <arrayMapping innerType="ns26:PersonShortData" languageSpecificType="java:kz.lof.webservices.store.ump.PersonShortData[]" qname="ns25:ArrayOf_tns2_PersonShortData" xmlns:ns25="http://ump.webservices.lof.kz" xmlns:ns26="http://store.ump.webservices.lof.kz"/>
+  <arrayMapping innerType="ns28:VisitData" languageSpecificType="java:kz.lof.webservices.store.ump.VisitData[]" qname="ns27:ArrayOf_tns2_VisitData" xmlns:ns27="http://ump.webservices.lof.kz" xmlns:ns28="http://store.ump.webservices.lof.kz"/>
+  <arrayMapping innerType="ns30:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns29:ArrayOf_tns1_InfoEntry" xmlns:ns29="http://ump.webservices.lof.kz" xmlns:ns30="http://common.webservices.lof.kz"/>
+ </service>
+ <service name="UDPCamService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="getAddressByFIO" qname="ns31:getAddressByFIO" returnQName="ns31:getAddressByFIOReturn" returnType="ns32:HumanShortData" soapAction="" xmlns:ns31="http://udp.webservices.lof.kz" xmlns:ns32="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns31:firstName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns31:lastName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns31:middleName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns31:birthDate" type="xsd:date" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns31:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="testService" qname="ns33:testService" returnQName="ns33:testServiceReturn" returnType="ns34:ServiceInfo" soapAction="" xmlns:ns33="http://udp.webservices.lof.kz" xmlns:ns34="http://common.webservices.lof.kz"/>
+  <operation name="getWarrByGRNZ" qname="ns35:getWarrByGRNZ" returnQName="ns35:getWarrByGRNZReturn" returnType="ns36:TrustData" soapAction="" xmlns:ns35="http://udp.webservices.lof.kz" xmlns:ns36="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns35:grnz" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns35:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getFullDataByGRNZ" qname="ns37:getFullDataByGRNZ" returnQName="ns37:getFullDataByGRNZReturn" returnType="ns38:VehicleFullData" soapAction="" xmlns:ns37="http://udp.webservices.lof.kz" xmlns:ns38="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns37:grnz" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns37:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="testService getAddressByFIO getWarrByGRNZ getFullDataByGRNZ"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="UDPCamService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.udp.UDPCamServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="UDPCamService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.udp.webservices.lof.kz,http://udp.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://udp.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="UDPCamServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns39:TrustData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.TrustData" xmlns:ns39="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns40:Color" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.Color" xmlns:ns40="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns41:District" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.District" xmlns:ns41="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns42:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.Address" xmlns:ns42="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns43:HumanShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.HumanShortData" xmlns:ns43="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns44:TrustType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.TrustType" xmlns:ns44="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns45:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns45="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns46:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns46="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns47:CheckupData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.CheckupData" xmlns:ns47="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns48:Region" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.Region" xmlns:ns48="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns49:TaxData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.TaxData" xmlns:ns49="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns50:VehicleFullData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.VehicleFullData" xmlns:ns50="http://store.udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns52:TrustData" languageSpecificType="java:kz.lof.webservices.store.udp.TrustData[]" qname="ns51:ArrayOf_tns1_TrustData" xmlns:ns51="http://udp.webservices.lof.kz" xmlns:ns52="http://store.udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns54:TaxData" languageSpecificType="java:kz.lof.webservices.store.udp.TaxData[]" qname="ns53:ArrayOf_tns1_TaxData" xmlns:ns53="http://udp.webservices.lof.kz" xmlns:ns54="http://store.udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns56:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns55:ArrayOf_tns2_InfoEntry" xmlns:ns55="http://udp.webservices.lof.kz" xmlns:ns56="http://common.webservices.lof.kz"/>
+  <arrayMapping innerType="ns58:CheckupData" languageSpecificType="java:kz.lof.webservices.store.udp.CheckupData[]" qname="ns57:ArrayOf_tns1_CheckupData" xmlns:ns57="http://udp.webservices.lof.kz" xmlns:ns58="http://store.udp.webservices.lof.kz"/>
+ </service>
+ <service name="UDPService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="getDataByFIO" qname="ns59:getDataByFIO" returnQName="ns59:getDataByFIOReturn" returnType="ns60:HumanSearchResult" soapAction="" xmlns:ns59="http://udp.webservices.lof.kz" xmlns:ns60="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns59:firstName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns59:lastName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns59:middleName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns59:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns59:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns59:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByIIN" qname="ns61:getDataByIIN" returnQName="ns61:getDataByIINReturn" returnType="ns62:HumanSearchResult" soapAction="" xmlns:ns61="http://udp.webservices.lof.kz" xmlns:ns62="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns61:iin" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns61:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="testService" qname="ns63:testService" returnQName="ns63:testServiceReturn" returnType="ns64:ServiceInfo" soapAction="" xmlns:ns63="http://udp.webservices.lof.kz" xmlns:ns64="http://common.webservices.lof.kz"/>
+  <operation name="getTheftData" qname="ns65:getTheftData" returnQName="ns65:getTheftDataReturn" returnType="ns66:TheftSearchResult" soapAction="" xmlns:ns65="http://udp.webservices.lof.kz" xmlns:ns66="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns65:grnz" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns65:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByOrgName" qname="ns67:getDataByOrgName" returnQName="ns67:getDataByOrgNameReturn" returnType="ns68:HumanSearchResult" soapAction="" xmlns:ns67="http://udp.webservices.lof.kz" xmlns:ns68="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns67:orgName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns67:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns67:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns67:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByOwnerId" qname="ns69:getDataByOwnerId" returnQName="ns69:getDataByOwnerIdReturn" returnType="ns70:VehicleSearchResult" soapAction="" xmlns:ns69="http://udp.webservices.lof.kz" xmlns:ns70="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns69:ownerId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns69:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataBySRTS" qname="ns71:getDataBySRTS" returnQName="ns71:getDataBySRTSReturn" returnType="ns72:VehicleSearchResult" soapAction="" xmlns:ns71="http://udp.webservices.lof.kz" xmlns:ns72="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns71:srtsSerial" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns71:srtsNumber" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns71:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByGRNZ" qname="ns73:getDataByGRNZ" returnQName="ns73:getDataByGRNZReturn" returnType="ns74:VehicleSearchResult" soapAction="" xmlns:ns73="http://udp.webservices.lof.kz" xmlns:ns74="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns73:grnz" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns73:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns73:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns73:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByRegId" qname="ns75:getDataByRegId" returnQName="ns75:getDataByRegIdReturn" returnType="ns76:VehicleFullData" soapAction="" xmlns:ns75="http://udp.webservices.lof.kz" xmlns:ns76="http://store.udp.webservices.lof.kz">
+   <parameter qname="ns75:srtsId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns75:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="getDataByOrgName getTheftData getDataByOwnerId testService getDataByGRNZ getDataBySRTS getDataByRegId getDataByIIN getDataByFIO"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="UDPService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.udp.UDPServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="UDPService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.udp.webservices.lof.kz,http://udp.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://udp.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="UDPServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns77:HumanSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.HumanSearchResult" xmlns:ns77="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns78:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.Address" xmlns:ns78="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns79:TrustType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.TrustType" xmlns:ns79="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns80:VehicleShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.VehicleShortData" xmlns:ns80="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns81:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns81="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns82:TaxData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.TaxData" xmlns:ns82="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns83:Region" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.Region" xmlns:ns83="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns84:TrustData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.TrustData" xmlns:ns84="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns85:Color" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.Color" xmlns:ns85="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns86:District" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.District" xmlns:ns86="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns87:HumanShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.HumanShortData" xmlns:ns87="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns88:TheftSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.TheftSearchResult" xmlns:ns88="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns89:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns89="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns90:CheckupData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.CheckupData" xmlns:ns90="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns91:VehicleSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.VehicleSearchResult" xmlns:ns91="http://store.udp.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns92:VehicleFullData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.udp.VehicleFullData" xmlns:ns92="http://store.udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns94:HumanShortData" languageSpecificType="java:kz.lof.webservices.store.udp.HumanShortData[]" qname="ns93:ArrayOf_tns1_HumanShortData" xmlns:ns93="http://udp.webservices.lof.kz" xmlns:ns94="http://store.udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns96:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns95:ArrayOf_tns2_InfoEntry" xmlns:ns95="http://udp.webservices.lof.kz" xmlns:ns96="http://common.webservices.lof.kz"/>
+  <arrayMapping innerType="ns98:TrustData" languageSpecificType="java:kz.lof.webservices.store.udp.TrustData[]" qname="ns97:ArrayOf_tns1_TrustData" xmlns:ns97="http://udp.webservices.lof.kz" xmlns:ns98="http://store.udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns100:TaxData" languageSpecificType="java:kz.lof.webservices.store.udp.TaxData[]" qname="ns99:ArrayOf_tns1_TaxData" xmlns:ns100="http://store.udp.webservices.lof.kz" xmlns:ns99="http://udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns102:VehicleShortData" languageSpecificType="java:kz.lof.webservices.store.udp.VehicleShortData[]" qname="ns101:ArrayOf_tns1_VehicleShortData" xmlns:ns101="http://udp.webservices.lof.kz" xmlns:ns102="http://store.udp.webservices.lof.kz"/>
+  <arrayMapping innerType="ns104:CheckupData" languageSpecificType="java:kz.lof.webservices.store.udp.CheckupData[]" qname="ns103:ArrayOf_tns1_CheckupData" xmlns:ns103="http://udp.webservices.lof.kz" xmlns:ns104="http://store.udp.webservices.lof.kz"/>
+ </service>
+ <service name="HumansSearchService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="getCountry" qname="ns105:getCountry" returnQName="ns105:getCountryReturn" returnType="ns106:Country" soapAction="" xmlns:ns105="http://ump.webservices.lof.kz" xmlns:ns106="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns105:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns105:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getStreets" qname="ns107:getStreets" returnQName="ns107:getStreetsReturn" returnType="ns108:Street" soapAction="" xmlns:ns107="http://ump.webservices.lof.kz" xmlns:ns108="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns107:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns107:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="testService" qname="ns109:testService" returnQName="ns109:testServiceReturn" returnType="ns110:ServiceInfo" soapAction="" xmlns:ns109="http://ump.webservices.lof.kz" xmlns:ns110="http://common.webservices.lof.kz"/>
+  <operation name="getFullData" qname="ns111:getFullData" returnQName="ns111:getFullDataReturn" returnType="ns112:HumanFullData" soapAction="" xmlns:ns111="http://ump.webservices.lof.kz" xmlns:ns112="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns111:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns111:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDistricts" qname="ns113:getDistricts" returnQName="ns113:getDistrictsReturn" returnType="ns114:District" soapAction="" xmlns:ns113="http://ump.webservices.lof.kz" xmlns:ns114="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns113:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns113:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getHumanByFIO" qname="ns115:getHumanByFIO" returnQName="ns115:getHumanByFIOReturn" returnType="ns116:HumansSearchResult" soapAction="" xmlns:ns115="http://ump.webservices.lof.kz" xmlns:ns116="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns115:firstName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns115:lastName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns115:middleName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns115:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns115:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns115:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getHumanByAddr" qname="ns117:getHumanByAddr" returnQName="ns117:getHumanByAddrReturn" returnType="ns118:HumansSearchResult" soapAction="" xmlns:ns117="http://ump.webservices.lof.kz" xmlns:ns118="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns117:street" type="ns118:Street"/>
+   <parameter qname="ns117:house" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns117:flat" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns117:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns117:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns117:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getHumanByDoc" qname="ns119:getHumanByDoc" returnQName="ns119:getHumanByDocReturn" returnType="ns120:HumansSearchResult" soapAction="" xmlns:ns119="http://ump.webservices.lof.kz" xmlns:ns120="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns119:docNumber" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns119:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns119:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns119:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getCitizenByIIN" qname="ns121:getCitizenByIIN" returnQName="ns121:getCitizenByIINReturn" returnType="ns122:HumansSearchResult" soapAction="" xmlns:ns121="http://ump.webservices.lof.kz" xmlns:ns122="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns121:iin" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns121:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getAllCountries" qname="ns123:getAllCountries" returnQName="ns123:getAllCountriesReturn" returnType="ns124:Country" soapAction="" xmlns:ns123="http://ump.webservices.lof.kz" xmlns:ns124="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns123:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getAllDistricts" qname="ns125:getAllDistricts" returnQName="ns125:getAllDistrictsReturn" returnType="ns126:District" soapAction="" xmlns:ns125="http://ump.webservices.lof.kz" xmlns:ns126="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns125:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getAllStreets" qname="ns127:getAllStreets" returnQName="ns127:getAllStreetsReturn" returnType="ns128:Street" soapAction="" xmlns:ns127="http://ump.webservices.lof.kz" xmlns:ns128="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns127:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="getFullData testService getAllCountries getCitizenByIIN getHumanByFIO getHumanByAddr getDistricts getCountry getAllStreets getHumanByDoc getAllDistricts getStreets"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="HumansSearchService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.ump.HumansSearchServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="HumansSearchService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.ump.webservices.lof.kz,http://ump.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://ump.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="HumansSearchServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns129:DocType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.DocType" xmlns:ns129="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns130:HumansSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.HumansSearchResult" xmlns:ns130="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns131:VisitPurpose" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.VisitPurpose" xmlns:ns131="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns132:RegType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.RegType" xmlns:ns132="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns133:Nationality" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Nationality" xmlns:ns133="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns134:Country" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Country" xmlns:ns134="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns135:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns135="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns136:District" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.District" xmlns:ns136="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns137:HumanShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.HumanShortData" xmlns:ns137="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns138:HumanFullData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.HumanFullData" xmlns:ns138="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns139:Street" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Street" xmlns:ns139="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns140:Region" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Region" xmlns:ns140="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns141:Document" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Document" xmlns:ns141="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns142:Relation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Relation" xmlns:ns142="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns143:City" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.City" xmlns:ns143="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns144:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns144="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns145:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.Address" xmlns:ns145="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns146:VisitReason" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.VisitReason" xmlns:ns146="http://store.ump.webservices.lof.kz"/>
+  <arrayMapping innerType="ns148:HumanShortData" languageSpecificType="java:kz.lof.webservices.store.ump.HumanShortData[]" qname="ns147:ArrayOf_tns1_HumanShortData" xmlns:ns147="http://ump.webservices.lof.kz" xmlns:ns148="http://store.ump.webservices.lof.kz"/>
+  <arrayMapping innerType="ns150:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns149:ArrayOf_tns2_InfoEntry" xmlns:ns149="http://ump.webservices.lof.kz" xmlns:ns150="http://common.webservices.lof.kz"/>
+  <arrayMapping innerType="ns152:Document" languageSpecificType="java:kz.lof.webservices.store.ump.Document[]" qname="ns151:ArrayOf_tns1_Document" xmlns:ns151="http://ump.webservices.lof.kz" xmlns:ns152="http://store.ump.webservices.lof.kz"/>
+ </service>
+ <service name="TaxPayService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="getOrgsByAddresses" qname="ns153:getOrgsByAddresses" returnQName="ns153:getOrgsByAddressesReturn" returnType="ns154:TaxPayersSearchResult" soapAction="" xmlns:ns153="http://tax.webservices.lof.kz" xmlns:ns154="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns153:addresses" type="ns154:Address"/>
+   <parameter qname="ns153:fromDate" type="xsd:date" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns153:toDate" type="xsd:date" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns153:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns153:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns153:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByFIO" qname="ns155:getDataByFIO" returnQName="ns155:getDataByFIOReturn" returnType="ns156:TaxPayersSearchResult" soapAction="" xmlns:ns155="http://tax.webservices.lof.kz" xmlns:ns156="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns155:lastName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns155:firstName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns155:middleName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns155:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns155:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns155:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByIIN" qname="ns157:getDataByIIN" returnQName="ns157:getDataByIINReturn" returnType="ns158:TaxPayersSearchResult" soapAction="" xmlns:ns157="http://tax.webservices.lof.kz" xmlns:ns158="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns157:iin" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns157:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="testService" qname="ns159:testService" returnQName="ns159:testServiceReturn" returnType="ns160:ServiceInfo" soapAction="" xmlns:ns159="http://tax.webservices.lof.kz" xmlns:ns160="http://common.webservices.lof.kz"/>
+  <operation name="getFullData" qname="ns161:getFullData" returnQName="ns161:getFullDataReturn" returnType="ns162:TaxPayerFullData" soapAction="" xmlns:ns161="http://tax.webservices.lof.kz" xmlns:ns162="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns161:payerId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns161:payerStatus" type="xsd:short" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns161:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByRNN" qname="ns163:getDataByRNN" returnQName="ns163:getDataByRNNReturn" returnType="ns164:TaxPayersSearchResult" soapAction="" xmlns:ns163="http://tax.webservices.lof.kz" xmlns:ns164="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns163:rnn" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns163:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByOrgName" qname="ns165:getDataByOrgName" returnQName="ns165:getDataByOrgNameReturn" returnType="ns166:TaxPayersSearchResult" soapAction="" xmlns:ns165="http://tax.webservices.lof.kz" xmlns:ns166="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns165:orgName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns165:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns165:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns165:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="getDataByOrgName getFullData testService getOrgsByAddresses getDataByIIN getDataByRNN getDataByFIO"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="TaxPayService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.tax.TaxPayServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="TaxPayService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.tax.webservices.lof.kz,http://tax.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://tax.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="TaxPayServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns167:PropertyForm" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.PropertyForm" xmlns:ns167="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns168:TaxPayersSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.TaxPayersSearchResult" xmlns:ns168="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns169:Region" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Region" xmlns:ns169="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns170:LegalPersonType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.LegalPersonType" xmlns:ns170="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns171:Street" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Street" xmlns:ns171="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns172:TaxPayerShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.TaxPayerShortData" xmlns:ns172="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns173:ActivityType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.ActivityType" xmlns:ns173="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns174:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Address" xmlns:ns174="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns175:State" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.State" xmlns:ns175="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns176:TaxPayerFullData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.TaxPayerFullData" xmlns:ns176="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns177:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns177="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns178:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns178="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns179:OrgForm" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.OrgForm" xmlns:ns179="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns180:Place" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Place" xmlns:ns180="http://store.tax.webservices.lof.kz"/>
+  <arrayMapping innerType="ns182:TaxPayerShortData" languageSpecificType="java:kz.lof.webservices.store.tax.TaxPayerShortData[]" qname="ns181:ArrayOf_tns1_TaxPayerShortData" xmlns:ns181="http://tax.webservices.lof.kz" xmlns:ns182="http://store.tax.webservices.lof.kz"/>
+  <arrayMapping innerType="ns184:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns183:ArrayOf_tns2_InfoEntry" xmlns:ns183="http://tax.webservices.lof.kz" xmlns:ns184="http://common.webservices.lof.kz"/>
+ </service>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="TaxIndService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="getDataByFIO" qname="ns185:getDataByFIO" returnQName="ns185:getDataByFIOReturn" returnType="ns186:TaxIndSearchResult" soapAction="" xmlns:ns185="http://tax.webservices.lof.kz" xmlns:ns186="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns185:lastName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns185:firstName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns185:middleName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns185:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns185:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns185:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="testService" qname="ns187:testService" returnQName="ns187:testServiceReturn" returnType="ns188:ServiceInfo" soapAction="" xmlns:ns187="http://tax.webservices.lof.kz" xmlns:ns188="http://common.webservices.lof.kz"/>
+  <operation name="getFullData" qname="ns189:getFullData" returnQName="ns189:getFullDataReturn" returnType="ns190:TaxIndFullData" soapAction="" xmlns:ns189="http://tax.webservices.lof.kz" xmlns:ns190="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns189:indID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns189:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByRNN" qname="ns191:getDataByRNN" returnQName="ns191:getDataByRNNReturn" returnType="ns192:TaxIndSearchResult" soapAction="" xmlns:ns191="http://tax.webservices.lof.kz" xmlns:ns192="http://store.tax.webservices.lof.kz">
+   <parameter qname="ns191:rnn" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns191:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="getFullData testService getDataByRNN getDataByFIO"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="TaxIndService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.tax.TaxIndServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="TaxIndService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.tax.webservices.lof.kz,http://tax.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://tax.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="TaxIndServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns193:Region" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Region" xmlns:ns193="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns194:TaxOffice" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.TaxOffice" xmlns:ns194="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns195:TaxIndSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.TaxIndSearchResult" xmlns:ns195="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns196:TaxIndFullData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.TaxIndFullData" xmlns:ns196="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns197:Street" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Street" xmlns:ns197="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns198:TaxIndShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.TaxIndShortData" xmlns:ns198="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns199:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Address" xmlns:ns199="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns200:State" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.State" xmlns:ns200="http://store.tax.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns201:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns201="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns202:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns202="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns203:Place" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.tax.Place" xmlns:ns203="http://store.tax.webservices.lof.kz"/>
+  <arrayMapping innerType="ns205:TaxIndShortData" languageSpecificType="java:kz.lof.webservices.store.tax.TaxIndShortData[]" qname="ns204:ArrayOf_tns1_TaxIndShortData" xmlns:ns204="http://tax.webservices.lof.kz" xmlns:ns205="http://store.tax.webservices.lof.kz"/>
+  <arrayMapping innerType="ns207:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns206:ArrayOf_tns2_InfoEntry" xmlns:ns206="http://tax.webservices.lof.kz" xmlns:ns207="http://common.webservices.lof.kz"/>
+ </service>
+ <service name="BTIService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="getDataByFIO" qname="ns208:getDataByFIO" returnQName="ns208:getDataByFIOReturn" returnType="ns209:PersonSearchResult" soapAction="" xmlns:ns208="http://bti.webservices.lof.kz" xmlns:ns209="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns208:firstName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns208:lastName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns208:middleName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns208:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns208:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns208:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByIIN" qname="ns210:getDataByIIN" returnQName="ns210:getDataByIINReturn" returnType="ns211:PersonSearchResult" soapAction="" xmlns:ns210="http://bti.webservices.lof.kz" xmlns:ns211="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns210:iin" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns210:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByDoc" qname="ns212:getDataByDoc" returnQName="ns212:getDataByDocReturn" returnType="ns213:RealtySearchResult" soapAction="" xmlns:ns212="http://bti.webservices.lof.kz" xmlns:ns213="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns212:docKind" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns212:docType" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns212:docNumber" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns212:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns212:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns212:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getStreets" qname="ns214:getStreets" returnQName="ns214:getStreetsReturn" returnType="ns215:Street" soapAction="" xmlns:ns214="http://bti.webservices.lof.kz" xmlns:ns215="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns214:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDocKinds" qname="ns216:getDocKinds" returnQName="ns216:getDocKindsReturn" returnType="ns217:DocKind" soapAction="" xmlns:ns216="http://bti.webservices.lof.kz" xmlns:ns217="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns216:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDocTypes" qname="ns218:getDocTypes" returnQName="ns218:getDocTypesReturn" returnType="ns219:DocType" soapAction="" xmlns:ns218="http://bti.webservices.lof.kz" xmlns:ns219="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns218:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="testService" qname="ns220:testService" returnQName="ns220:testServiceReturn" returnType="ns221:ServiceInfo" soapAction="" xmlns:ns220="http://bti.webservices.lof.kz" xmlns:ns221="http://common.webservices.lof.kz"/>
+  <operation name="getDataByAddress" qname="ns222:getDataByAddress" returnQName="ns222:getDataByAddressReturn" returnType="ns223:RealtySearchResult" soapAction="" xmlns:ns222="http://bti.webservices.lof.kz" xmlns:ns223="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns222:buildingKind" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns222:street" type="ns223:Street"/>
+   <parameter qname="ns222:house" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns222:flat" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns222:extras" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns222:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns222:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns222:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByOrgName" qname="ns224:getDataByOrgName" returnQName="ns224:getDataByOrgNameReturn" returnType="ns225:PersonSearchResult" soapAction="" xmlns:ns224="http://bti.webservices.lof.kz" xmlns:ns225="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns224:orgName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns224:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns224:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns224:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByOwnerId" qname="ns226:getDataByOwnerId" returnQName="ns226:getDataByOwnerIdReturn" returnType="ns227:RealtySearchResult" soapAction="" xmlns:ns226="http://bti.webservices.lof.kz" xmlns:ns227="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns226:ownerId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns226:ownerStatus" type="xsd:short" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns226:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getFullDataByDoc" qname="ns228:getFullDataByDoc" returnQName="ns228:getFullDataByDocReturn" returnType="ns229:BuildingFullData" soapAction="" xmlns:ns228="http://bti.webservices.lof.kz" xmlns:ns229="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns228:ownerId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns228:ownerStatus" type="xsd:short" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns228:docId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns228:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getDataByBuildingId" qname="ns230:getDataByBuildingId" returnQName="ns230:getDataByBuildingIdReturn" returnType="ns231:BuildingFullData" soapAction="" xmlns:ns230="http://bti.webservices.lof.kz" xmlns:ns231="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns230:buildingId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns230:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="getBuildingKinds" qname="ns232:getBuildingKinds" returnQName="ns232:getBuildingKindsReturn" returnType="ns233:BuildingKind" soapAction="" xmlns:ns232="http://bti.webservices.lof.kz" xmlns:ns233="http://store.bti.webservices.lof.kz">
+   <parameter qname="ns232:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="getDataByOrgName getDataByOwnerId getDataByDoc getDataByAddress getDocKinds getDataByIIN getStreets testService getFullDataByDoc getBuildingKinds getDocTypes getDataByBuildingId getDataByFIO"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="BTIService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.bti.BTIServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="BTIService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.bti.webservices.lof.kz,http://bti.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://bti.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="BTIServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns234:WallMaterial" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.WallMaterial" xmlns:ns234="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns235:RealtyShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.RealtyShortData" xmlns:ns235="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns236:DocType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.DocType" xmlns:ns236="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns237:DocumentData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.DocumentData" xmlns:ns237="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns238:IDDocType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.IDDocType" xmlns:ns238="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns239:StreetType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.StreetType" xmlns:ns239="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns240:BuildingKind" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.BuildingKind" xmlns:ns240="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns241:District" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.District" xmlns:ns241="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns242:HousePart" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.HousePart" xmlns:ns242="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns243:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns243="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns244:BuildingPurpose" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.BuildingPurpose" xmlns:ns244="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns245:PropertyKind" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.PropertyKind" xmlns:ns245="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns246:Country" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.Country" xmlns:ns246="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns247:PersonSearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.PersonSearchResult" xmlns:ns247="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns248:IDDocument" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.IDDocument" xmlns:ns248="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns249:PropertyForm" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.PropertyForm" xmlns:ns249="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns250:BuildingFullData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.BuildingFullData" xmlns:ns250="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns251:Region" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.Region" xmlns:ns251="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns252:Street" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.Street" xmlns:ns252="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns253:DocKind" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.DocKind" xmlns:ns253="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns254:RealtySearchResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.RealtySearchResult" xmlns:ns254="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns255:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.Address" xmlns:ns255="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns256:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns256="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns257:PersonShortData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.PersonShortData" xmlns:ns257="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns258:City" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.City" xmlns:ns258="http://store.bti.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns259:ApartmentData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.bti.ApartmentData" xmlns:ns259="http://store.bti.webservices.lof.kz"/>
+  <arrayMapping innerType="ns261:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns260:ArrayOf_tns2_InfoEntry" xmlns:ns260="http://bti.webservices.lof.kz" xmlns:ns261="http://common.webservices.lof.kz"/>
+  <arrayMapping innerType="ns263:PersonShortData" languageSpecificType="java:kz.lof.webservices.store.bti.PersonShortData[]" qname="ns262:ArrayOf_tns1_PersonShortData" xmlns:ns262="http://bti.webservices.lof.kz" xmlns:ns263="http://store.bti.webservices.lof.kz"/>
+  <arrayMapping innerType="ns265:ApartmentData" languageSpecificType="java:kz.lof.webservices.store.bti.ApartmentData[]" qname="ns264:ArrayOf_tns1_ApartmentData" xmlns:ns264="http://bti.webservices.lof.kz" xmlns:ns265="http://store.bti.webservices.lof.kz"/>
+  <arrayMapping innerType="ns267:RealtyShortData" languageSpecificType="java:kz.lof.webservices.store.bti.RealtyShortData[]" qname="ns266:ArrayOf_tns1_RealtyShortData" xmlns:ns266="http://bti.webservices.lof.kz" xmlns:ns267="http://store.bti.webservices.lof.kz"/>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <service name="QuestService" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="testService" qname="ns268:testService" returnQName="ns268:testServiceReturn" returnType="ns269:ServiceInfo" soapAction="" xmlns:ns268="http://ump.webservices.lof.kz" xmlns:ns269="http://common.webservices.lof.kz"/>
+  <operation name="searchPeople" qname="ns270:searchPeople" returnQName="ns270:searchPeopleReturn" returnType="ns271:WantedResult" soapAction="" xmlns:ns270="http://ump.webservices.lof.kz" xmlns:ns271="http://store.ump.webservices.lof.kz">
+   <parameter qname="ns270:peopleList" type="ns271:WantedData"/>
+   <parameter qname="ns270:pageNum" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns270:resultsOnPage" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns270:lang" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="testService searchPeople"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="QuestService"/>
+  <parameter name="className" value="kz.lof.webservices.frontface.ump.QuestServiceSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="QuestService"/>
+  <parameter name="schemaQualified" value="http://common.webservices.lof.kz,http://store.ump.webservices.lof.kz,http://ump.webservices.lof.kz"/>
+  <parameter name="wsdlTargetNamespace" value="http://ump.webservices.lof.kz"/>
+  <parameter name="wsdlServiceElement" value="QuestServiceService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns272:WantedResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.WantedResult" xmlns:ns272="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns273:ServiceInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.ServiceInfo" xmlns:ns273="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns274:InfoEntry" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.common.InfoEntry" xmlns:ns274="http://common.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns275:WantedData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.WantedData" xmlns:ns275="http://store.ump.webservices.lof.kz"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns276:QuestData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:kz.lof.webservices.store.ump.QuestData" xmlns:ns276="http://store.ump.webservices.lof.kz"/>
+  <arrayMapping innerType="ns278:InfoEntry" languageSpecificType="java:kz.lof.webservices.common.InfoEntry[]" qname="ns277:ArrayOf_tns1_InfoEntry" xmlns:ns277="http://ump.webservices.lof.kz" xmlns:ns278="http://common.webservices.lof.kz"/>
+  <arrayMapping innerType="ns280:QuestData" languageSpecificType="java:kz.lof.webservices.store.ump.QuestData[]" qname="ns279:ArrayOf_tns2_QuestData" xmlns:ns279="http://ump.webservices.lof.kz" xmlns:ns280="http://store.ump.webservices.lof.kz"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

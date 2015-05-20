@@ -1,0 +1,17 @@
+html{
+	height:50%
+}
+body{
+	height:100%
+}
+#wrapper{
+	height:100%
+}
+#header-view{display:none}
+#outline-container{display:none}
+.button_panel{display:none}
+.viewframe{
+	left:0px; 
+	top:0;
+}
+#support{display:none}
