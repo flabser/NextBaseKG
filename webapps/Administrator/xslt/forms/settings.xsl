@@ -385,7 +385,7 @@
 								</table>
 								<div style="font-size:1.1em;margin:.5em;">Counters</div>
 								<table class="viewtable width7">
-									<xsl:variable name="dbid" select="query/@dbid"/>
+									<xsl:variable name="dbid" select="query/database/id"/>
 									<tr class="th">
 										<td width="3%" class="thcell">¹</td>
 										<td width="15%" class="thcell">id</td>
