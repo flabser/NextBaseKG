@@ -16,6 +16,7 @@ class PostSave extends _FormPostSave {
         def xmppmsg = ""
         def recipientsID = []
         for (String intexec: intexecs) {
+
             doc.addReader(intexec);
         }
         if( doc.getValueString("mailnotification") == '' ){
