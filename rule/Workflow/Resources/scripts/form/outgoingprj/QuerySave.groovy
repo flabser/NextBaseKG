@@ -154,7 +154,7 @@ class QuerySave extends _FormQuerySave {
 		}else{
             if (doc.getViewNumber()== -1 && blocksCollection.getStatus() != _CoordStatusType.DRAFT){
 
-                int num = db.getRegNumber("outgoingprj_" + webFormData.getValueSilently("project"))
+                int num = db.getRegNumber("outgoingprj")
 				String vnAsText = Integer.toString(num)
 				def nomenvalue = doc.getGlossaryValue("n", "docid#number=" + doc.getValueInt("nomentype"), "ndelo")
 				def depid = session.getCurrentAppUser().getDepartmentID();
