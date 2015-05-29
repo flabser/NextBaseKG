@@ -45,7 +45,7 @@ class QuerySave extends _FormQuerySave {
 		def vnAsText
 		if (doc.isNewDoc || !doc.getValueString("vn")){
 			def db = session.getCurrentDatabase()
-            int num = db.getRegNumber("out_" + webFormData.getValueSilently("project"))
+            int num = db.getRegNumber("out")
 			vnAsText = Integer.toString(num)
 			def nomenvalue = doc.getGlossaryValue("n", "docid#number=" + doc.getValueInt("nomentype"), "ndelo")
 			def depid = session.getCurrentAppUser().getDepartmentID();
