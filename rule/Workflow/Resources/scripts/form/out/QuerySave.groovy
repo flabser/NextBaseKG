@@ -56,6 +56,7 @@ class QuerySave extends _FormQuerySave {
 			if (depindex != ''){
 				depindex = depindex + "-"
 			}
+
 			vnAsText = depindex + nomenvalue + vnAsText
 			doc.replaceStringField("vn", vnAsText)
 			doc.replaceIntField("vnnumber",num)
